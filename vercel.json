@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "drift-bar-questionnaire",
+  "builds": [
+    {
+      "src": "questionnaire.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/questionnaire.html"
+    },
+    {
+      "src": "/questionnaire",
+      "dest": "/questionnaire.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/questionnaire.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
+}
