@@ -764,12 +764,25 @@
         // n8n webhook URL
         const WEBHOOK_URL = 'https://simplifyopsco.app.n8n.cloud/webhook/drift-bar-questionnaire';
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // Generate or get session ID (persistent timestamp)
+        let sessionId = localStorage.getItem('drift_session_id');
+        if (!sessionId) {
+            sessionId = new Date().toISOString();
+            localStorage.setItem('drift_session_id', sessionId);
+        }
 
-            // Gather form data
+        // Track changes for auto-save
+        let hasChanges = false;
+        let autoSaveTimeout = null;
+
+        // Function to gather all form data
+        function gatherFormData(status = 'draft') {
             const formData = new FormData(form);
-            const data = {};
+            const data = {
+                timestamp: sessionId, // Use session ID as primary key
+                status: status,
+                submitted_at: new Date().toISOString()
+            };
 
             for (let [key, value] of formData.entries()) {
                 // Handle checkboxes - if key already exists, make it an array
@@ -784,8 +797,52 @@
                 }
             }
 
-            // Add timestamp
-            data.submitted_at = new Date().toISOString();
+            return data;
+        }
+
+        // Auto-save to n8n (cloud backup)
+        async function autoSaveToCloud() {
+            if (!hasChanges) return;
+
+            try {
+                const data = gatherFormData('draft');
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    hasChanges = false;
+                    console.log('✅ Auto-saved to cloud');
+
+                    // Show brief save indicator
+                    const indicator = document.createElement('div');
+                    indicator.style.cssText = 'position:fixed;top:20px;right:20px;background:#22C55E;color:white;padding:10px 20px;border-radius:8px;z-index:9999;';
+                    indicator.textContent = '✅ Запазено';
+                    document.body.appendChild(indicator);
+                    setTimeout(() => indicator.remove(), 2000);
+                }
+            } catch (error) {
+                console.error('Auto-save error:', error);
+            }
+        }
+
+        // Schedule auto-save (30 seconds after last change)
+        function scheduleAutoSave() {
+            clearTimeout(autoSaveTimeout);
+            hasChanges = true;
+            autoSaveTimeout = setTimeout(autoSaveToCloud, 30000); // 30 seconds
+        }
+
+        // Final submit
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = gatherFormData('completed'); // Mark as completed
 
             // Show loading state
             submitBtn.disabled = true;
@@ -808,6 +865,17 @@
                     successMessage.style.display = 'block';
                     form.reset();
 
+                    // Clear session and localStorage
+                    localStorage.removeItem('drift_session_id');
+                    sessionId = new Date().toISOString(); // New session
+                    localStorage.setItem('drift_session_id', sessionId);
+
+                    // Clear all saved form data
+                    const inputs = form.querySelectorAll('input, textarea, select');
+                    inputs.forEach(input => {
+                        localStorage.removeItem(`drift_questionnaire_${input.name}`);
+                    });
+
                     // Scroll to success message
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                 } else {
@@ -823,10 +891,10 @@
             }
         });
 
-        // Auto-save to localStorage (optional - for draft saving)
+        // Auto-save to localStorage + schedule cloud save
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
-            // Load saved data
+            // Load saved data from localStorage
             const savedValue = localStorage.getItem(`drift_questionnaire_${input.name}`);
             if (savedValue && input.type === 'checkbox') {
                 input.checked = savedValue === 'true';
@@ -838,15 +906,42 @@
                 input.value = savedValue;
             }
 
-            // Save on change
+            // Save on change (localStorage + schedule cloud save)
             input.addEventListener('change', () => {
+                // Save to localStorage
                 if (input.type === 'checkbox' || input.type === 'radio') {
                     localStorage.setItem(`drift_questionnaire_${input.name}`, input.checked || input.value);
                 } else {
                     localStorage.setItem(`drift_questionnaire_${input.name}`, input.value);
                 }
+
+                // Schedule cloud auto-save
+                scheduleAutoSave();
             });
+
+            // Also save on blur for text inputs (immediate cloud save)
+            if (input.type === 'text' || input.type === 'email' || input.type === 'number' || input.tagName === 'TEXTAREA') {
+                input.addEventListener('blur', () => {
+                    if (hasChanges) {
+                        autoSaveToCloud(); // Immediate save on blur
+                    }
+                });
+            }
         });
+
+        // Auto-save on page unload (if has changes)
+        window.addEventListener('beforeunload', (e) => {
+            if (hasChanges) {
+                autoSaveToCloud();
+                // Note: This might not always work due to browser restrictions
+                // but we try anyway
+            }
+        });
+
+        // Initial load message
+        console.log('📝 Drift Bar Questionnaire loaded');
+        console.log('🆔 Session ID:', sessionId);
+        console.log('💾 Auto-save enabled: Changes save automatically every 30s or on field blur');
     </script>
 </body>
 </html>
