@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(notebooklm status:*)",
+      "Bash(notebooklm create:*)",
+      "Bash(notebooklm login:*)",
+      "Bash(python3:*)",
+      "Bash(git --version:*)",
+      "Bash(gh:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}

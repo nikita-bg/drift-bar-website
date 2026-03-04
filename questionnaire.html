@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift Bar Plovdiv — Въпросник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0D0D0D 0%, #1C1917 100%);
+            color: #E0E0E0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(28, 25, 23, 0.95);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(202, 138, 4, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #CA8A04;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(202, 138, 4, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #A0A0A0;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background: rgba(202, 138, 4, 0.1);
+            border-left: 4px solid #CA8A04;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            color: #E0E0E0;
+        }
+
+        .info-box strong {
+            color: #CA8A04;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(202, 138, 4, 0.3);
+        }
+
+        .section-number {
+            background: #CA8A04;
+            color: #0D0D0D;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #E0E0E0;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(202, 138, 4, 0.3);
+            border-radius: 8px;
+            color: #E0E0E0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #CA8A04;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #CA8A04;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(202, 138, 4, 0.2);
+        }
+
+        th {
+            background: rgba(202, 138, 4, 0.1);
+            color: #CA8A04;
+            font-weight: 600;
+        }
+
+        .note {
+            background: rgba(68, 64, 60, 0.3);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #B0B0B0;
+        }
+
+        .note::before {
+            content: "💡 ";
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #CA8A04 0%, #D4A027 100%);
+            color: #0D0D0D;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(202, 138, 4, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 138, 4, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #44403C;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(202, 138, 4, 0.2);
+            border-top: 4px solid #CA8A04;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .already-have {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22C55E;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .already-have h3 {
+            color: #22C55E;
+            margin-bottom: 10px;
+        }
+
+        .already-have ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .already-have li {
+            padding: 5px 0;
+            color: #E0E0E0;
+        }
+
+        .already-have li::before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 DRIFT BAR</h1>
+        <div class="subtitle">Въпросник — Информация за Уебсайта</div>
+
+        <div class="info-box">
+            <p><strong>За:</strong> Drift Bar Plovdiv</p>
+            <p><strong>От:</strong> Никита Недялков Крачолов</p>
+            <p><strong>Дата:</strong> 4 март 2026</p>
+            <p><strong>Контакт:</strong> WhatsApp/Viber/Telegram: <strong>+359 877 455 192</strong> | Email: <strong>ncracholov3@gmail.com</strong></p>
+        </div>
+
+        <div class="already-have">
+            <h3>✅ ВЕЧЕ ИМАМ (от чата ви):</h3>
+            <ul>
+                <li><strong>События за март:</strong></li>
+                <li>06.03 (четвъртък) - Царете - вход 10€</li>
+                <li>08.03 (неделя) - Lady's Night / DJ Retro - вход 5€ (free за дами)</li>
+                <li>11.03 (сряда) - DJ Retro - вход 5€</li>
+                <li>14.03 (събота) - The Four Tones - вход 10€</li>
+                <li>15.03 (неделя) - DJ Z - вход 5€</li>
+                <li>20.03 (петък) - Solid Fuel - вход 10€</li>
+                <li style="margin-top: 10px;"><strong>Работно време:</strong> Врати: 20:00, Начало: 21:00</li>
+                <li><strong>Меню:</strong> Ще го изпратите скоро</li>
+            </ul>
+        </div>
+
+        <form id="questionnaireForm">
+            <!-- Section 1: Logo -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">1️⃣</div>
+                    <div class="section-title">ЛОГО</div>
+                </div>
+                <p style="margin-bottom: 15px;">Изпратете ми логото във <strong>най-доброто качество</strong> което имате.</p>
+                <div class="note">Не се притеснявайте за "PNG", "SVG" или технически неща — просто изпратете файла който имате (колкото по-голям, толкова по-добър).</div>
+                <div class="form-group">
+                    <label>Къде ще изпратите логото?</label>
+                    <select name="logo_delivery" required>
+                        <option value="">Изберете...</option>
+                        <option value="whatsapp">WhatsApp/Viber (+359 877 455 192)</option>
+                        <option value="email">Email (ncracholov3@gmail.com)</option>
+                        <option value="none">Нямаме готово лого (ще подготвите вие)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Section 2: Photos -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">2️⃣</div>
+                    <div class="section-title">СНИМКИ (10-20 снимки)</div>
+                </div>
+                <p style="margin-bottom: 15px;">Снимки на бара за уебсайта и социалните мрежи.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Колко</th>
+                                <th>Имате ли?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Интериор (залата, атмосферата)</td>
+                                <td>5+ снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_interior" value="yes"> Да
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Бар (барът, барман, бутилките)</td>
+                                <td>2-3 снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_bar" value="yes"> Да
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Сцена (оборудване, светлини)</td>
+                                <td>2-3 снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_stage" value="yes"> Да
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Концерти (банди, публика)</td>
+                                <td>3-5 снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_concerts" value="yes"> Да
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Напитки (коктейли, бири)</td>
+                                <td>2-3 снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_drinks" value="yes"> Да
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Вход/Фасада (отвън)</td>
+                                <td>1-2 снимки</td>
+                                <td>
+                                    <input type="checkbox" name="photos_exterior" value="yes"> Да
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label>Къде ще изпратите снимките?</label>
+                    <select name="photos_delivery">
+                        <option value="">Изберете...</option>
+                        <option value="whatsapp">WhatsApp/Viber (+359 877 455 192)</option>
+                        <option value="google_drive">Google Drive (ще изпратим линк)</option>
+                        <option value="photoshoot">Нямаме снимки - искаме фотосесия (200-400 лв)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Section 3: Working Hours -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">3️⃣</div>
+                    <div class="section-title">РАБОТНО ВРЕМЕ (детайли)</div>
+                </div>
+                <p style="margin-bottom: 15px;"><strong>Вече знам:</strong> Врати 20:00, Начало 21:00</p>
+                <p style="margin-bottom: 15px;">Трябва ми още да знам:</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ден</th>
+                                <th>Отворено?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Понеделник</td>
+                                <td>
+                                    <label><input type="radio" name="monday" value="open"> Да</label>
+                                    <label><input type="radio" name="monday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Вторник</td>
+                                <td>
+                                    <label><input type="radio" name="tuesday" value="open"> Да</label>
+                                    <label><input type="radio" name="tuesday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Сряда</td>
+                                <td>
+                                    <label><input type="radio" name="wednesday" value="open"> Да</label>
+                                    <label><input type="radio" name="wednesday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Четвъртък</td>
+                                <td>
+                                    <label><input type="radio" name="thursday" value="open"> Да</label>
+                                    <label><input type="radio" name="thursday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Петък</td>
+                                <td>
+                                    <label><input type="radio" name="friday" value="open"> Да</label>
+                                    <label><input type="radio" name="friday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Събота</td>
+                                <td>
+                                    <label><input type="radio" name="saturday" value="open"> Да</label>
+                                    <label><input type="radio" name="saturday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Неделя</td>
+                                <td>
+                                    <label><input type="radio" name="sunday" value="open"> Да</label>
+                                    <label><input type="radio" name="sunday" value="closed"> Почивен ден</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label>Затваряте до колко часа? (напр. 03:00 сутринта)</label>
+                    <input type="text" name="closing_time" placeholder="03:00">
+                </div>
+            </div>
+
+            <!-- Section 4: Band Information -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">4️⃣</div>
+                    <div class="section-title">ИНФОРМАЦИЯ ЗА БАНДИТЕ</div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: #CA8A04; margin-bottom: 15px;">06.03 - Царете</h4>
+                    <div class="form-group">
+                        <label>Жанр (Рок? Метъл? Друго?)</label>
+                        <input type="text" name="band1_genre" placeholder="напр. Рок">
+                    </div>
+                    <div class="form-group">
+                        <label>2-3 изречения за тях (кои са, какво свирят, защо са яки)</label>
+                        <textarea name="band1_description" placeholder="Кратко описание..."></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: #CA8A04; margin-bottom: 15px;">14.03 - The Four Tones</h4>
+                    <div class="form-group">
+                        <label>Жанр</label>
+                        <input type="text" name="band2_genre" placeholder="напр. Рок">
+                    </div>
+                    <div class="form-group">
+                        <label>2-3 изречения за тях</label>
+                        <textarea name="band2_description" placeholder="Кратко описание..."></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: #CA8A04; margin-bottom: 15px;">20.03 - Solid Fuel</h4>
+                    <div class="form-group">
+                        <label>Жанр</label>
+                        <input type="text" name="band3_genre" placeholder="напр. Рок">
+                    </div>
+                    <div class="form-group">
+                        <label>2-3 изречения за тях</label>
+                        <textarea name="band3_description" placeholder="Кратко описание..."></textarea>
+                    </div>
+                </div>
+
+                <div class="note">Ако нямате инфо за бандите, аз ще търся онлайн и ще ви изпратя да одобрите.</div>
+            </div>
+
+            <!-- Section 5: Google Account -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">5️⃣</div>
+                    <div class="section-title">GOOGLE АКАУНТ</div>
+                </div>
+                <p style="margin-bottom: 15px;">За да създам <strong>Google Business Profile</strong> (за да ви намират в Google Maps)</p>
+                <div class="form-group">
+                    <label>Email който искате да използвате</label>
+                    <input type="email" name="google_email" placeholder="email@example.com">
+                </div>
+                <div class="note">Може вашият личен Gmail или да създадем нов специално за бара</div>
+            </div>
+
+            <!-- Section 6: Reservations -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">6️⃣</div>
+                    <div class="section-title">РЕЗЕРВАЦИИ</div>
+                </div>
+                <div class="form-group">
+                    <label>Искате ли хората да могат да резервират маса през сайта?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="radio" name="reservations" value="yes">
+                            Да, искаме
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="radio" name="reservations" value="no">
+                            Не, засега не
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Колко маси имате?</label>
+                    <input type="number" name="num_tables" placeholder="напр. 10">
+                </div>
+                <div class="form-group">
+                    <label>Колко души макс. на маса?</label>
+                    <input type="number" name="max_per_table" placeholder="напр. 6">
+                </div>
+            </div>
+
+            <!-- Section 7: Domain -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">7️⃣</div>
+                    <div class="section-title">ДОМЕЙН (адрес на сайта)</div>
+                </div>
+                <div class="form-group">
+                    <label>Кое предпочитате?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="radio" name="domain" value="com">
+                            driftbarplovdiv.com (international - добре за туристи)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="radio" name="domain" value="bg">
+                            driftbarplovdiv.bg (българско)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Друго (ако имате друго предпочитание)</label>
+                    <input type="text" name="domain_other" placeholder="напр. drift-bar.com">
+                </div>
+                <div class="note">Препоръка: .com е по-универсален.</div>
+            </div>
+
+            <!-- Section 8: Ad Budget -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">8️⃣</div>
+                    <div class="section-title">БЮДЖЕТ ЗА РЕКЛАМИ</div>
+                </div>
+                <p style="margin-bottom: 15px;">Колко сте готови да давате месечно за Facebook/Instagram реклами?</p>
+                <p style="margin-bottom: 15px; color: #A0A0A0;">(Това са пари които <strong>вие</strong> плащате директно на Facebook, не на мен)</p>
+                <div class="form-group">
+                    <label>Месечен бюджет (евро)</label>
+                    <input type="number" name="ad_budget" placeholder="напр. 100">
+                </div>
+                <div class="note">Препоръка за начало: 75-100 евро/месец</div>
+            </div>
+
+            <!-- Section 9: Capacity -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">9️⃣</div>
+                    <div class="section-title">КАПАЦИТЕТ</div>
+                </div>
+                <div class="form-group">
+                    <label>Колко души побира барът?</label>
+                    <input type="number" name="capacity" placeholder="напр. 100">
+                </div>
+                <div class="form-group">
+                    <label>Брой маси</label>
+                    <input type="number" name="total_tables" placeholder="напр. 15">
+                </div>
+            </div>
+
+            <!-- Section 10: Brand Voice -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">🔟</div>
+                    <div class="section-title">КАК ИСКАТЕ ДА ЗВУЧИ БРАНДА?</div>
+                </div>
+                <div class="form-group">
+                    <label>Изберете тон на комуникация:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brand_voice_professional" value="yes">
+                            Сериозен и професионален
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brand_voice_fun" value="yes">
+                            Забавен и приятелски
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brand_voice_edgy" value="yes">
+                            Рок и edgy (малко бунтарски)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brand_voice_warm" value="yes">
+                            Топъл и приветлив
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Комбинация/Други предпочитания:</label>
+                    <input type="text" name="brand_voice_other" placeholder="напр. Автентичен и страстен">
+                </div>
+                <div class="note">Ако не сте сигурни: Ще използвам "автентичен, страстен, музикален" — така че да звучи истински, не като corporate маркетинг.</div>
+            </div>
+
+            <!-- Section 11: Free Text Wishes -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">📝</div>
+                    <div class="section-title">ПОЖЕЛАНИЯ В СВОБОДЕН ТЕКСТ</div>
+                </div>
+                <div class="form-group">
+                    <label>Има ли нещо друго което искате да споделите?</label>
+                    <textarea name="free_text_wishes" placeholder="Всички допълнителни пожелания, идеи или въпроси..." style="min-height: 150px;"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Изпрати Отговори 🚀</button>
+
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p style="margin-top: 15px; color: #CA8A04;">Изпращане...</p>
+            </div>
+
+            <div class="success-message">
+                ✅ Благодаря! Отговорите са изпратени успешно. Ще се свържа с вас скоро!
+            </div>
+
+            <div class="error-message">
+                ❌ Възникна грешка. Моля, изпратете ми отговорите на WhatsApp/Viber: +359 877 455 192
+            </div>
+        </form>
+
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid rgba(202, 138, 4, 0.3); text-align: center;">
+            <h3 style="color: #CA8A04; margin-bottom: 15px;">📞 КОНТАКТ</h3>
+            <p><strong>Въпроси? Не разбирате нещо?</strong></p>
+            <p style="margin-top: 10px;">
+                WhatsApp/Viber/Telegram: <strong style="color: #CA8A04;">+359 877 455 192</strong><br>
+                Email: <strong style="color: #CA8A04;">ncracholov3@gmail.com</strong>
+            </p>
+            <p style="margin-top: 20px; color: #A0A0A0;">Отговарям бързо — не се притеснявайте да питате каквото и да е! 😊</p>
+            <p style="margin-top: 30px; font-size: 1.2rem;">
+                <strong>Благодаря ви! Ще направим Drift Bar #1 за жива музика в Пловдив! 🚀🎸</strong>
+            </p>
+            <p style="margin-top: 15px; color: #A0A0A0;">
+                <em>Никита Недялков Крачолов</em><br>
+                <em>AI Marketing Expert</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('questionnaireForm');
+        const submitBtn = form.querySelector('.submit-btn');
+        const loading = document.querySelector('.loading');
+        const successMessage = document.querySelector('.success-message');
+        const errorMessage = document.querySelector('.error-message');
+
+        // n8n webhook URL
+        const WEBHOOK_URL = 'https://simplifyopsco.app.n8n.cloud/webhook/drift-bar-questionnaire';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Gather form data
+            const formData = new FormData(form);
+            const data = {};
+
+            for (let [key, value] of formData.entries()) {
+                // Handle checkboxes - if key already exists, make it an array
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Add timestamp
+            data.submitted_at = new Date().toISOString();
+
+            // Show loading state
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            try {
+                // Send to n8n webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // Success
+                    successMessage.style.display = 'block';
+                    form.reset();
+
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                loading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Auto-save to localStorage (optional - for draft saving)
+        const inputs = form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            // Load saved data
+            const savedValue = localStorage.getItem(`drift_questionnaire_${input.name}`);
+            if (savedValue && input.type === 'checkbox') {
+                input.checked = savedValue === 'true';
+            } else if (savedValue && input.type === 'radio') {
+                if (input.value === savedValue) {
+                    input.checked = true;
+                }
+            } else if (savedValue) {
+                input.value = savedValue;
+            }
+
+            // Save on change
+            input.addEventListener('change', () => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    localStorage.setItem(`drift_questionnaire_${input.name}`, input.checked || input.value);
+                } else {
+                    localStorage.setItem(`drift_questionnaire_${input.name}`, input.value);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

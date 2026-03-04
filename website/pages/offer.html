@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="dark" lang="bg">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Drift Bar Plovdiv — Маркетингово Предложение</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c5a45e", "primary-dark": "#96793a",
+                        "accent-red": "#8b2e2e", "background-light": "#f0f0f0",
+                        "background-dark": "#0a0a12", "surface-dark": "#13131d",
+                        "text-gold": "#d4b876",
+                    },
+                    fontFamily: {
+                        "display": ["Playfair Display", "serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px" },
+                    backdropBlur: { 'xs': '2px' },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0MDAnIGhlaWdodD0nNDAwJz48ZmlsdGVyIGlkPSdub2lzZSc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bU9jdGF2ZXM9JzMnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbm9pc2UpJyBvcGFjaXR5PScwLjA1Jy8+PC9zdmc+')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a12;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333340;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5a45e;
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 18, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(197, 164, 94, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #d4b876 0%, #a88b48 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #c5a45e 0%, #96793a 100%);
+        }
+
+        .retro-title {
+            text-shadow: 0 0 20px rgba(197, 164, 94, 0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card {
+            background: rgba(19, 19, 29, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(197, 164, 94, 0.4);
+            background: rgba(19, 19, 29, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .comp-row:nth-child(even) {
+            background: rgba(197, 164, 94, 0.03);
+        }
+
+        /* Mobile menu fallback */
+        #hamburgerBtn {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            #hamburgerBtn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark font-body text-slate-200 antialiased selection:bg-primary selection:text-background-dark overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-panel border-b-0">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a class="flex items-center gap-3 group" href="index.html">
+                    <div
+                        class="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center text-primary bg-black/50">
+                        <span class="material-symbols-outlined text-2xl">music_note</span>
+                    </div>
+                    <span
+                        class="text-xl font-display font-bold tracking-wide text-white group-hover:text-primary transition-colors">DRIFT
+                        BAR</span>
+                </a>
+                <div class="hidden md:flex items-center gap-10">
+                    <a class="text-xs uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-xs uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="page2.html">Menu</a>
+                    <a class="text-xs uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="index.html#events">Events</a>
+                    <a class="text-xs uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="index.html#reserve">Reserve</a>
+                    <a class="text-xs uppercase tracking-widest font-medium text-primary" href="#offer">Предложение</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="hidden md:flex items-center gap-1 text-xs font-bold text-primary border border-primary/30 px-3 py-1.5 rounded-sm hover:bg-primary hover:text-black transition-colors">
+                        <span>BG</span><span class="opacity-40">/</span><span class="opacity-40">EN</span>
+                    </button>
+                    <button class="md:hidden p-2 text-primary" id="hamburgerBtn"
+                        onclick="document.getElementById('mobileMenu').classList.toggle('translate-x-full')">
+                        <span class="material-symbols-outlined text-2xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] translate-x-full transition-transform duration-300 md:hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')"></div>
+        <div
+            class="absolute right-0 top-0 h-full w-72 bg-background-dark border-l border-primary/20 flex flex-col pt-20 px-8 gap-1">
+            <button class="absolute top-5 right-5 text-primary"
+                onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <a class="py-3 text-sm uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors border-b border-white/5"
+                href="index.html"
+                onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">Home</a>
+            <a class="py-3 text-sm uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors border-b border-white/5"
+                href="page2.html"
+                onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">Menu</a>
+            <a class="py-3 text-sm uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors border-b border-white/5"
+                href="index.html#events"
+                onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">Events</a>
+            <a class="py-3 text-sm uppercase tracking-widest font-medium text-slate-300 hover:text-primary transition-colors border-b border-white/5"
+                href="index.html#reserve"
+                onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">Reserve</a>
+            <a class="py-3 text-sm uppercase tracking-widest font-medium text-primary hover:text-white transition-colors border-b border-white/5 font-bold"
+                href="#offer" onclick="document.getElementById('mobileMenu').classList.add('translate-x-full')">✦
+                Предложение</a>
+            <div class="mt-auto mb-8">
+                <a class="flex items-center justify-center gap-2 w-full py-3 gradient-bg text-background-dark font-bold text-sm uppercase tracking-wider rounded-lg"
+                    href="viber://chat?number=%2B359877455192">
+                    <span class="material-symbols-outlined text-lg">chat</span> Viber
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[#0a0a12]/90 z-10"></div>
+            <div class="absolute inset-0 bg-noise opacity-20 mix-blend-overlay z-20"></div>
+        </div>
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/15 blur-[150px] rounded-full pointer-events-none opacity-40">
+        </div>
+        <div class="relative z-10 w-full max-w-4xl mx-auto text-center flex flex-col items-center gap-6 fade">
+            <div
+                class="inline-flex items-center gap-3 px-6 py-2 border-y border-primary/30 text-primary text-xs font-bold tracking-[0.2em] uppercase">
+                <span class="material-symbols-outlined text-sm">handshake</span>
+                Маркетингово Предложение
+                <span class="material-symbols-outlined text-sm">handshake</span>
+            </div>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] retro-title">
+                Пълен Маркетинг.<br>
+                <span class="text-primary italic">Едно Число.</span>
+            </h1>
+            <p class="font-body text-lg text-slate-400 font-light tracking-wide max-w-xl">
+                AI-базирано маркетингово решение, създадено специално за Drift Bar Plovdiv.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY THIS OFFER -->
+    <section class="py-24 px-6 bg-[#0e0e16] fade" id="why">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Защо точно тази оферта?</span>
+                <h2 class="font-display text-3xl md:text-5xl text-white mt-4 italic">
+                    Повече от <span class="text-primary not-italic">контент</span>
+                </h2>
+            </div>
+
+            <div class="glass-panel p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-noise opacity-5"></div>
+                <div class="relative z-10 space-y-6">
+                    <p class="text-slate-300 text-lg font-light leading-relaxed">
+                        Знам, че първоначално търсехте само <strong class="text-white">помощ с контент</strong>. Но след
+                        анализа разбрах — контентът сам по себе си няма да е достатъчен за да напълни бара.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-6 border-y border-white/5">
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary mt-1">arrow_forward</span>
+                            <p class="text-sm text-slate-400 font-light">Контент без сайт → хората нямат къде да отидат
+                            </p>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary mt-1">arrow_forward</span>
+                            <p class="text-sm text-slate-400 font-light">Сайт без SEO → никой не го намира в Google</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary mt-1">arrow_forward</span>
+                            <p class="text-sm text-slate-400 font-light">SEO без Google Business → нулева локална
+                                видимост</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary mt-1">arrow_forward</span>
+                            <p class="text-sm text-slate-400 font-light">Всичко без реклама → бавен растеж</p>
+                        </div>
+                    </div>
+                    <p class="text-white text-lg font-display">
+                        <span class="text-primary italic">Аз поемам ЦЕЛИЯ маркетинг</span> — включително доработка на
+                        менюто и изграждане на уникална идентичност за бара. Вие се фокусирате само върху гостите,
+                        музиката и атмосферата.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-24 px-6 bg-background-dark fade" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Какво получавате</span>
+                <h2 class="font-display text-3xl md:text-5xl text-white mt-4 italic">
+                    8 Услуги. <span class="text-primary not-italic">Един Пакет.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">language</span>
+                    <h3 class="font-display text-xl text-white mb-2">AI Уебсайт</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-3">Premium landing page + меню,
+                        оптимизирани за мобилни и Google. Готов за 48 часа.</p>
+                    <a href="index.html" target="_blank"
+                        class="inline-flex items-center gap-1 text-xs text-primary font-bold uppercase tracking-wider hover:underline">👁
+                        Вижте демото <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">videocam</span>
+                    <h3 class="font-display text-xl text-white mb-2">60 AI Видеа/мес</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Кратки рекламни видеа за Instagram
+                        Reels, TikTok и Facebook, генерирани с AI.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">auto_awesome</span>
+                    <h3 class="font-display text-xl text-white mb-2">90+ Поста × 3 Мрежи</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Автоматизиран контент за Instagram,
+                        Facebook и TikTok с AI текстове и графики.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">search</span>
+                    <h3 class="font-display text-xl text-white mb-2">SEO Оптимизация</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Локален SEO за Пловдив + Google
+                        Business + блог контент за органичен трафик.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">campaign</span>
+                    <h3 class="font-display text-xl text-white mb-2">Рекламни Кампании</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Meta + Google Ads — таргетиране, А/B
+                        тестове, оптимизация. Аз управлявам бюджета.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">palette</span>
+                    <h3 class="font-display text-xl text-white mb-2">Пълен Брандинг</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Визуална идентичност — лого адаптации,
+                        шаблони за постове, стилови насоки.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">loyalty</span>
+                    <h3 class="font-display text-xl text-white mb-2">Loyalty Система</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Дигитална програма за лоялност —
+                        връщащи клиенти, награди, персонализация.</p>
+                </div>
+                <div class="service-card p-6 rounded-lg group border-primary/20">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">local_bar</span>
+                    <h3 class="font-display text-xl text-white mb-2">Меню & Уникалност</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Доработка на менюто, създаване на
+                        авторски коктейли и уникална идентичност — това, което отличава Drift Bar от всеки друг бар.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO CTA -->
+    <section class="py-12 px-6 bg-[#0e0e16] fade">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="glass-panel p-8 md:p-10 rounded-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-noise opacity-5"></div>
+                <div class="relative z-10">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-3">devices</span>
+                    <h3 class="font-display text-2xl md:text-3xl text-white mb-3">Вижте <span
+                            class="text-primary italic">Демото</span> на Живо</h3>
+                    <p class="text-sm text-slate-400 font-light mb-6">Вече създадох landing page и меню страница за
+                        Drift Bar — готови за пускане.</p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="index.html" target="_blank"
+                            class="inline-flex items-center gap-2 gradient-bg text-background-dark px-6 py-3 text-sm uppercase tracking-widest font-bold hover:shadow-[0_0_25px_rgba(197,164,94,0.4)] transition-all">
+                            <span class="material-symbols-outlined text-lg">visibility</span>
+                            Landing Page
+                        </a>
+                        <a href="page2.html" target="_blank"
+                            class="inline-flex items-center gap-2 border border-primary/40 text-primary px-6 py-3 text-sm uppercase tracking-widest font-bold hover:bg-primary hover:text-background-dark transition-all">
+                            <span class="material-symbols-outlined text-lg">menu_book</span>
+                            Меню
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="py-24 px-6 bg-[#0e0e16] fade" id="comparison">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Сравнение</span>
+                <h2 class="font-display text-3xl md:text-5xl text-white mt-4 italic">
+                    Агенция срещу <span class="text-primary not-italic">Нас</span>
+                </h2>
+                <p class="text-xs text-slate-500 mt-3 font-light">* Цените на агенциите и фрийлансърите са актуални към
+                    <span class="text-primary font-medium">март 2026 г.</span>, по направено пазарно проучване.</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-primary/30">
+                            <th class="py-4 px-4 font-display text-white text-base">Услуга</th>
+                            <th class="py-4 px-4 text-slate-400">Агенция</th>
+                            <th class="py-4 px-4 text-slate-400">Фрийлансър</th>
+                            <th class="py-4 px-4 text-primary font-bold">✦ Нашето</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">Месец 1 (всичко включено)</td>
+                            <td class="py-4 px-4 text-slate-500">5 000–15 000 лв</td>
+                            <td class="py-4 px-4 text-slate-500">3 000–6 000 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">200 EUR — всичко</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">Месечно (от М2)</td>
+                            <td class="py-4 px-4 text-slate-500">2 000–5 000 лв</td>
+                            <td class="py-4 px-4 text-slate-500">800–2 000 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">Вие предлагате</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">Уебсайт</td>
+                            <td class="py-4 px-4 text-slate-500">3 000–5 000 лв</td>
+                            <td class="py-4 px-4 text-slate-500">1 500–3 000 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">🎁 Безплатно</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">Брандинг</td>
+                            <td class="py-4 px-4 text-slate-500">1 000–3 000 лв</td>
+                            <td class="py-4 px-4 text-slate-500">500–1 500 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">🎁 Безплатно</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">60 видеа/мес</td>
+                            <td class="py-4 px-4 text-slate-500">9 000–18 000 лв</td>
+                            <td class="py-4 px-4 text-slate-500">6 000–12 000 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">✓ Включено</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">90 поста × 3 мрежи</td>
+                            <td class="py-4 px-4 text-slate-500">2 000–4 500 лв</td>
+                            <td class="py-4 px-4 text-slate-500">1 000–2 500 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">✓ Включено</td>
+                        </tr>
+                        <tr class="comp-row border-b border-white/5">
+                            <td class="py-4 px-4 text-white">SEO + Блог</td>
+                            <td class="py-4 px-4 text-slate-500">800–2 500 лв</td>
+                            <td class="py-4 px-4 text-slate-500">500–1 500 лв</td>
+                            <td class="py-4 px-4 text-primary font-bold">✓ Включено</td>
+                        </tr>
+                        <tr class="comp-row">
+                            <td class="py-4 px-4 text-white">Скорост на сайт</td>
+                            <td class="py-4 px-4 text-slate-500">2–4 седмици</td>
+                            <td class="py-4 px-4 text-slate-500">1–2 седмици</td>
+                            <td class="py-4 px-4 text-primary font-bold">⚡ 24–48 часа</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BONUSES -->
+            <div class="mt-16">
+                <h3 class="font-display text-2xl text-white text-center mb-8 italic">🎁 Включени <span
+                        class="text-primary not-italic">Безплатно</span></h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">🌐 Уебсайт</div>
+                        <div class="text-xs text-slate-500 line-through">2 000–5 000 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">🎨 Брандинг</div>
+                        <div class="text-xs text-slate-500 line-through">800–2 500 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">📊 Анализ</div>
+                        <div class="text-xs text-slate-500 line-through">800–2 000 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">📍 Google</div>
+                        <div class="text-xs text-slate-500 line-through">300–600 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">🤖 Автоматизация</div>
+                        <div class="text-xs text-slate-500 line-through">500–1 500 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                    <div class="text-center p-4 border border-white/5 rounded-lg">
+                        <div class="text-white text-sm font-medium mb-1">🏅 Loyalty</div>
+                        <div class="text-xs text-slate-500 line-through">400–1 000 лв</div>
+                        <div class="text-primary text-xs font-bold mt-1">БЕЗПЛАТНО</div>
+                    </div>
+                </div>
+                <div class="gradient-bg mt-8 p-6 rounded-lg text-center">
+                    <div class="text-sm text-background-dark/70">Обща пазарна стойност на бонусите</div>
+                    <div class="text-3xl md:text-4xl font-display font-bold text-background-dark">5 800 – 13 600 лв
+                    </div>
+                    <div class="text-background-dark/80 mt-1">Вие плащате: <strong>0 лв</strong> — включено безплатно
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE OFFER -->
+    <section class="py-24 px-6 bg-background-dark fade" id="offer">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Предложението</span>
+            <h2 class="font-display text-3xl md:text-5xl text-white mt-4 mb-16 italic">
+                Едно число. <span class="text-primary not-italic">Нулев риск.</span>
+            </h2>
+
+            <!-- MONTH 1 PRICE -->
+            <div class="relative max-w-lg mx-auto mb-16">
+                <div class="absolute inset-0 bg-primary/10 blur-[60px] rounded-full pointer-events-none"></div>
+                <div class="relative glass-panel p-10 md:p-14 rounded-xl text-center">
+                    <div class="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-6">Месец 1 — Всичко
+                        включено</div>
+                    <div class="text-7xl md:text-8xl font-display font-bold gradient-text leading-none">200</div>
+                    <div class="text-2xl font-display text-white mt-2">EUR</div>
+                    <div class="text-sm text-slate-400 mt-2 mb-8">(~390 лв) — плащате веднъж</div>
+
+                    <div class="grid grid-cols-2 gap-3 text-left mb-6">
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Уебсайт онлайн (48ч)</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Пълен брандинг</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Google Business</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Автоматизации</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            60 AI видеа</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            90+ поста × 3 мрежи</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Реклами управлявани</div>
+                        <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                            Пълен месечен отчет</div>
+                    </div>
+
+                    <div class="bg-background-dark/60 rounded-lg p-3 text-xs text-slate-500">
+                        💡 Рекламен бюджет е отделно — плащате директно на Meta/Google
+                    </div>
+                </div>
+            </div>
+
+            <!-- MONTH 2 — NEGOTIATION -->
+            <div class="max-w-lg mx-auto mb-12">
+                <div class="text-xs font-bold tracking-[0.3em] uppercase text-slate-500 mb-6">От Месец 2 нататък</div>
+                <div class="border border-white/10 rounded-xl p-8">
+                    <h3 class="font-display text-3xl md:text-4xl text-white mb-4">Вие предлагате цената</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-4">
+                        След Месец 1 ви питам: <strong class="text-white">„Как оценявате работата? Какво е справедливо
+                            за вас?"</strong><br>
+                        Вие предлагате число — аз слушам. Заедно намираме цена с която и двете страни са доволни.
+                    </p>
+                    <div class="bg-surface-dark/60 rounded-lg p-3 text-xs text-slate-500">
+                        Единственото условие: сумата да покрива реалните разходи за поддръжка на акаунтите ви.
+                    </div>
+                </div>
+            </div>
+
+            <!-- MONTH 2 — TWO OPTIONS -->
+            <div class="max-w-3xl mx-auto mb-16">
+                <div class="text-center mb-8">
+                    <div
+                        class="inline-flex items-center gap-3 px-6 py-2 border-y border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase">
+                        <span class="material-symbols-outlined text-sm">lightbulb</span>
+                        Как продължаваме от М2+
+                    </div>
+                    <p class="text-sm text-slate-400 font-light mt-4 max-w-lg mx-auto">
+                        След Месец 1 избирате кой модел ви допада повече — или комбинираме.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- OPTION A: Client proposes -->
+                    <div
+                        class="border border-white/10 rounded-xl p-8 hover:border-primary/30 transition-colors relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-slate-800/50 text-slate-400 text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">
+                            Вариант А
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-2xl text-primary">handshake</span>
+                            <h4 class="font-display text-xl text-white">Вие Предлагате Цена</h4>
+                        </div>
+                        <div class="text-4xl font-display font-bold gradient-text leading-none mb-1">Вашето число</div>
+                        <div class="text-sm text-slate-500 mb-6">на месец, по ваша оценка</div>
+
+                        <ul class="space-y-2 mb-6">
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Оценявате работата от Месец 1</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Предлагате число — аз слушам</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Заедно намираме справедлива цена</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Всички 8 услуги продължават</li>
+                        </ul>
+
+                        <div class="bg-surface-dark/60 rounded-lg p-3 text-xs text-slate-500">
+                            💡 Единствено условие: сумата да покрива реалните разходи за поддръжка.
+                        </div>
+                    </div>
+
+                    <!-- OPTION B: Performance % -->
+                    <div class="border border-primary/30 rounded-xl p-8 relative overflow-hidden bg-primary/5">
+                        <div
+                            class="absolute top-0 right-0 gradient-bg text-background-dark text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">
+                            Вариант Б — Performance
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-2xl text-primary">trending_up</span>
+                            <h4 class="font-display text-xl text-white">% от Чистата Печалба</h4>
+                        </div>
+                        <div class="text-5xl font-display font-bold text-primary leading-none mb-1">5–7%</div>
+                        <div class="text-sm text-slate-500 mb-6">от нетната печалба на месец</div>
+
+                        <ul class="space-y-2 mb-6">
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Нулева фиксирана такса — плащате само от резултат</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> % САМО от чистата печалба</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> След приспадане на: заплати, наеми, сметки, хонорари,
+                                доставки</li>
+                            <li class="text-xs text-slate-300 flex items-center gap-2"><span
+                                    class="text-primary">✓</span> Аз печеля само когато вие печелите</li>
+                        </ul>
+
+                        <div class="bg-background-dark/40 rounded-lg p-3 text-xs text-slate-400">
+                            🤝 Максимална мотивация — моят доход зависи директно от вашия успех. Лош месец = нула за
+                            мен.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <p class="text-xs text-slate-500">
+                        <span class="text-primary">*</span> Крайният модел определяме заедно след Месец 1. Може и
+                        комбинация от двата.
+                    </p>
+                </div>
+            </div>
+
+            <!-- OWNERSHIP -->
+            <div class="max-w-lg mx-auto border border-primary/20 rounded-xl p-8 bg-primary/5">
+                <h3 class="font-display text-xl text-primary mb-4">🔑 Ако решите да спрете — всичко остава ваше</h3>
+                <p class="text-sm text-slate-400 mb-6">Без изключения. Без задължения. Спирате → всичко е ваше завинаги.
+                </p>
+                <div class="grid grid-cols-2 gap-3 text-left">
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Уебсайт (код + домейн)</div>
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Социални акаунти</div>
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Google Business</div>
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Всички видеа и снимки</div>
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Брандинг материали</div>
+                    <div class="text-xs text-slate-300 flex items-center gap-2"><span class="text-primary">✓</span>
+                        Loyalty система</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEES -->
+    <section class="py-24 px-6 bg-[#0e0e16] fade" id="guarantees">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Гаранции</span>
+                <h2 class="font-display text-3xl md:text-5xl text-white mt-4 italic">
+                    Вие оценявате. <span class="text-primary not-italic">Ние носим отговорност.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-lg text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">star</span>
+                    <h3 class="font-display text-lg text-white mb-2">Оценка след Месец 1</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Оценявате по 4 критерия (1–10). Под 6 →
+                        безплатна корекция. Под 4 → спирате веднага.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">monitoring</span>
+                    <h3 class="font-display text-lg text-white mb-2">Прозрачни Отчети</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed"><strong
+                            class="text-white">Седмично:</strong> reach, engagement. <strong
+                            class="text-white">Месечно:</strong> ROI, метрики. <strong
+                            class="text-white">Тримесечно:</strong> стратегия.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">lock_open</span>
+                    <h3 class="font-display text-lg text-white mb-2">Без Lock-in</h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Минимум 3 месеца за измерими резултати.
+                        След това — 30 дни предизвестие и сте свободни.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 bg-background-dark fade">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase">Следващи стъпки</span>
+            <h2 class="font-display text-3xl md:text-5xl text-white mt-4 mb-8 italic">
+                Готови ли сте да<br><span class="text-primary not-italic">напълним бара?</span>
+            </h2>
+            <p class="text-slate-400 font-light mb-12">Drift Bar може да стане #1 за жива музика в Пловдив. Въпросът е
+                само кога ще започнем.</p>
+
+            <div class="flex items-center justify-center gap-8 mb-12">
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary font-bold">
+                        1</div>
+                    <span class="text-xs text-slate-400">Говорим</span>
+                </div>
+                <div class="h-[1px] w-12 bg-primary/30"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary font-bold">
+                        2</div>
+                    <span class="text-xs text-slate-400">Договор</span>
+                </div>
+                <div class="h-[1px] w-12 bg-primary/30"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary font-bold">
+                        3</div>
+                    <span class="text-xs text-slate-400">200 EUR</span>
+                </div>
+                <div class="h-[1px] w-12 bg-primary/30"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary font-bold">
+                        4</div>
+                    <span class="text-xs text-slate-400">Сайт (48ч)</span>
+                </div>
+                <div class="h-[1px] w-12 bg-primary/30"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full gradient-bg border-none flex items-center justify-center text-background-dark font-bold">
+                        5</div>
+                    <span class="text-xs text-primary font-bold">Старт!</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a class="group relative flex items-center justify-center min-w-[240px] h-14 bg-primary hover:bg-white text-background-dark font-display font-bold text-base tracking-wide transition-all shadow-[0_0_25px_rgba(197,164,94,0.3)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] gap-2"
+                    href="viber://chat?number=%2B359877455192" target="_blank">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.541 6.783.453 10.035c-.088 3.253-.198 9.354 5.725 11.023l.007.006-.004 2.504s-.04.993.616 1.2c.79.247 1.256-.508 2.013-1.318.416-.445.99-1.1 1.424-1.6 3.922.332 6.937-.426 7.28-.539.79-.26 5.263-.832 5.993-6.792.755-6.163-.37-10.055-2.39-11.812C19.222.9 14.593.027 11.4 0zm.505 1.876c2.778.025 6.666.743 8.258 2.2 1.7 1.48 2.614 4.842 1.96 10.06-.612 5.003-4.247 5.32-4.928 5.543-.287.095-2.845.736-6.163.526 0 0-2.44 2.942-3.203 3.71-.119.12-.256.166-.348.144-.13-.03-.166-.176-.162-.39.004-.3.024-3.75.024-3.75-5.03-1.396-4.736-6.46-4.662-9.276.075-2.816.7-5.09 2.178-6.558C6.662 2.53 9.126 1.85 11.905 1.876zM11.17 5.38a.575.575 0 00-.578.572.575.575 0 00.578.572c1.26 0 2.351.38 3.245 1.13.852.716 1.376 1.67 1.559 2.837a.575.575 0 00.665.47.575.575 0 00.47-.664c-.228-1.45-.882-2.618-1.944-3.508-1.073-.9-2.398-1.409-3.938-1.409h-.058zm-2.776.873a1.313 1.313 0 00-.908.293l-.022.02c-.38.335-.752.807-.941 1.253-.283.666-.175 1.385.307 2.078l.018.024c.876 1.274 1.912 2.41 3.07 3.394l.013.01.011.012c.983 1.158 2.12 2.194 3.393 3.07l.024.018c.488.338.999.455 1.496.389a2.17 2.17 0 00.582-.082c.446-.19.918-.561 1.253-.94l.02-.024c.337-.449.385-.925.143-1.39a7.7 7.7 0 00-1.94-2.31.588.588 0 00-.128-.077c-.374-.18-.735-.106-1.017.14l-.596.533a.523.523 0 01-.549.095 9.343 9.343 0 01-2.252-1.637l-.004-.004a9.342 9.342 0 01-1.637-2.254.523.523 0 01.094-.548l.534-.596c.246-.283.32-.644.14-1.018a.628.628 0 00-.077-.127 7.706 7.706 0 00-2.31-1.94.978.978 0 00-.476-.153 1.2 1.2 0 00-.242-.02zm3.36 1.158a.575.575 0 00-.557.591c.023.56.24 1.07.61 1.44.372.37.88.589 1.44.611h.019a.575.575 0 00.017-1.149.86.86 0 01-.585-.247.859.859 0 01-.248-.586.575.575 0 00-.591-.558l-.105-.002zm-.206-2.317a.575.575 0 00-.563.585c.04 1.43.571 2.633 1.578 3.577.965.905 2.235 1.408 3.577 1.414a.576.576 0 00.002-1.15c-1.07-.005-1.996-.388-2.751-1.096-.756-.709-1.159-1.605-1.19-2.768a.575.575 0 00-.585-.563h-.068z" />
+                    </svg>
+                    <span class="relative z-10 uppercase text-sm">Пишете във Viber</span>
+                </a>
+                <a class="flex items-center justify-center min-w-[240px] h-14 border border-slate-500 hover:border-primary text-slate-300 hover:text-primary font-display text-sm uppercase tracking-wide transition-all bg-transparent backdrop-blur-sm gap-2"
+                    href="viber://contact?number=%2B359877455192" target="_blank">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.541 6.783.453 10.035c-.088 3.253-.198 9.354 5.725 11.023l.007.006-.004 2.504s-.04.993.616 1.2c.79.247 1.256-.508 2.013-1.318.416-.445.99-1.1 1.424-1.6 3.922.332 6.937-.426 7.28-.539.79-.26 5.263-.832 5.993-6.792.755-6.163-.37-10.055-2.39-11.812C19.222.9 14.593.027 11.4 0z" />
+                    </svg>
+                    Обаждане по Viber
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050508] border-t border-white/5 py-8 px-6">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600 font-light tracking-wider">
+            <p>Никита Недялков Крачолов · AI Marketing Expert · Пловдив</p>
+            <p>Изготвено специално за Drift Bar Plovdiv · март 2026</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING OFFER BUTTON -->
+    <a href="#offer" id="floatBtn"
+        class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full gradient-bg flex items-center justify-center shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-110 transition-all opacity-0 translate-y-4 pointer-events-none"
+        title="Към Предложението">
+        <span class="material-symbols-outlined text-background-dark text-xl md:text-2xl">arrow_upward</span>
+    </a>
+
+    <script>
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+        // Floating button show/hide
+        const floatBtn = document.getElementById('floatBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                floatBtn.style.opacity = '1';
+                floatBtn.style.transform = 'translateY(0)';
+                floatBtn.style.pointerEvents = 'auto';
+            } else {
+                floatBtn.style.opacity = '0';
+                floatBtn.style.transform = 'translateY(1rem)';
+                floatBtn.style.pointerEvents = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
