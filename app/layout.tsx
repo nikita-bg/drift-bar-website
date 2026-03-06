@@ -10,8 +10,16 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-    title: 'Drift Bar Plovdiv — Меню',
-    description: 'Дигитално меню на Drift Bar Plovdiv. Авторски коктейли, класики, вино, уиски, бира. ул. Сливница 2А, Пловдив.',
+    title: 'Drift Bar Plovdiv — Жива Музика, Рок & Джаз Бар',
+    description: 'Drift Bar Plovdiv — сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли, уникална атмосфера. ул. Сливница 2А, Пловдив.',
+    keywords: 'drift bar plovdiv, рок бар пловдив, жива музика пловдив, джаз бар пловдив, бар пловдив, концерти пловдив',
+    openGraph: {
+        title: 'Drift Bar Plovdiv — Жива Музика & Рок Бар',
+        description: 'Сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли в центъра на Пловдив.',
+        type: 'website',
+        url: 'https://driftbarplovdiv.com',
+        locale: 'bg_BG',
+    },
     icons: {
         icon: '/favicon.ico',
     },
@@ -20,7 +28,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
+    maximumScale: 5,
 }
 
 export default function RootLayout({
@@ -34,6 +42,31 @@ export default function RootLayout({
                 <link
                     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
                     rel="stylesheet"
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": ["LocalBusiness", "MusicVenue", "BarOrPub"],
+                            "name": "Drift Bar Plovdiv",
+                            "description": "Сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли в центъра на Пловдив.",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "ул. Сливница 2А",
+                                "addressLocality": "Пловдив",
+                                "addressCountry": "BG"
+                            },
+                            "telephone": "+359877455192",
+                            "email": "driftbar@abv.bg",
+                            "openingHoursSpecification": [
+                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Sunday"], "opens": "20:00", "closes": "02:00" },
+                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "04:00" }
+                            ],
+                            "priceRange": "$$",
+                            "url": "https://driftbarplovdiv.com"
+                        })
+                    }}
                 />
             </head>
             <body>
