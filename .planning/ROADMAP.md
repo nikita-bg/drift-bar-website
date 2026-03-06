@@ -29,12 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Each menu item shows name, description, and price in EUR
   4. Menu matches vintage aesthetic of landing page (grain, sepia tones, Space Grotesk font)
   5. Menu is fully responsive on mobile devices
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Next.js setup with TypeScript and vintage aesthetic foundation
+- [ ] 01-02-PLAN.md — Menu data structure and API route
+- [ ] 01-03-PLAN.md — Responsive menu UI components with vintage styling
 
 ### Phase 2: Ordering System
 **Goal**: Customers can submit orders and staff receives instant Telegram notifications
@@ -91,7 +91,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Menu | 0/TBD | Not started | - |
+| 1. Foundation & Menu | 0/3 | Planned | - |
 | 2. Ordering System | 0/TBD | Not started | - |
 | 3. Staff Dashboard & Reservations | 0/TBD | Not started | - |
 | 4. Deployment & Polish | 0/TBD | Not started | - |
