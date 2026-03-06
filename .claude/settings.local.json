@@ -13,7 +13,29 @@
       "Bash(git config:*)",
       "Bash(vercel --version:*)",
       "Bash(git push:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "Bash(notebooklm use:*)",
+      "Bash(notebooklm source list:*)",
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:ai.google.dev)",
+      "WebFetch(domain:notebooklm.google.com)",
+      "Bash(wc -l:*)",
+      "Bash(notebooklm ask:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout 60 tail:*)",
+      "Bash(tee:*)",
+      "Bash(while true)",
+      "Bash(do clear)",
+      "Bash(done)",
+      "Bash(explorer:*)",
+      "Skill(gsd:new-project)",
+      "Skill(gsd:new-project:*)",
+      "Skill(gsd:plan-phase)",
+      "Skill(gsd:plan-phase:*)",
+      "Skill(gsd:execute-phase)",
+      "Skill(gsd:execute-phase:*)",
+      "Bash(explorer.exe:*)"
     ]
   }
 }
