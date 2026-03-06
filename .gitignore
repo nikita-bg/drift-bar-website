@@ -39,5 +39,34 @@ logs/
 *.temp
 .cache/
 
-# Archive (keep in repo but ignore changes)
-# archive/
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ──────────────────────────────────────────────────
+# Drift Bar — изключи от GitHub (само Next.js кода)
+# ──────────────────────────────────────────────────
+
+# Planning & agent files
+.planning/
+.claude/
+agents/
+
+# Raw content & large assets
+Photos_from_bar/
+generated-posters/
+content-engine/
+client-assets/
+archive/
+deliverables/
+
+# Old HTML website
+website/
+
+# Menu videos & raw files
+menu/
+
+# Documents & personal files
+*.pdf
+CLIENT_RESPONSES.md
+CLAUDE.md
