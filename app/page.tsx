@@ -85,10 +85,14 @@ export default function Home() {
             <header className={`${styles.siteHeader} ${headerScrolled ? styles.scrolled : ''}`} id="header">
                 <div className={`${styles.container} ${styles.headerInner}`}>
                     <a href="#" className={styles.logoLink} aria-label="Drift Bar Home">
-                        <div className={styles.vinylLogo}>
-                            <div className={styles.vinylLogoInner} />
-                        </div>
-                        <span className={styles.logoText}>Drift Bar</span>
+                        <Image
+                            src="/logo.png"
+                            alt="Drift Bar Plovdiv"
+                            width={52}
+                            height={52}
+                            className={styles.logoImg}
+                            priority
+                        />
                     </a>
                     <nav className={styles.mainNav}>
                         <a href="#events" className={styles.navLink}>Събития</a>
@@ -139,7 +143,7 @@ export default function Home() {
                                 Сцена от Музиканти за Музиканти
                             </p>
                             <h1 className={styles.heroTitle}>
-                                Groove,<br />Drinks &<br />Live Sessions
+                                Грув,<br />Дринкове &<br />Живи Сесии
                             </h1>
                             <p className={styles.heroSubtitle}>
                                 Рок &amp; джаз клуб в сърцето на Пловдив. Професионален звук, жива музика, авторски коктейли. Drop the needle.
@@ -189,9 +193,6 @@ export default function Home() {
                                 <h2 className={styles.sectionTitle}>Предстоящи Събития</h2>
                                 <p className={styles.sectionLabel}>Жива Музика Този Месец</p>
                             </div>
-                            <a href="#" className={styles.viewAllLink}>
-                                Всички Събития <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>arrow_forward</span>
-                            </a>
                         </div>
                         <div className={styles.eventsGrid}>
                             {/* Event Card 1 */}
@@ -203,7 +204,15 @@ export default function Home() {
                                 </div>
                                 <div className={styles.eventCardBody}>
                                     <div className={styles.eventCardImage}>
-                                        <Image src="/assets/live-performance.jpg" alt="Жив концерт в Drift Bar" width={600} height={400} />
+                                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block' }}>
+                                            <rect width="600" height="400" fill="#241c15" />
+                                            <circle cx="300" cy="200" r="120" fill="none" stroke="#9c3211" strokeWidth="2" opacity="0.4" />
+                                            <circle cx="300" cy="200" r="80" fill="none" stroke="#9c3211" strokeWidth="1.5" opacity="0.3" />
+                                            <circle cx="300" cy="200" r="40" fill="none" stroke="#9c3211" strokeWidth="1" opacity="0.25" />
+                                            <circle cx="300" cy="200" r="8" fill="#9c3211" opacity="0.6" />
+                                            <text x="300" y="340" textAnchor="middle" fill="#c8c3b4" fontSize="13" fontFamily="'Space Grotesk', sans-serif" fontWeight="600" letterSpacing="3" opacity="0.5">THE FOUR TONES</text>
+                                            <text x="300" y="60" textAnchor="middle" fill="#9c3211" fontSize="11" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" letterSpacing="4" opacity="0.7">DRIFT BAR • LIVE</text>
+                                        </svg>
                                         <span className={`${styles.eventBadge} ${styles.badgeStereo}`}>LIVE</span>
                                         <span className={styles.eventBadgeVol}>МАР</span>
                                     </div>
@@ -231,7 +240,16 @@ export default function Home() {
                                 </div>
                                 <div className={styles.eventCardBody}>
                                     <div className={styles.eventCardImage}>
-                                        <Image src="/assets/stage.png" alt="Сцена на Drift Bar" width={600} height={400} />
+                                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block' }}>
+                                            <rect width="600" height="400" fill="#1a1209" />
+                                            <circle cx="300" cy="200" r="140" fill="none" stroke="#9c3211" strokeWidth="3" opacity="0.35" />
+                                            <circle cx="300" cy="200" r="100" fill="none" stroke="#c8c3b4" strokeWidth="1" opacity="0.15" />
+                                            <circle cx="300" cy="200" r="60" fill="none" stroke="#9c3211" strokeWidth="1.5" opacity="0.3" />
+                                            <circle cx="300" cy="200" r="20" fill="#9c3211" opacity="0.5" />
+                                            <circle cx="300" cy="200" r="8" fill="#1a1209" />
+                                            <text x="300" y="340" textAnchor="middle" fill="#c8c3b4" fontSize="13" fontFamily="'Space Grotesk', sans-serif" fontWeight="600" letterSpacing="3" opacity="0.5">SOLID FUEL</text>
+                                            <text x="300" y="60" textAnchor="middle" fill="#9c3211" fontSize="11" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" letterSpacing="4" opacity="0.7">DRIFT BAR • ROCK</text>
+                                        </svg>
                                         <span className={`${styles.eventBadge} ${styles.badgeHifi}`}>ROCK</span>
                                         <span className={styles.eventBadgeVol}>МАР</span>
                                     </div>

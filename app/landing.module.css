@@ -70,6 +70,14 @@
     color: inherit;
 }
 
+.logoImg {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
 .vinylLogo {
     width: 2rem;
     height: 2rem;
