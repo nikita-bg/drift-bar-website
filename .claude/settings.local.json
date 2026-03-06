@@ -40,7 +40,8 @@
       "Read(//c/Users/Nikita/Desktop/Drift Bar Plovdiv/**)",
       "Bash(xargs -I {} bash -c 'echo \"\"{}\"\"; md5sum \"\"{}\"\" 2>/dev/null')",
       "Bash(du -sh:*)",
-      "Bash(xargs du:*)"
+      "Bash(xargs du:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }
