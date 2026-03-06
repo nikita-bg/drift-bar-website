@@ -84,13 +84,43 @@
 
 ## Traceability
 
-(Will be populated during roadmap creation)
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| MENU-01 | Phase 1 | Pending |
+| MENU-02 | Phase 1 | Pending |
+| MENU-03 | Phase 1 | Pending |
+| MENU-04 | Phase 1 | Pending |
+| MENU-05 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Pending |
+| ORDER-01 | Phase 2 | Pending |
+| ORDER-02 | Phase 2 | Pending |
+| ORDER-03 | Phase 2 | Pending |
+| ORDER-04 | Phase 2 | Pending |
+| ORDER-05 | Phase 2 | Pending |
+| NOTIF-01 | Phase 2 | Pending |
+| NOTIF-02 | Phase 2 | Pending |
+| NOTIF-03 | Phase 2 | Pending |
+| DASH-01 | Phase 3 | Pending |
+| DASH-02 | Phase 3 | Pending |
+| DASH-03 | Phase 3 | Pending |
+| DASH-04 | Phase 3 | Pending |
+| RES-01 | Phase 3 | Pending |
+| RES-02 | Phase 3 | Pending |
+| RES-03 | Phase 3 | Pending |
+| RES-04 | Phase 3 | Pending |
+| DATA-02 | Phase 3 | Pending |
+| DATA-03 | Phase 3 | Pending |
+| DEPLOY-01 | Phase 4 | Pending |
+| DEPLOY-02 | Phase 4 | Pending |
+| DEPLOY-03 | Phase 4 | Pending |
+| DEPLOY-04 | Phase 4 | Pending |
+| DEPLOY-05 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 24 total
-- Mapped to phases: TBD
-- Unmapped: TBD
+- v1 requirements: 29 total
+- Mapped to phases: 29/29 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-06*
-*Last updated: 2026-03-06 after initial definition*
+*Last updated: 2026-03-06 after roadmap creation*
