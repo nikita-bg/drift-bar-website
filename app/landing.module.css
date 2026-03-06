@@ -395,9 +395,9 @@
 
 .heroTitle {
     font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 0.95;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
     text-transform: uppercase;
 }
 
@@ -408,10 +408,10 @@
 }
 
 .heroSubtitle {
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    opacity: 0.75;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #3d3226;
     max-width: 28rem;
     margin-top: 0.5rem;
 }
@@ -557,9 +557,9 @@
 
 .sectionTitle {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     text-transform: uppercase;
 }
 
@@ -746,18 +746,18 @@
 }
 
 .eventName {
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-size: 1.4rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 0.25rem;
 }
 
 .eventGenre {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #7a6e5f;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 1.5rem;
 }
 
@@ -771,7 +771,7 @@
 
 .eventPrice {
     font-size: 1.25rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.02em;
 }
 
@@ -849,7 +849,7 @@
 
 .statNumber {
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.04em;
     color: #9c3211;
     line-height: 1;

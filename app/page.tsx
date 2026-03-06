@@ -47,6 +47,23 @@ export default function Home() {
         if (dateInput) dateInput.min = new Date().toISOString().split('T')[0]
     }, [])
 
+    // Smooth scroll for hash links
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement
+            const link = target.closest('a[href^="#"]')
+            if (!link) return
+            const href = link.getAttribute('href')
+            if (!href || href === '#') return
+            const section = document.querySelector(href)
+            if (!section) return
+            e.preventDefault()
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        document.addEventListener('click', handleClick)
+        return () => document.removeEventListener('click', handleClick)
+    }, [])
+
     // Vinyl hover
     const handleVinylEnter = () => {
         if (vinylRef.current) vinylRef.current.style.animationPlayState = 'paused'
@@ -78,6 +95,7 @@ export default function Home() {
                         <a href="#about" className={styles.navLink}>За Нас</a>
                         <a href="#gallery" className={styles.navLink}>Галерия</a>
                         <a href="#contact" className={styles.navLink}>Контакт</a>
+                        <Link href="/menu" className={styles.navLink}>Меню</Link>
                     </nav>
                     <a href="#reserve" className={`${styles.btn} ${styles.btnPrimary} ${styles.headerCta}`}>Резервации</a>
                     <button
@@ -104,6 +122,7 @@ export default function Home() {
                         <a href="#about" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>За Нас</a>
                         <a href="#gallery" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Галерия</a>
                         <a href="#contact" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Контакт</a>
+                        <Link href="/menu" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Дигитално Меню</Link>
                         <a href="#reserve" className={`${styles.btn} ${styles.btnPrimary} ${styles.mobileReserveBtn}`} onClick={() => setMobileMenuOpen(false)}>Резервации</a>
                     </nav>
                 </div>
