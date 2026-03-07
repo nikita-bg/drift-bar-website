@@ -1,68 +1,62 @@
 # 🚀 Vercel Deployment Guide — Drift Bar Plovdiv
 
-## Проблемът
+## ✅ Статус: База данни конфигурирана
 
-SQLite не работи на Vercel (serverless среда без persistent файлова система).
-Решение: **Neon PostgreSQL** — безплатен, serverless PostgreSQL, перфектен за Vercel.
-
----
-
-## Стъпка 1: Създай безплатна Neon база данни
-
-1. Отиди на **[neon.tech](https://neon.tech)** и се регистрирай безплатно
-2. Кликни **"New Project"**
-3. Настрой:
-   - **Project name:** `drift-bar-plovdiv`
-   - **Region:** `EU Central (Frankfurt)` ← най-близо до България
-   - **Database name:** `drift_bar`
-4. Кликни **"Create project"**
-5. Копирай **Connection string** (изглежда така):
-   ```
-   postgresql://drift_bar_owner:xxxxx@ep-xxx.eu-central-1.aws.neon.tech/drift_bar?sslmode=require
-   ```
+**Neon PostgreSQL** проектът е създаден и работещ:
+- 🆔 Project ID: `damp-mountain-67011816`
+- 📍 Region: `EU Central (Frankfurt)`
+- 🗄️ Database: `neondb`
+- ✅ Prisma schema синхронизиран
+- ✅ Next.js build успешен локално
 
 ---
 
-## Стъпка 2: Добави Database URL в Vercel
+## 🔧 Следващи стъпки за Vercel deployment
+
+### Стъпка 1: Добави DATABASE_URL в Vercel
 
 1. Отиди в **Vercel Dashboard → твоя проект → Settings → Environment Variables**
 2. Добави:
    ```
    Name:  DATABASE_URL
-   Value: postgresql://drift_bar_owner:xxxxx@ep-xxx.eu-central-1.aws.neon.tech/drift_bar?sslmode=require
+   Value: postgresql://neondb_owner:npg_mWKtVoa0XG1Q@ep-royal-cell-ala6if81-pooler.c-3.eu-central-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
    ```
 3. Избери **Production + Preview + Development**
 4. Кликни **"Save"**
 
+> ⚠️ **Важно:** Не добавяй DATABASE_URL в git - той вече е в `.env` (който е в `.gitignore`)
+
 ---
 
-## Стъпка 3: Приложи миграциите
+### Стъпка 2: Redeploy на Vercel
 
-След като добавиш DATABASE_URL локално в `.env`:
+След като добавиш DATABASE_URL:
+
+1. **Vercel Dashboard → Deployments → Redeploy**
+   ИЛИ
+2. Push промени към git:
+   ```bash
+   git push origin master
+   ```
+
+Vercel автоматично ще deploy-не с новата база данни.
+
+---
+
+## 📊 Локална разработка
+
+DATABASE_URL вече е конфигуриран в `.env` файла. За да работиш локално:
 
 ```bash
-# Генерирай Prisma клиент за PostgreSQL
+# Провери дали Prisma Client е генериран
 npx prisma generate
 
-# Приложи схемата към Neon (без migration history)
-npx prisma db push
-
-# Провери дали е наред
+# Отвори Prisma Studio за да видиш таблиците
 npx prisma studio
+
+# Стартирай dev сървър
+npm run dev
 ```
-
----
-
-## Стъпка 4: Redeploy на Vercel
-
-```bash
-# Commit промените
-git add -A
-git commit -m "feat: switch to PostgreSQL (Neon) for Vercel deployment"
-git push
-```
-
-Vercel автоматично ще направи нов deploy.
 
 ---
 
