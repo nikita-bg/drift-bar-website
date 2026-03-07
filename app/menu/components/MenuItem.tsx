@@ -85,6 +85,18 @@ export default function MenuItem({ item, featured, placeholderType = 'cocktail' 
 
     return (
         <article className={styles.cardSimple}>
+            {(item.image || placeholderType) && (
+                <div className={styles.cardSimpleThumbnail}>
+                    <Image
+                        src={imageSrc}
+                        alt={item.name}
+                        width={80}
+                        height={100}
+                        className={styles.cardSimpleThumbnailImg}
+                        unoptimized={!item.image}
+                    />
+                </div>
+            )}
             <div className={styles.cardSimpleLeft}>
                 <h4 className={styles.cardSimpleName}>{item.name}</h4>
                 <p className={styles.cardSimpleDesc}>{item.desc}</p>
