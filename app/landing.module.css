@@ -686,6 +686,16 @@
     }
 }
 
+.mobileOnly {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .mobileOnly {
+        display: none !important;
+    }
+}
+
 /* === EVENTS SECTION === */
 .eventsSection {
     border-top: 1px solid rgba(156, 50, 17, 0.15);

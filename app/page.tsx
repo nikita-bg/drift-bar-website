@@ -235,6 +235,9 @@ export default function Home() {
                                 <h2 className={styles.sectionTitle}>Предстоящи Събития</h2>
                                 <p className={styles.sectionLabel}>Жива Музика Този Месец</p>
                             </div>
+                            <Link href="/events" className={styles.viewAllLink}>
+                                Виж Всички <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>arrow_forward</span>
+                            </Link>
                         </div>
                         <div className={styles.eventsGrid}>
                             {/* Event Card 1 */}
@@ -309,6 +312,11 @@ export default function Home() {
                                     </div>
                                 </div>
                             </article>
+                        </div>
+                        <div style={{ marginTop: '3rem', textAlign: 'center' }} className={styles.mobileOnly}>
+                            <Link href="/events" className={`${styles.btn} ${styles.btnOutlineCircle}`} style={{ width: 'auto', padding: '0 2rem' }}>
+                                Всички Събития
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -511,7 +519,7 @@ export default function Home() {
                         <div className={styles.contactGrid}>
                             <div className={`${styles.contactMap} ${styles.reveal}`}>
                                 <iframe
-                                    src="https://maps.google.com/maps?q=Drift+Bar+Plovdiv&hl=bg&z=17&output=embed"
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d217.35240670392056!2d24.7441427!3d42.1561547!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd1d9af074413%3A0x179c8acbe2bbd5c!2sDrift%20Bar%20Plovdiv!5e1!3m2!1sbg!2sza!4v1772915095587!5m2!1sbg!2sza"
                                     width="100%"
                                     height="450"
                                     style={{ border: 0, borderRadius: '1rem' }}
