@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         locale: 'bg_BG',
         images: [
             {
-                url: 'https://driftbarplovdiv.com/og-image.svg',
+                url: 'https://driftbarplovdiv.com/assets/enhanced_live-performance-stage-close.png',
                 width: 1200,
                 height: 630,
                 alt: 'Drift Bar Plovdiv - Жива Музика',
