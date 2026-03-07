@@ -390,7 +390,7 @@ export default function Home() {
                                         <span className="material-symbols-outlined">call</span>
                                         <div>
                                             <strong>Телефон</strong>
-                                            <p><a href="tel:+359877455192">+359 877 455 192</a></p>
+                                            <p><a href="tel:+359988793686">+359 98 879 3686</a></p>
                                         </div>
                                     </div>
                                     <div className={styles.reserveDetail}>
@@ -483,9 +483,9 @@ export default function Home() {
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>location_on</span>
                                     <h3>Адрес</h3>
-                                    <p>ул. Сливница 2А</p>
+                                    <p>ул. Сливница 4</p>
                                     <p>Пловдив, България</p>
-                                    <a href="https://maps.google.com/?q=ул.+Сливница+2А+Пловдив" target="_blank" rel="noopener" className={styles.contactCardLink}>
+                                    <a href="https://maps.app.goo.gl/V6z6ackykTwdEzgV7" target="_blank" rel="noopener" className={styles.contactCardLink}>
                                         Навигирай <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>open_in_new</span>
                                     </a>
                                 </div>

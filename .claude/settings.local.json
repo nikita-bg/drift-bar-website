@@ -43,7 +43,9 @@
       "Bash(xargs du:*)",
       "Bash(npm run build:*)",
       "Bash(npm run lint:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)"
     ]
   }
 }

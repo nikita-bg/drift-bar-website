@@ -93,6 +93,7 @@
 /* === HERO === */
 .hero {
     padding: 3rem 1rem 2rem;
+    padding-top: max(env(safe-area-inset-top, 0px), 0.5rem);
     text-align: center;
     border-bottom: 1px solid var(--color-border-light);
 }
@@ -142,18 +143,90 @@
     border-bottom: 1px solid var(--color-border-light);
 }
 
+.tabsWrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .tabsScroll {
     display: flex;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 0;
-    max-width: 1000px;
-    margin: 0 auto;
+    scroll-behavior: smooth;
 }
 
 .tabsScroll::-webkit-scrollbar {
     display: none;
+}
+
+/* Scroll fade indicators */
+.tabsFadeLeft,
+.tabsFadeRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.2s ease;
+}
+
+.tabsFadeLeft {
+    left: 0;
+    background: linear-gradient(to right, rgba(232, 225, 207, 0.95), transparent);
+}
+
+.tabsFadeRight {
+    right: 0;
+    background: linear-gradient(to left, rgba(232, 225, 207, 0.95), transparent);
+}
+
+.tabsFadeHidden {
+    opacity: 0;
+}
+
+/* Scroll arrow buttons */
+.tabsArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232, 225, 207, 0.92);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    color: var(--color-ink);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background var(--transition-fast), opacity 0.2s ease;
+}
+
+.tabsArrow:hover {
+    background: var(--color-card);
+}
+
+.tabsArrowLeft {
+    left: 4px;
+}
+
+.tabsArrowRight {
+    right: 4px;
+}
+
+.tabsArrow .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+.tabsArrowHidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .tab {
@@ -162,19 +235,20 @@
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.75rem 1rem;
+    padding: 1rem 1.25rem;
     border: none;
     background: none;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-sepia);
     transition: color var(--transition-fast), border-color var(--transition-fast);
     border-bottom: 3px solid transparent;
-    min-width: 0;
+    min-width: 44px;
+    min-height: 44px;
     white-space: nowrap;
 }
 
@@ -440,6 +514,50 @@
 }
 
 /* === RESPONSIVE === */
+
+/* Mobile-first hero reduction */
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 1rem 1.5rem;
+    }
+
+    .heroTitle {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+    }
+}
+
+/* Small mobile cart drawer optimization */
+@media (max-width: 400px) {
+    .cartDrawer {
+        padding: 0;
+    }
+
+    .cartBody {
+        padding: 1rem 0.75rem;
+    }
+
+    .cartHeader {
+        padding: 1rem 0.75rem;
+    }
+
+    .cartFooter {
+        padding: 1rem 0.75rem;
+    }
+
+    .tableField {
+        font-size: 0.9rem;
+    }
+
+    .cartItem {
+        padding: 0.75rem 0;
+    }
+
+    /* Hide scroll arrows on very small screens — use fade only */
+    .tabsArrow {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) {
     .container {
         padding: 0 2rem;
@@ -462,6 +580,11 @@
 
     .categoryTitle {
         font-size: 1.75rem;
+    }
+
+    /* Hide scroll arrows on desktop — enough space */
+    .tabsArrow {
+        display: none;
     }
 }
 
@@ -508,8 +631,8 @@
 }
 
 .addBtnSmall {
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -520,6 +643,7 @@
     cursor: pointer;
     transition: background var(--transition-fast), transform var(--transition-fast);
     flex-shrink: 0;
+    min-height: 44px;
 }
 
 .addBtnSmall:hover {
@@ -542,8 +666,8 @@
 }
 
 .qtyBtn {
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,6 +677,7 @@
     cursor: pointer;
     color: var(--color-ink);
     transition: all var(--transition-fast);
+    min-height: 44px;
 }
 
 .qtyBtn:hover {
@@ -579,8 +704,8 @@
 }
 
 .qtyBtnSmall {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -591,6 +716,7 @@
     color: var(--color-ink);
     font-size: 0;
     transition: all var(--transition-fast);
+    min-height: 44px;
 }
 
 .qtyBtnSmall:hover {
@@ -620,8 +746,8 @@
 /* === FLOATING CART BUTTON === */
 .cartFab {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: max(env(safe-area-inset-bottom, 0px), 1.5rem);
+    right: max(env(safe-area-inset-right, 0px), 1.5rem);
     z-index: 60;
     display: flex;
     align-items: center;
@@ -638,6 +764,7 @@
     font-size: 0.95rem;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     animation: fabSlideUp 0.4s var(--ease-out);
+    min-height: 44px;
 }
 
 .cartFab:hover {
@@ -744,8 +871,8 @@
 }
 
 .cartClose {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -755,6 +882,7 @@
     cursor: pointer;
     color: var(--color-sepia);
     transition: background var(--transition-fast);
+    min-height: 44px;
 }
 
 .cartClose:hover {
@@ -826,8 +954,8 @@
 
 .cartItemRemove {
     margin-left: auto;
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -837,6 +965,7 @@
     cursor: pointer;
     color: var(--color-sepia);
     transition: color var(--transition-fast), background var(--transition-fast);
+    min-height: 44px;
 }
 
 .cartItemRemove:hover {
@@ -851,6 +980,7 @@
 /* === CART FOOTER === */
 .cartFooter {
     padding: 1.25rem 1.5rem;
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 1.25rem);
     border-top: 1px solid var(--color-border-light);
     background: var(--color-warm);
 }
