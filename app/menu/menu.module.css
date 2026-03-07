@@ -132,7 +132,18 @@
     line-height: 1.5;
 }
 
-/* === CATEGORY TABS === */
+/* === STICKY CATEGORY TABS (scroll spy) === */
+.stickyTabs {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 40;
+    background: rgba(232, 225, 207, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Legacy tabs (kept for reference) */
 .tabs {
     position: sticky;
     top: var(--header-height);
@@ -145,6 +156,11 @@
 
 .tabsWrapper {
     position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stickyTabs .tabsScroll {
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -272,7 +288,17 @@
 
 /* === MENU CONTENT === */
 .menuContent {
-    padding: 2rem 0 4rem;
+    padding: 1rem 0 4rem;
+}
+
+.categorySection {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.categorySection:last-child {
+    border-bottom: none;
 }
 
 .categoryHeader {
