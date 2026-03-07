@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getAvailableSlots } from '@/lib/reservation-utils'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // GET /api/availability?date=2026-03-10&partySize=4
 export async function GET(request: NextRequest) {
