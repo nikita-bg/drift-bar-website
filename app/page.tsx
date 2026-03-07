@@ -10,11 +10,15 @@ export default function Home() {
     const [headerScrolled, setHeaderScrolled] = useState(false)
     const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
     const [activeSection, setActiveSection] = useState('hero')
+    const [showScrollTop, setShowScrollTop] = useState(false)
     const vinylRef = useRef<HTMLDivElement>(null)
 
-    // Header scroll
+    // Header scroll & scroll top button
     useEffect(() => {
-        const handleScroll = () => setHeaderScrolled(window.scrollY > 60)
+        const handleScroll = () => {
+            setHeaderScrolled(window.scrollY > 60)
+            setShowScrollTop(window.scrollY > 500)
+        }
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
@@ -153,6 +157,35 @@ export default function Home() {
                     </nav>
                 </div>
             </div>
+
+            {/* ===== MOBILE STICKY TABS (visible only on mobile) ===== */}
+            <nav className={`${styles.mobileStickyTabs} ${headerScrolled ? styles.visible : ''}`}>
+                <a href="#events" className={`${styles.tabItem} ${activeSection === 'events' ? styles.activeTab : ''}`}>
+                    <span className="material-symbols-outlined">calendar_month</span>
+                    <span>Събития</span>
+                </a>
+                <a href="#about" className={`${styles.tabItem} ${activeSection === 'about' ? styles.activeTab : ''}`}>
+                    <span className="material-symbols-outlined">info</span>
+                    <span>За Нас</span>
+                </a>
+                <a href="#gallery" className={`${styles.tabItem} ${activeSection === 'gallery' ? styles.activeTab : ''}`}>
+                    <span className="material-symbols-outlined">photo_library</span>
+                    <span>Галерия</span>
+                </a>
+                <a href="#contact" className={`${styles.tabItem} ${activeSection === 'contact' ? styles.activeTab : ''}`}>
+                    <span className="material-symbols-outlined">call</span>
+                    <span>Контакт</span>
+                </a>
+            </nav>
+
+            {/* ===== SCROLL TO TOP BUTTON ===== */}
+            <button
+                className={`${styles.scrollTopBtn} ${showScrollTop ? styles.visible : ''}`}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                aria-label="Scroll to top"
+            >
+                <span className="material-symbols-outlined">arrow_upward</span>
+            </button>
 
             <div className={styles.siteWrapper}>
 

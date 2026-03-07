@@ -26,10 +26,7 @@ export default function MenuHeader({ tableNumber }: MenuHeaderProps) {
                     />
                     <span className={styles.headerTitle}>DRIFT BAR</span>
                 </div>
-                <div className={styles.headerTable}>
-                    <span className="material-symbols-outlined">table_restaurant</span>
-                    <span>{tableNumber ? `Маса ${tableNumber}` : '—'}</span>
-                </div>
+                {/* Table number removed - no ordering system */}
             </div>
         </header>
     )

@@ -45,7 +45,15 @@
       "Bash(npm run lint:*)",
       "Bash(test:*)",
       "Bash(npm run dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "mcp__Neon__list_projects",
+      "mcp__Neon__get_connection_string",
+      "Bash(git check-ignore:*)",
+      "Bash(git reset:*)",
+      "Bash(__NEW_LINE_23102fd905a99144__ - Update address to: ул. „Сливница\" 2a, 4003 Кършияка Северен, Пловдив\n- Update phone numbers: +359 98 879 3684 \\(primary\\), +359 98 879 3686 \\(secondary\\)\n- Applied across: layout.tsx, page.tsx, SKILLS_GUIDE.md, MARKETING_BRIEF.md\n- Schema.org structured data updated\n- Next.js build passing\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\")",
+      "Bash(DATABASE_URL=\"\" npm run build:*)",
+      "Bash(drift \")",
+      "WebFetch(domain:www.instagram.com)"
     ]
   }
 }

@@ -88,21 +88,21 @@
 
 @media (max-width: 768px) {
     .siteHeader {
-        height: 64px;
+        height: 56px;
         padding-top: env(safe-area-inset-top);
     }
 
     .headerInner {
-        height: 64px;
+        height: 56px;
     }
 
     .logoImg {
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
     }
 
     .logoText {
-        font-size: 1rem;
+        display: none; /* Hide text on mobile - only logo */
     }
 }
 
@@ -419,7 +419,9 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: calc(64px + 1rem);
+        padding-top: calc(56px + 0.5rem);
+        min-height: auto;
+        padding-bottom: 2rem;
     }
 }
 
@@ -463,11 +465,19 @@
 }
 
 .heroTitle {
-    font-size: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(2.5rem, 7vw, 5rem);
     font-weight: 700;
-    line-height: 0.95;
+    line-height: 1;
     letter-spacing: -0.05em;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .heroTitle {
+        font-size: clamp(3rem, 8vw, 5rem);
+        line-height: 0.95;
+    }
 }
 
 @media (min-width: 864px) {
