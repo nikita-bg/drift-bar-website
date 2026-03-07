@@ -22,7 +22,6 @@ export interface MenuCategory {
 }
 
 export type CategoryKey =
-    | 'signatures'
     | 'cocktails'
     | 'wine'
     | 'whiskey'
@@ -37,24 +36,6 @@ export type Menu = Record<CategoryKey, MenuCategory>
 // ─── MAIN MENU DATA ────────────────────────────
 
 export const MENU: Menu = {
-
-    /* ═══════════════════════════════════════
-       АВТОРСКИ СИГНАТУРИ
-       ═══════════════════════════════════════ */
-    signatures: {
-        title: 'Авторски',
-        titleAccent: 'Сигнатури',
-        subtitle: 'Селекция 2026',
-        type: 'featured',
-        items: [
-            { id: 'sig-purple-haze', name: 'Purple Haze', price: 14, desc: 'Джин, домашен сироп от лавандула, пресен лимонов сок, сода. Освежаващ и ароматен, вдъхновен от класиката на Джими Хендрикс.', tags: ['Floral', 'Gin Base'], image: '/menu-images/purple-haze.jpg' },
-            { id: 'sig-whiskey-jar', name: 'Whiskey in the Jar', price: 16, desc: 'Бърбън, мед, Angostura битер, портокалова кора. Силна и балансирана комбинация за ценители на класическия рок.', tags: ['Strong', 'Bourbon'], image: '/menu-images/whiskey-jar.jpg' },
-            { id: 'sig-smells-spirit', name: 'Smells Like Spirit', price: 15, desc: 'Водка, Blue Curacao, Спрайт, Лайм. Електризиращ син цвят и вкус, който те връща в ерата на грънджа.', tags: ['Sweet', 'Party'], image: '/menu-images/smells-spirit.jpg' },
-            { id: 'sig-stairway', name: 'Stairway to Heaven', price: 15, desc: 'Ром, кокосово мляко, ананас, лайм. Тропически рай, вдъхновен от Led Zeppelin.', tags: ['Tropical', 'Rum Base'], image: '/menu-images/stairway.jpg' },
-            { id: 'sig-bohemian', name: 'Bohemian Rhapsody', price: 16, desc: 'Джин, Elderflower, просеко, грейпфрут. Елегантен и комплексен като самата песен на Queen.', tags: ['Elegant', 'Sparkling'], image: '/menu-images/bohemian.jpg' },
-            { id: 'sig-highway', name: 'Highway to Hell', price: 14, desc: 'Текила, чили сироп, лайм, доматен сок. Пикантен и огнен, за тези, които обичат да живеят на ръба.', tags: ['Spicy', 'Tequila'], image: '/menu-images/highway.jpg' },
-        ],
-    },
 
     /* ═══════════════════════════════════════
        КОКТЕЙЛИ
@@ -326,7 +307,6 @@ export const MENU: Menu = {
 // ─── CATEGORIES METADATA ───────────────────────
 
 export const CATEGORY_LABELS: Record<CategoryKey, string> = {
-    signatures: 'Сигнатури',
     cocktails: 'Коктейли',
     wine: 'Вино',
     whiskey: 'Уиски',
@@ -338,7 +318,6 @@ export const CATEGORY_LABELS: Record<CategoryKey, string> = {
 }
 
 export const CATEGORY_ICONS: Record<CategoryKey, string> = {
-    signatures: 'local_bar',
     cocktails: 'nightlife',
     wine: 'wine_bar',
     whiskey: 'liquor',

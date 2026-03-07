@@ -11,7 +11,7 @@ import MenuGrid from './components/MenuGrid'
 import CartDrawer from './components/CartDrawer'
 import styles from './menu.module.css'
 
-const CATEGORIES: CategoryKey[] = ['signatures', 'cocktails', 'wine', 'whiskey', 'spirits', 'beer', 'food', 'soft', 'shots']
+const CATEGORIES: CategoryKey[] = ['cocktails', 'wine', 'whiskey', 'spirits', 'beer', 'food', 'soft', 'shots']
 
 export default function MenuPage() {
     return (
@@ -23,7 +23,7 @@ export default function MenuPage() {
 
 function MenuPageContent() {
     const [menuData, setMenuData] = useState<Menu | null>(null)
-    const [selectedCategory, setSelectedCategory] = useState<CategoryKey>('signatures')
+    const [selectedCategory, setSelectedCategory] = useState<CategoryKey>('cocktails')
     const [loading, setLoading] = useState(true)
     const searchParams = useSearchParams()
     const tableNumber = searchParams.get('table')
@@ -53,7 +53,7 @@ function MenuPageContent() {
                             Нашето <em>Меню</em>
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Авторски коктейли, класически дринкове, селекция вина. Всяка напитка — направена правилно.
+                            Класически коктейли, селекция спиртни напитки, вина и храна. Всяка напитка — направена правилно.
                         </p>
                     </div>
                 </section>
