@@ -390,6 +390,7 @@ export default function Home() {
                                         <span className="material-symbols-outlined">call</span>
                                         <div>
                                             <strong>Телефон</strong>
+                                            <p><a href="tel:+359988793684">+359 98 879 3684</a></p>
                                             <p><a href="tel:+359988793686">+359 98 879 3686</a></p>
                                         </div>
                                     </div>
@@ -397,6 +398,7 @@ export default function Home() {
                                         <span className="material-symbols-outlined">mail</span>
                                         <div>
                                             <strong>Email</strong>
+                                            <p><a href="mailto:info@driftbarplovdiv.com">info@driftbarplovdiv.com</a></p>
                                             <p><a href="mailto:driftbar@abv.bg">driftbar@abv.bg</a></p>
                                         </div>
                                     </div>
