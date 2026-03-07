@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
     title: 'Drift Bar Plovdiv — Жива Музика, Рок & Джаз Бар',
-    description: 'Drift Bar Plovdiv — сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли, уникална атмосфера. ул. Сливница 4, Пловдив.',
+    description: 'Drift Bar Plovdiv — сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли, уникална атмосфера. ул. „Сливница" 2a, Кършияка Северен, Пловдив.',
     keywords: 'drift bar plovdiv, рок бар пловдив, жива музика пловдив, джаз бар пловдив, бар пловдив, концерти пловдив',
     openGraph: {
         title: 'Drift Bar Plovdiv — Жива Музика & Рок Бар',
@@ -55,11 +55,12 @@ export default function RootLayout({
                             "description": "Сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли в центъра на Пловдив.",
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "ул. Сливница 4",
-                                "addressLocality": "Пловдив",
+                                "streetAddress": "ул. Сливница 2a",
+                                "addressLocality": "Кършияка Северен, Пловдив",
+                                "postalCode": "4003",
                                 "addressCountry": "BG"
                             },
-                            "telephone": "+359988793686",
+                            "telephone": "+359988793684",
                             "email": "driftbar@abv.bg",
                             "openingHoursSpecification": [
                                 { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Sunday"], "opens": "20:00", "closes": "02:00" },

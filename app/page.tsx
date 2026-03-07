@@ -485,8 +485,8 @@ export default function Home() {
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>location_on</span>
                                     <h3>Адрес</h3>
-                                    <p>ул. Сливница 4</p>
-                                    <p>Пловдив, България</p>
+                                    <p>ул. „Сливница" 2a</p>
+                                    <p>4003 Кършияка Северен, Пловдив</p>
                                     <a href="https://maps.app.goo.gl/V6z6ackykTwdEzgV7" target="_blank" rel="noopener" className={styles.contactCardLink}>
                                         Навигирай <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>open_in_new</span>
                                     </a>
