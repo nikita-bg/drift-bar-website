@@ -419,17 +419,24 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: calc(56px + 0.5rem);
-        min-height: auto;
-        padding-bottom: 2rem;
+        padding-top: 56px;
+        min-height: 100svh;
+        padding-bottom: 1rem;
     }
 }
 
 .heroContent {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    padding: 3rem 0;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+    .heroContent {
+        gap: 3rem;
+        padding: 3rem 0;
+    }
 }
 
 @media (min-width: 864px) {
@@ -1322,11 +1329,20 @@
 /* === RESPONSIVE === */
 @media (max-width: 480px) {
     .heroTitle {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .vinylRecord {
-        width: 280px;
+        width: 240px;
+    }
+
+    .heroContent {
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+    }
+
+    .heroText {
+        gap: 1rem;
     }
 
     .eventCardInfo {

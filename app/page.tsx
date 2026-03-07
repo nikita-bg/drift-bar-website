@@ -10,15 +10,11 @@ export default function Home() {
     const [headerScrolled, setHeaderScrolled] = useState(false)
     const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
     const [activeSection, setActiveSection] = useState('hero')
-    const [showScrollTop, setShowScrollTop] = useState(false)
     const vinylRef = useRef<HTMLDivElement>(null)
 
-    // Header scroll & scroll top button
+    // Header scroll
     useEffect(() => {
-        const handleScroll = () => {
-            setHeaderScrolled(window.scrollY > 60)
-            setShowScrollTop(window.scrollY > 500)
-        }
+        const handleScroll = () => setHeaderScrolled(window.scrollY > 60)
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
@@ -97,11 +93,31 @@ export default function Home() {
         if (vinylRef.current) vinylRef.current.style.animationPlayState = 'running'
     }
 
-    const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleReservation = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const form = e.target as HTMLFormElement
+        const formData = new FormData(form)
+
+        try {
+            await fetch('https://simplifyopsco.app.n8n.cloud/webhook/drift-bar-new-reservation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    date: formData.get('date'),
+                    time: formData.get('time'),
+                    guests: formData.get('guests'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message'),
+                }),
+            })
+        } catch {
+            // Webhook fire-and-forget - still show success to user
+        }
+
         setFormStatus('success')
+        form.reset()
         setTimeout(() => setFormStatus('idle'), 3000)
-            ; (e.target as HTMLFormElement).reset()
     }
 
     return (
@@ -157,35 +173,6 @@ export default function Home() {
                     </nav>
                 </div>
             </div>
-
-            {/* ===== MOBILE STICKY TABS (visible only on mobile) ===== */}
-            <nav className={`${styles.mobileStickyTabs} ${headerScrolled ? styles.visible : ''}`}>
-                <a href="#events" className={`${styles.tabItem} ${activeSection === 'events' ? styles.activeTab : ''}`}>
-                    <span className="material-symbols-outlined">calendar_month</span>
-                    <span>Събития</span>
-                </a>
-                <a href="#about" className={`${styles.tabItem} ${activeSection === 'about' ? styles.activeTab : ''}`}>
-                    <span className="material-symbols-outlined">info</span>
-                    <span>За Нас</span>
-                </a>
-                <a href="#gallery" className={`${styles.tabItem} ${activeSection === 'gallery' ? styles.activeTab : ''}`}>
-                    <span className="material-symbols-outlined">photo_library</span>
-                    <span>Галерия</span>
-                </a>
-                <a href="#contact" className={`${styles.tabItem} ${activeSection === 'contact' ? styles.activeTab : ''}`}>
-                    <span className="material-symbols-outlined">call</span>
-                    <span>Контакт</span>
-                </a>
-            </nav>
-
-            {/* ===== SCROLL TO TOP BUTTON ===== */}
-            <button
-                className={`${styles.scrollTopBtn} ${showScrollTop ? styles.visible : ''}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                aria-label="Scroll to top"
-            >
-                <span className="material-symbols-outlined">arrow_upward</span>
-            </button>
 
             <div className={styles.siteWrapper}>
 
