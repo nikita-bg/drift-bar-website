@@ -88,11 +88,12 @@ export default function Home() {
                         <Image
                             src="/logo.png"
                             alt="Drift Bar Plovdiv"
-                            width={52}
-                            height={52}
+                            width={80}
+                            height={80}
                             className={styles.logoImg}
                             priority
                         />
+                        <span className={styles.logoText}>DRIFT BAR</span>
                     </a>
                     <nav className={styles.mainNav}>
                         <a href="#events" className={styles.navLink}>Събития</a>

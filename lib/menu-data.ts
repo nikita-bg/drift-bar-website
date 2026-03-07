@@ -23,9 +23,17 @@ export interface MenuCategory {
 
 export type CategoryKey =
     | 'cocktails'
-    | 'wine'
     | 'whiskey'
-    | 'spirits'
+    | 'bourbon'
+    | 'vodka'
+    | 'gin'
+    | 'rum'
+    | 'tequila'
+    | 'rakiya'
+    | 'brandy'
+    | 'liqueurs'
+    | 'digestifs'
+    | 'wine'
     | 'beer'
     | 'food'
     | 'soft'
@@ -108,7 +116,7 @@ export const MENU: Menu = {
        ═══════════════════════════════════════ */
     whiskey: {
         title: 'Уиски',
-        titleAccent: '& Бърбън',
+        titleAccent: '',
         subtitle: '50 мл',
         type: 'simple',
         items: [
@@ -131,7 +139,18 @@ export const MENU: Menu = {
             { id: 'wh-glen-12', name: 'Glenfiddich 12 y.o.', price: 8, desc: 'Отлежало уиски 50 мл', tags: ['Aged'] },
             { id: 'wh-glen-15', name: 'Glenfiddich 15 y.o.', price: 15, desc: 'Отлежало уиски 50 мл', tags: ['Aged'] },
             { id: 'wh-glen-18', name: 'Glenfiddich 18 y.o.', price: 24, desc: 'Отлежало уиски 50 мл', tags: ['Premium', 'Aged'] },
-            // ── Бърбън ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       БЪРБЪН
+       ═══════════════════════════════════════ */
+    bourbon: {
+        title: 'Бърбън',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'wh-jim-beam', name: 'Jim Beam', price: 4, desc: 'Бърбън 50 мл' },
             { id: 'wh-makers-mark', name: 'Maker\'s Mark', price: 5.5, desc: 'Бърбън 50 мл' },
             { id: 'wh-four-roses', name: 'Four Roses', price: 4, desc: 'Бърбън 50 мл' },
@@ -140,15 +159,14 @@ export const MENU: Menu = {
     },
 
     /* ═══════════════════════════════════════
-       СПИРТНИ НАПИТКИ
+       ВОДКА
        ═══════════════════════════════════════ */
-    spirits: {
-        title: 'Спиртни',
-        titleAccent: 'Напитки',
-        subtitle: 'Водка, Джин, Ром, Текила, Ракия, Ликьори, Дижестиви',
+    vodka: {
+        title: 'Водка',
+        titleAccent: '',
+        subtitle: '50 мл',
         type: 'simple',
         items: [
-            // ── Водка 50 мл ──
             { id: 'sp-vodka-savoy', name: 'Savoy', price: 2, desc: 'Водка 50 мл' },
             { id: 'sp-vodka-zytnia', name: 'Zytnia', price: 2, desc: 'Водка 50 мл' },
             { id: 'sp-vodka-smirnoff', name: 'Smirnoff', price: 4, desc: 'Водка 50 мл' },
@@ -156,36 +174,102 @@ export const MENU: Menu = {
             { id: 'sp-vodka-finlandia', name: 'Finlandia', price: 4, desc: 'Водка 50 мл' },
             { id: 'sp-vodka-beluga', name: 'Beluga', price: 9, desc: 'Водка 50 мл', tags: ['Premium'] },
             { id: 'sp-vodka-grey-goose', name: 'Grey Goose', price: 9, desc: 'Водка 50 мл', tags: ['Premium'] },
-            // ── Джин 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       ДЖИН
+       ═══════════════════════════════════════ */
+    gin: {
+        title: 'Джин',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-gin-savoy', name: 'Savoy', price: 2, desc: 'Джин 50 мл' },
             { id: 'sp-gin-gordons', name: 'Gordon\'s', price: 4, desc: 'Джин 50 мл' },
             { id: 'sp-gin-beefeater', name: 'Beefeater', price: 4, desc: 'Джин 50 мл' },
             { id: 'sp-gin-bombay', name: 'Bombay Sapphire', price: 5.5, desc: 'Джин 50 мл' },
             { id: 'sp-gin-botanist', name: 'The Botanist', price: 10, desc: 'Джин 50 мл', tags: ['Premium'] },
             { id: 'sp-gin-hendricks', name: 'Hendrick\'s', price: 9, desc: 'Джин 50 мл', tags: ['Premium'] },
-            // ── Ром 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       РОМ
+       ═══════════════════════════════════════ */
+    rum: {
+        title: 'Ром',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-rum-savoy', name: 'Savoy White/Red', price: 3, desc: 'Ром 50 мл' },
             { id: 'sp-rum-captain', name: 'Captain Morgan', price: 5, desc: 'Ром 50 мл' },
             { id: 'sp-rum-captain-gold', name: 'Captain Morgan Gold', price: 5, desc: 'Ром 50 мл' },
             { id: 'sp-rum-havana', name: 'Havana Club', price: 4, desc: 'Ром 50 мл' },
             { id: 'sp-rum-havana7', name: 'Havana Club 7 y.o.', price: 7, desc: 'Ром 50 мл', tags: ['Aged'] },
             { id: 'sp-rum-malibu', name: 'Malibu', price: 4, desc: 'Ром 50 мл' },
-            // ── Текила 30 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       ТЕКИЛА
+       ═══════════════════════════════════════ */
+    tequila: {
+        title: 'Текила',
+        titleAccent: '',
+        subtitle: '30 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-teq-savoy', name: 'Savoy', price: 1.5, desc: 'Текила 30 мл' },
             { id: 'sp-teq-cuervo-silver', name: 'Jose Cuervo Silver', price: 2.5, desc: 'Текила 30 мл' },
             { id: 'sp-teq-cuervo-repo', name: 'Jose Cuervo Reposado', price: 2.5, desc: 'Текила 30 мл' },
-            // ── Ракия 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       РАКИЯ
+       ═══════════════════════════════════════ */
+    rakiya: {
+        title: 'Ракия',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-rak-pomorie-grape', name: 'Поморийска гроздова', price: 2, desc: 'Ракия 50 мл' },
             { id: 'sp-rak-pomorie-muscat', name: 'Поморийска мускатова', price: 3, desc: 'Ракия 50 мл' },
             { id: 'sp-rak-burgas63', name: 'Бургас 63', price: 4, desc: 'Ракия 50 мл' },
             { id: 'sp-rak-sungurlare', name: 'Сунгурларска гроздова', price: 3, desc: 'Ракия 50 мл' },
             { id: 'sp-rak-sliven', name: 'Сливенска перла', price: 5, desc: 'Ракия 50 мл' },
             { id: 'sp-rak-troyan', name: 'Троянска сливова', price: 4, desc: 'Ракия 50 мл' },
-            // ── Бренди 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       БРЕНДИ
+       ═══════════════════════════════════════ */
+    brandy: {
+        title: 'Бренди',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-brandy-karnobat', name: 'Karnobat', price: 2, desc: 'Бренди 50 мл' },
             { id: 'sp-brandy-metaxa', name: 'Metaxa', price: 4, desc: 'Бренди 50 мл' },
             { id: 'sp-brandy-courvoisier', name: 'Courvoisier', price: 7, desc: 'Бренди 50 мл', tags: ['Premium'] },
-            // ── Ликьори 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       ЛИКЬОРИ
+       ═══════════════════════════════════════ */
+    liqueurs: {
+        title: 'Ликьори',
+        titleAccent: '',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-liq-baileys', name: 'Bailey\'s', price: 5, desc: 'Ликьор 50 мл' },
             { id: 'sp-liq-aftershock', name: 'After Shock', price: 5, desc: 'Ликьор 50/30 мл — 5/3 €', volume: '50/30 мл' },
             { id: 'sp-liq-pitu', name: 'Pitu', price: 5, desc: 'Ликьор 50 мл' },
@@ -194,7 +278,18 @@ export const MENU: Menu = {
             { id: 'sp-liq-cointreau', name: 'Cointreau', price: 5, desc: 'Ликьор 50 мл' },
             { id: 'sp-liq-disaronno', name: 'Disaronno', price: 5, desc: 'Ликьор 50 мл' },
             { id: 'sp-liq-skinos', name: 'Skinos', price: 5, desc: 'Ликьор 50/30 мл — 5/3 €', volume: '50/30 мл' },
-            // ── Дижестиви & Аперитиви 50 мл ──
+        ],
+    },
+
+    /* ═══════════════════════════════════════
+       ДИЖЕСТИВИ & АПЕРИТИВИ
+       ═══════════════════════════════════════ */
+    digestifs: {
+        title: 'Дижестиви',
+        titleAccent: '& Аперитиви',
+        subtitle: '50 мл',
+        type: 'simple',
+        items: [
             { id: 'sp-dig-ouzo-plomari', name: 'Ouzo Plomari', price: 3, desc: 'Дижестив 50 мл' },
             { id: 'sp-dig-ouzo-12', name: 'Ouzo 12', price: 3, desc: 'Дижестив 50 мл' },
             { id: 'sp-dig-absinthe', name: 'Absinthe', price: 5, desc: 'Дижестив 50 мл' },
@@ -308,9 +403,17 @@ export const MENU: Menu = {
 
 export const CATEGORY_LABELS: Record<CategoryKey, string> = {
     cocktails: 'Коктейли',
-    wine: 'Вино',
     whiskey: 'Уиски',
-    spirits: 'Спиртни',
+    bourbon: 'Бърбън',
+    vodka: 'Водка',
+    gin: 'Джин',
+    rum: 'Ром',
+    tequila: 'Текила',
+    rakiya: 'Ракия',
+    brandy: 'Бренди',
+    liqueurs: 'Ликьори',
+    digestifs: 'Дижестиви',
+    wine: 'Вино',
     beer: 'Бира',
     food: 'Храна',
     soft: 'Безалк.',
@@ -319,9 +422,17 @@ export const CATEGORY_LABELS: Record<CategoryKey, string> = {
 
 export const CATEGORY_ICONS: Record<CategoryKey, string> = {
     cocktails: 'nightlife',
-    wine: 'wine_bar',
     whiskey: 'liquor',
-    spirits: 'local_drink',
+    bourbon: 'liquor',
+    vodka: 'local_bar',
+    gin: 'local_bar',
+    rum: 'local_bar',
+    tequila: 'local_bar',
+    rakiya: 'local_bar',
+    brandy: 'liquor',
+    liqueurs: 'local_drink',
+    digestifs: 'local_drink',
+    wine: 'wine_bar',
     beer: 'sports_bar',
     food: 'restaurant',
     soft: 'coffee',

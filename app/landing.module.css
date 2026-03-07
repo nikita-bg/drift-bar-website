@@ -71,11 +71,29 @@
 }
 
 .logoImg {
-    width: 52px;
-    height: 52px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     border-radius: 9999px;
     flex-shrink: 0;
+}
+
+.logoText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #9c3211;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .logoImg {
+        width: 60px;
+        height: 60px;
+    }
+    .logoText {
+        font-size: 1.1rem;
+    }
 }
 
 .vinylLogo {

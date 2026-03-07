@@ -11,7 +11,7 @@ import MenuGrid from './components/MenuGrid'
 import CartDrawer from './components/CartDrawer'
 import styles from './menu.module.css'
 
-const CATEGORIES: CategoryKey[] = ['cocktails', 'wine', 'whiskey', 'spirits', 'beer', 'food', 'soft', 'shots']
+const CATEGORIES: CategoryKey[] = ['cocktails', 'whiskey', 'bourbon', 'vodka', 'gin', 'rum', 'tequila', 'rakiya', 'brandy', 'liqueurs', 'digestifs', 'wine', 'beer', 'food', 'soft', 'shots']
 
 export default function MenuPage() {
     return (
