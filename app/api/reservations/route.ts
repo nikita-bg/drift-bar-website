@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db'
 import { checkAvailability, calculateEndTime, seedTables } from '@/lib/reservation-utils'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // GET /api/reservations — List reservations
 export async function GET(request: NextRequest) {

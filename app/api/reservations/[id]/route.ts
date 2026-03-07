@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // PATCH /api/reservations/[id] — Update reservation status
 export async function PATCH(
