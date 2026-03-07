@@ -183,6 +183,14 @@
     width: 100%;
 }
 
+.navLink.active {
+    color: #9c3211;
+}
+
+.navLink.active::after {
+    width: 100%;
+}
+
 .headerCta {
     display: none;
 }
@@ -276,6 +284,12 @@
 
 .mobileNavLink:hover {
     color: #9c3211;
+    padding-left: 0.5rem;
+}
+
+.mobileNavLink.active {
+    color: #9c3211;
+    border-left: 4px solid #9c3211;
     padding-left: 0.5rem;
 }
 

@@ -216,7 +216,7 @@ export default function ReservationsPage() {
                                     ))}
                                 </div>
                                 {partySize > 6 && (
-                                    <p className={styles.hint}>За по-големи групи, обадете се: <a href="tel:+359988793684">+359 98 879 3684</a> или <a href="tel:+359988793686">+359 98 879 3686</a></p>
+                                    <p className={styles.hint}>За по-големи групи, обадете се: <a href="tel:+359988793684">+359 98 879 3684</a></p>
                                 )}
                             </div>
 

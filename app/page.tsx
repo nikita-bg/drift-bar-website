@@ -9,12 +9,33 @@ export default function Home() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [headerScrolled, setHeaderScrolled] = useState(false)
     const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
+    const [activeSection, setActiveSection] = useState('hero')
     const vinylRef = useRef<HTMLDivElement>(null)
 
     // Header scroll
     useEffect(() => {
         const handleScroll = () => setHeaderScrolled(window.scrollY > 60)
         window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    // Scroll spy - track active section
+    useEffect(() => {
+        const sections = ['hero', 'events', 'about', 'gallery', 'contact', 'reserve']
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + 100 // Offset for header
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i])
+                if (section && section.offsetTop <= scrollPosition) {
+                    setActiveSection(sections[i])
+                    break
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        handleScroll() // Run on mount
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
@@ -96,10 +117,10 @@ export default function Home() {
                         <span className={styles.logoText}>DRIFT BAR</span>
                     </a>
                     <nav className={styles.mainNav}>
-                        <a href="#events" className={styles.navLink}>Събития</a>
-                        <a href="#about" className={styles.navLink}>За Нас</a>
-                        <a href="#gallery" className={styles.navLink}>Галерия</a>
-                        <a href="#contact" className={styles.navLink}>Контакт</a>
+                        <a href="#events" className={`${styles.navLink} ${activeSection === 'events' ? styles.active : ''}`}>Събития</a>
+                        <a href="#about" className={`${styles.navLink} ${activeSection === 'about' ? styles.active : ''}`}>За Нас</a>
+                        <a href="#gallery" className={`${styles.navLink} ${activeSection === 'gallery' ? styles.active : ''}`}>Галерия</a>
+                        <a href="#contact" className={`${styles.navLink} ${activeSection === 'contact' ? styles.active : ''}`}>Контакт</a>
                         <Link href="/menu" className={styles.navLink}>Меню</Link>
                     </nav>
                     <a href="#reserve" className={`${styles.btn} ${styles.btnPrimary} ${styles.headerCta}`}>Резервации</a>
@@ -123,10 +144,10 @@ export default function Home() {
                         <span className="material-symbols-outlined">close</span>
                     </button>
                     <nav className={styles.mobileNav}>
-                        <a href="#events" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Събития</a>
-                        <a href="#about" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>За Нас</a>
-                        <a href="#gallery" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Галерия</a>
-                        <a href="#contact" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Контакт</a>
+                        <a href="#events" className={`${styles.mobileNavLink} ${activeSection === 'events' ? styles.active : ''}`} onClick={() => setMobileMenuOpen(false)}>Събития</a>
+                        <a href="#about" className={`${styles.mobileNavLink} ${activeSection === 'about' ? styles.active : ''}`} onClick={() => setMobileMenuOpen(false)}>За Нас</a>
+                        <a href="#gallery" className={`${styles.mobileNavLink} ${activeSection === 'gallery' ? styles.active : ''}`} onClick={() => setMobileMenuOpen(false)}>Галерия</a>
+                        <a href="#contact" className={`${styles.mobileNavLink} ${activeSection === 'contact' ? styles.active : ''}`} onClick={() => setMobileMenuOpen(false)}>Контакт</a>
                         <Link href="/menu" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Дигитално Меню</Link>
                         <a href="#reserve" className={`${styles.btn} ${styles.btnPrimary} ${styles.mobileReserveBtn}`} onClick={() => setMobileMenuOpen(false)}>Резервации</a>
                     </nav>
@@ -391,7 +412,6 @@ export default function Home() {
                                         <div>
                                             <strong>Телефон</strong>
                                             <p><a href="tel:+359988793684">+359 98 879 3684</a></p>
-                                            <p><a href="tel:+359988793686">+359 98 879 3686</a></p>
                                         </div>
                                     </div>
                                     <div className={styles.reserveDetail}>
@@ -487,7 +507,7 @@ export default function Home() {
                                     <h3>Адрес</h3>
                                     <p>ул. „Сливница" 2a</p>
                                     <p>4003 Кършияка Северен, Пловдив</p>
-                                    <a href="https://maps.app.goo.gl/V6z6ackykTwdEzgV7" target="_blank" rel="noopener" className={styles.contactCardLink}>
+                                    <a href="https://maps.app.goo.gl/z9wTmKz4knVpdLvdA" target="_blank" rel="noopener" className={styles.contactCardLink}>
                                         Навигирай <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>open_in_new</span>
                                     </a>
                                 </div>
