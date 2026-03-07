@@ -53,7 +53,7 @@ function MenuPageContent() {
                             Нашето <em>Меню</em>
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Авторски коктейли, класики, вина и повече — направени с любов.
+                            Авторски коктейли, класически дринкове, селекция вина. Всяка напитка — направена правилно.
                         </p>
                     </div>
                 </section>
@@ -91,6 +91,7 @@ function MenuPageContent() {
                                 <MenuGrid
                                     items={currentCategory.items}
                                     categoryType={currentCategory.type}
+                                    categoryKey={selectedCategory}
                                 />
                             </>
                         )}

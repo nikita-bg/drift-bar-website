@@ -2,15 +2,17 @@
 
 import Image from 'next/image'
 import type { MenuItem as MenuItemType } from '@/lib/menu-data'
+import { generatePlaceholder, type PlaceholderType } from '@/lib/generate-placeholder'
 import { useCart } from '../context/CartContext'
 import styles from '../menu.module.css'
 
 interface MenuItemProps {
     item: MenuItemType
     featured: boolean
+    placeholderType?: PlaceholderType
 }
 
-export default function MenuItem({ item, featured }: MenuItemProps) {
+export default function MenuItem({ item, featured, placeholderType = 'cocktail' }: MenuItemProps) {
     const { items, addItem, updateQuantity } = useCart()
     const cartItem = items.find(i => i.id === item.id)
     const quantity = cartItem?.quantity || 0
@@ -19,29 +21,31 @@ export default function MenuItem({ item, featured }: MenuItemProps) {
         addItem({ id: item.id, name: item.name, price: item.price })
     }
 
+    // Генерира placeholder image ако липсва
+    const imageSrc = item.image || generatePlaceholder(placeholderType, item.name)
+
     if (featured) {
         return (
             <article className={styles.cardFeatured}>
-                {item.image && (
-                    <div className={styles.cardImage}>
-                        <Image
-                            src={item.image}
-                            alt={item.name}
-                            width={400}
-                            height={300}
-                            className={styles.cardImg}
-                        />
-                        {item.tags && item.tags.length > 0 && (
-                            <div className={styles.cardTags}>
-                                {item.tags.map((tag) => (
-                                    <span key={tag} className={styles.cardTag}>
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                )}
+                <div className={styles.cardImage}>
+                    <Image
+                        src={imageSrc}
+                        alt={item.name}
+                        width={400}
+                        height={500}
+                        className={styles.cardImg}
+                        unoptimized={!item.image} // За SVG data URLs
+                    />
+                    {item.tags && item.tags.length > 0 && (
+                        <div className={styles.cardTags}>
+                            {item.tags.map((tag) => (
+                                <span key={tag} className={styles.cardTag}>
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+                </div>
                 <div className={styles.cardBody}>
                     <div className={styles.cardHeader}>
                         <h3 className={styles.cardName}>{item.name}</h3>
