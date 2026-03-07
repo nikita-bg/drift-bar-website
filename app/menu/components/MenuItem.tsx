@@ -23,6 +23,7 @@ export default function MenuItem({ item, featured, placeholderType = 'cocktail' 
 
     // Генерира placeholder image ако липсва
     const imageSrc = item.image || generatePlaceholder(placeholderType, item.name)
+    const isSvgOrDataUrl = !item.image || item.image.endsWith('.svg')
 
     if (featured) {
         return (
@@ -34,7 +35,7 @@ export default function MenuItem({ item, featured, placeholderType = 'cocktail' 
                         width={400}
                         height={500}
                         className={styles.cardImg}
-                        unoptimized={!item.image} // За SVG data URLs
+                        unoptimized={isSvgOrDataUrl} // За SVG файлове и data URLs
                     />
                     {item.tags && item.tags.length > 0 && (
                         <div className={styles.cardTags}>
@@ -93,7 +94,7 @@ export default function MenuItem({ item, featured, placeholderType = 'cocktail' 
                         width={80}
                         height={100}
                         className={styles.cardSimpleThumbnailImg}
-                        unoptimized={!item.image}
+                        unoptimized={isSvgOrDataUrl}
                     />
                 </div>
             )}

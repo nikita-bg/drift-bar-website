@@ -1,0 +1,67 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1410"/>
+      <stop offset="100%" stop-color="#0d0b09"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8702a" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="50%" stop-color="#e8702a"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <rect width="400" height="500" fill="url(#glow)"/>
+
+  <!-- Ambient glow behind icon -->
+  <circle cx="200" cy="200" r="80" fill="#e8702a" opacity="0.05" filter="url(#blur)"/>
+
+  <!-- Decorative top line -->
+  <rect x="100" y="60" width="200" height="1" fill="url(#accent)" opacity="0.3"/>
+
+  <!-- Subtitle -->
+  <text x="200" y="90" text-anchor="middle" fill="#7a6e5f" 
+        font-family="'Georgia', serif" font-size="11" letter-spacing="4" opacity="0.6">
+    ЕКСТРИ
+  </text>
+
+  <!-- Icon area -->
+  <g transform="translate(200, 220)">
+    
+        <rect x="-14" y="-50" width="28" height="70" rx="12" fill="none" stroke="#e8dcc8" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="0" cy="-58" r="5" fill="none" stroke="#e8dcc8" stroke-width="1" opacity="0.3"/>
+        <rect x="-10" y="-20" width="20" height="30" fill="#e8dcc8" opacity="0.05"/>
+        <path d="M -8 0 Q 0 8 8 0" stroke="#e8dcc8" stroke-width="0.8" fill="none" opacity="0.25"/>
+    
+  </g>
+
+  <!-- Decorative line -->
+  <rect x="120" y="340" width="160" height="1" fill="url(#accent)" opacity="0.25"/>
+
+  <!-- Product name -->
+  <text x="200" y="380" text-anchor="middle" fill="#f5efe6" 
+        font-family="'Georgia', serif" font-size="18" font-weight="600" letter-spacing="0.5">
+    Чаша моркови
+  </text>
+
+  <!-- Bottom branding -->
+  <text x="200" y="460" text-anchor="middle" fill="#7a6e5f" 
+        font-family="'Georgia', serif" font-size="8" letter-spacing="3" opacity="0.35">
+    DRIFT BAR PLOVDIV
+  </text>
+
+  <!-- Corner accents -->
+  <path d="M 20 30 L 20 20 L 30 20" stroke="#e8702a" stroke-width="1" fill="none" opacity="0.2"/>
+  <path d="M 370 30 L 380 20 L 380 30" stroke="#e8702a" stroke-width="1" fill="none" opacity="0.2" transform="translate(0,0)"/>
+  <path d="M 20 470 L 20 480 L 30 480" stroke="#e8702a" stroke-width="1" fill="none" opacity="0.2"/>
+  <path d="M 370 480 L 380 480 L 380 470" stroke="#e8702a" stroke-width="1" fill="none" opacity="0.2"/>
+</svg>

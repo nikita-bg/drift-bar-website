@@ -70,3 +70,5 @@ menu/
 *.pdf
 CLIENT_RESPONSES.md
 CLAUDE.md
+
+/lib/generated/prisma

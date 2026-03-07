@@ -19,6 +19,23 @@ interface Order {
     status: 'new' | 'seen' | 'done'
 }
 
+interface Reservation {
+    id: string
+    date: string
+    startTime: string
+    endTime: string
+    duration: number
+    partySize: number
+    guestName: string
+    guestPhone: string
+    guestEmail?: string
+    notes?: string
+    status: string
+    source: string
+    table?: { id: string; name: string; capacity: number }
+    createdAt: string
+}
+
 const STAFF_PASSWORD = 'drift2024'
 const REFRESH_INTERVAL = 10_000 // 10 seconds
 const AUTH_KEY = 'drift-staff-auth'
@@ -53,11 +70,17 @@ export default function StaffDashboard() {
     const [password, setPassword] = useState('')
     const [authError, setAuthError] = useState(false)
     const [shaking, setShaking] = useState(false)
+    const [activeTab, setActiveTab] = useState<'orders' | 'reservations'>('orders')
 
     const [orders, setOrders] = useState<Order[]>([])
     const [loading, setLoading] = useState(false)
     const [lastUpdate, setLastUpdate] = useState<Date | null>(null)
     const [refreshing, setRefreshing] = useState(false)
+
+    const [reservations, setReservations] = useState<Reservation[]>([])
+    const [resLoading, setResLoading] = useState(false)
+    const [resDate, setResDate] = useState(new Date().toISOString().split('T')[0])
+    const [resStatusFilter, setResStatusFilter] = useState<string>('all')
 
     const prevNewCount = useRef(0)
 
@@ -95,6 +118,21 @@ export default function StaffDashboard() {
         }
     }, [])
 
+    const fetchReservations = useCallback(async () => {
+        setResLoading(true)
+        try {
+            const params = new URLSearchParams({ date: resDate })
+            if (resStatusFilter !== 'all') params.set('status', resStatusFilter)
+            const res = await fetch(`/api/reservations?${params}`)
+            const data = await res.json()
+            setReservations(data.reservations ?? [])
+        } catch (err) {
+            console.error('Failed to fetch reservations:', err)
+        } finally {
+            setResLoading(false)
+        }
+    }, [resDate, resStatusFilter])
+
     // Auto-refresh when authenticated
     useEffect(() => {
         if (!authenticated) return
@@ -102,6 +140,12 @@ export default function StaffDashboard() {
         const interval = setInterval(() => fetchOrders(true), REFRESH_INTERVAL)
         return () => clearInterval(interval)
     }, [authenticated, fetchOrders])
+
+    // Fetch reservations when tab or filters change
+    useEffect(() => {
+        if (!authenticated || activeTab !== 'reservations') return
+        fetchReservations()
+    }, [authenticated, activeTab, fetchReservations])
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
@@ -121,6 +165,7 @@ export default function StaffDashboard() {
         sessionStorage.removeItem(AUTH_KEY)
         setAuthenticated(false)
         setOrders([])
+        setReservations([])
         setPassword('')
     }
 
@@ -134,6 +179,21 @@ export default function StaffDashboard() {
             setOrders(prev => prev.map(o => o.id === id ? { ...o, status } : o))
         } catch (err) {
             console.error('Failed to update status:', err)
+        }
+    }
+
+    const handleReservationStatus = async (id: string, status: string) => {
+        try {
+            await fetch(`/api/reservations/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status }),
+            })
+            setReservations(prev =>
+                prev.map(r => r.id === id ? { ...r, status } : r)
+            )
+        } catch (err) {
+            console.error('Failed to update reservation:', err)
         }
     }
 
@@ -178,6 +238,8 @@ export default function StaffDashboard() {
     // ── Dashboard Screen ─────────────────────────────────────────────
     const activeOrders = orders.filter(o => o.status !== 'done')
     const doneOrders = orders.filter(o => o.status === 'done')
+    const newOrdersCount = orders.filter(o => o.status === 'new').length
+    const pendingResCount = reservations.filter(r => r.status === 'PENDING').length
 
     return (
         <main className={styles.dashPage}>
@@ -186,7 +248,7 @@ export default function StaffDashboard() {
                 <div className={styles.dashHeaderLeft}>
                     <span className={styles.dashLogo}>🍸</span>
                     <div>
-                        <h1 className={styles.dashTitle}>Drift Bar — Поръчки</h1>
+                        <h1 className={styles.dashTitle}>Drift Bar — Панел</h1>
                         <p className={styles.dashMeta}>
                             {refreshing ? (
                                 <span className={styles.refreshPulse}>↻ Обновяване...</span>
@@ -197,10 +259,7 @@ export default function StaffDashboard() {
                     </div>
                 </div>
                 <div className={styles.dashHeaderRight}>
-                    <span className={styles.newBadgeCount}>
-                        {orders.filter(o => o.status === 'new').length} нови
-                    </span>
-                    <button className={styles.refreshBtn} onClick={() => fetchOrders()}>
+                    <button className={styles.refreshBtn} onClick={() => activeTab === 'orders' ? fetchOrders() : fetchReservations()}>
                         ↻
                     </button>
                     <button className={styles.logoutBtn} onClick={handleLogout}>
@@ -209,51 +268,130 @@ export default function StaffDashboard() {
                 </div>
             </header>
 
+            {/* Tabs */}
+            <div className={styles.dashTabs}>
+                <button
+                    className={`${styles.dashTab} ${activeTab === 'orders' ? styles.dashTabActive : ''}`}
+                    onClick={() => setActiveTab('orders')}
+                >
+                    🍽️ Поръчки
+                    {newOrdersCount > 0 && (
+                        <span className={styles.tabBadge}>{newOrdersCount}</span>
+                    )}
+                </button>
+                <button
+                    className={`${styles.dashTab} ${activeTab === 'reservations' ? styles.dashTabActive : ''}`}
+                    onClick={() => setActiveTab('reservations')}
+                >
+                    📅 Резервации
+                    {pendingResCount > 0 && (
+                        <span className={styles.tabBadge}>{pendingResCount}</span>
+                    )}
+                </button>
+            </div>
+
             {/* Body */}
             <div className={styles.dashBody}>
-                {loading ? (
-                    <div className={styles.loadingState}>
-                        <div className={styles.spinner} />
-                        <p>Зарежда поръчки...</p>
-                    </div>
-                ) : activeOrders.length === 0 && doneOrders.length === 0 ? (
-                    <div className={styles.emptyState}>
-                        <span className={styles.emptyIcon}>🎉</span>
-                        <h2>Няма поръчки</h2>
-                        <p>Поръчките ще се появят тук автоматично</p>
-                    </div>
-                ) : (
+                {activeTab === 'orders' ? (
                     <>
-                        {/* Active Orders */}
-                        {activeOrders.length > 0 && (
+                        {loading ? (
+                            <div className={styles.loadingState}>
+                                <div className={styles.spinner} />
+                                <p>Зарежда поръчки...</p>
+                            </div>
+                        ) : activeOrders.length === 0 && doneOrders.length === 0 ? (
+                            <div className={styles.emptyState}>
+                                <span className={styles.emptyIcon}>🎉</span>
+                                <h2>Няма поръчки</h2>
+                                <p>Поръчките ще се появят тук автоматично</p>
+                            </div>
+                        ) : (
+                            <>
+                                {/* Active Orders */}
+                                {activeOrders.length > 0 && (
+                                    <section className={styles.section}>
+                                        <h2 className={styles.sectionTitle}>
+                                            Активни ({activeOrders.length})
+                                        </h2>
+                                        <div className={styles.ordersGrid}>
+                                            {activeOrders.map(order => (
+                                                <OrderCard
+                                                    key={order.id}
+                                                    order={order}
+                                                    onStatusChange={handleStatusChange}
+                                                />
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+
+                                {/* Done Orders */}
+                                {doneOrders.length > 0 && (
+                                    <section className={styles.section}>
+                                        <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDone}`}>
+                                            Готови ({doneOrders.length})
+                                        </h2>
+                                        <div className={styles.ordersGrid}>
+                                            {doneOrders.map(order => (
+                                                <OrderCard
+                                                    key={order.id}
+                                                    order={order}
+                                                    onStatusChange={handleStatusChange}
+                                                />
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+                            </>
+                        )}
+                    </>
+                ) : (
+                    /* ── Reservations Tab ──── */
+                    <>
+                        {/* Date & status filter */}
+                        <div className={styles.resFilters}>
+                            <input
+                                type="date"
+                                className={styles.resDateInput}
+                                value={resDate}
+                                onChange={(e) => setResDate(e.target.value)}
+                            />
+                            <select
+                                className={styles.resStatusSelect}
+                                value={resStatusFilter}
+                                onChange={(e) => setResStatusFilter(e.target.value)}
+                            >
+                                <option value="all">Всички</option>
+                                <option value="PENDING">Чакащи</option>
+                                <option value="CONFIRMED">Потвърдени</option>
+                                <option value="CANCELLED">Отменени</option>
+                                <option value="COMPLETED">Завършени</option>
+                                <option value="NO_SHOW">Не се явиха</option>
+                            </select>
+                        </div>
+
+                        {resLoading ? (
+                            <div className={styles.loadingState}>
+                                <div className={styles.spinner} />
+                                <p>Зарежда резервации...</p>
+                            </div>
+                        ) : reservations.length === 0 ? (
+                            <div className={styles.emptyState}>
+                                <span className={styles.emptyIcon}>📅</span>
+                                <h2>Няма резервации</h2>
+                                <p>за {resDate}</p>
+                            </div>
+                        ) : (
                             <section className={styles.section}>
                                 <h2 className={styles.sectionTitle}>
-                                    Активни ({activeOrders.length})
+                                    {reservations.length} резервации за {resDate}
                                 </h2>
                                 <div className={styles.ordersGrid}>
-                                    {activeOrders.map(order => (
-                                        <OrderCard
-                                            key={order.id}
-                                            order={order}
-                                            onStatusChange={handleStatusChange}
-                                        />
-                                    ))}
-                                </div>
-                            </section>
-                        )}
-
-                        {/* Done Orders */}
-                        {doneOrders.length > 0 && (
-                            <section className={styles.section}>
-                                <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDone}`}>
-                                    Готови ({doneOrders.length})
-                                </h2>
-                                <div className={styles.ordersGrid}>
-                                    {doneOrders.map(order => (
-                                        <OrderCard
-                                            key={order.id}
-                                            order={order}
-                                            onStatusChange={handleStatusChange}
+                                    {reservations.map(res => (
+                                        <ReservationCard
+                                            key={res.id}
+                                            reservation={res}
+                                            onStatusChange={handleReservationStatus}
                                         />
                                     ))}
                                 </div>
@@ -337,6 +475,115 @@ function OrderCard({
             </div>
 
             <div className={styles.orderId}>{order.id}</div>
+        </article>
+    )
+}
+
+// ── Reservation Card Component ──────────────────────────────────────
+function ReservationCard({
+    reservation: res,
+    onStatusChange,
+}: {
+    reservation: Reservation
+    onStatusChange: (id: string, status: string) => void
+}) {
+    const statusEmoji: Record<string, string> = {
+        PENDING: '⏳',
+        CONFIRMED: '✅',
+        CANCELLED: '❌',
+        NO_SHOW: '👻',
+        COMPLETED: '🎉',
+    }
+
+    const statusLabel: Record<string, string> = {
+        PENDING: 'ЧАКАЩА',
+        CONFIRMED: 'ПОТВЪРДЕНА',
+        CANCELLED: 'ОТМЕНЕНА',
+        NO_SHOW: 'НЕ СЕ ЯВИ',
+        COMPLETED: 'ЗАВЪРШЕНА',
+    }
+
+    const statusColor: Record<string, string> = {
+        PENDING: '#f39c12',
+        CONFIRMED: '#27ae60',
+        CANCELLED: '#e74c3c',
+        NO_SHOW: '#95a5a6',
+        COMPLETED: '#3498db',
+    }
+
+    return (
+        <article className={styles.orderCard} style={{ borderLeft: `4px solid ${statusColor[res.status] || '#ccc'}` }}>
+            <div className={styles.orderCardHeader}>
+                <span className={styles.statusBadge} style={{ background: statusColor[res.status], color: '#fff' }}>
+                    {statusEmoji[res.status]} {statusLabel[res.status]}
+                </span>
+                <span className={styles.orderTime}>{res.startTime} – {res.endTime}</span>
+            </div>
+
+            <div className={styles.orderTable}>
+                👤 <strong>{res.guestName}</strong>
+            </div>
+
+            <ul className={styles.orderItems}>
+                <li className={styles.orderItem}>
+                    <span className={styles.orderItemQty}>👥</span>
+                    <span className={styles.orderItemName}>{res.partySize} {res.partySize === 1 ? 'човек' : 'души'}</span>
+                </li>
+                <li className={styles.orderItem}>
+                    <span className={styles.orderItemQty}>📞</span>
+                    <span className={styles.orderItemName}>{res.guestPhone}</span>
+                </li>
+                {res.guestEmail && (
+                    <li className={styles.orderItem}>
+                        <span className={styles.orderItemQty}>📧</span>
+                        <span className={styles.orderItemName}>{res.guestEmail}</span>
+                    </li>
+                )}
+                {res.notes && (
+                    <li className={styles.orderItem}>
+                        <span className={styles.orderItemQty}>📝</span>
+                        <span className={styles.orderItemName} style={{ fontStyle: 'italic' }}>{res.notes}</span>
+                    </li>
+                )}
+                {res.table && (
+                    <li className={styles.orderItem}>
+                        <span className={styles.orderItemQty}>🍽️</span>
+                        <span className={styles.orderItemName}>{res.table.name} (до {res.table.capacity} души)</span>
+                    </li>
+                )}
+            </ul>
+
+            <div className={styles.orderActions}>
+                {res.status === 'PENDING' && (
+                    <>
+                        <button className={styles.btnSeen} onClick={() => onStatusChange(res.id, 'CONFIRMED')}>
+                            Потвърди ✅
+                        </button>
+                        <button className={styles.btnReopen} onClick={() => onStatusChange(res.id, 'CANCELLED')}>
+                            Откажи ❌
+                        </button>
+                    </>
+                )}
+                {res.status === 'CONFIRMED' && (
+                    <>
+                        <button className={styles.btnDone} onClick={() => onStatusChange(res.id, 'COMPLETED')}>
+                            Завършена 🎉
+                        </button>
+                        <button className={styles.btnReopen} onClick={() => onStatusChange(res.id, 'NO_SHOW')}>
+                            Не се яви 👻
+                        </button>
+                    </>
+                )}
+                {(res.status === 'CANCELLED' || res.status === 'NO_SHOW') && (
+                    <button className={styles.btnReopen} onClick={() => onStatusChange(res.id, 'PENDING')}>
+                        Върни ↩
+                    </button>
+                )}
+            </div>
+
+            <div className={styles.orderId}>
+                {res.source === 'website' ? '🌐' : '📞'} {res.id.slice(0, 12)}...
+            </div>
         </article>
     )
 }
