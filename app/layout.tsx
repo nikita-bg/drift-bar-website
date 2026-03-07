@@ -11,9 +11,19 @@ export const metadata: Metadata = {
         type: 'website',
         url: 'https://driftbarplovdiv.com',
         locale: 'bg_BG',
+        images: [
+            {
+                url: 'https://driftbarplovdiv.com/og-image.svg',
+                width: 1200,
+                height: 630,
+                alt: 'Drift Bar Plovdiv - Жива Музика',
+            }
+        ]
     },
     icons: {
-        icon: '/favicon.ico',
+        icon: [
+            { url: '/icon.svg', type: 'image/svg+xml' }
+        ],
     },
 }
 
