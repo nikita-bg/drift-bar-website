@@ -208,8 +208,8 @@ export default function Home() {
                                 <div className={styles.vinylGrooves} ref={vinylRef}>
                                     <div className={styles.vinylLabel}>
                                         <Image
-                                            src="/assets/drums.jpg"
-                                            alt="TAMA барабани на сцената на Drift Bar Plovdiv"
+                                            src="/assets/enhanced_live-performance-stage-close.png"
+                                            alt="Изпълнение на живо на сцената на Drift Bar"
                                             className={styles.vinylImage}
                                             width={300}
                                             height={300}
@@ -319,10 +319,10 @@ export default function Home() {
                         <div className={styles.aboutGrid}>
                             <div className={`${styles.aboutImages} ${styles.reveal}`}>
                                 <div className={`${styles.aboutImg} ${styles.aboutImgMain}`}>
-                                    <Image src="/assets/bar-counter.jpg" alt="Бар на Drift Bar Plovdiv" width={700} height={500} />
+                                    <Image src="/assets/enhanced_crowd-seating-night-event.png" alt="Оживената атмосфера в Drift Bar" width={700} height={500} />
                                 </div>
                                 <div className={`${styles.aboutImg} ${styles.aboutImgSecondary}`}>
-                                    <Image src="/assets/mixer.jpg" alt="Професионален миксер Drift Bar" width={400} height={300} />
+                                    <Image src="/assets/enhanced_lounge-tables-atmospheric.png" alt="Уютни маси в Drift Bar" width={400} height={300} />
                                 </div>
                             </div>
                             <div className={`${styles.aboutText} ${styles.reveal}`}>
@@ -362,24 +362,24 @@ export default function Home() {
                         </div>
                         <div className={`${styles.galleryGrid} ${styles.reveal}`}>
                             <div className={`${styles.galleryItem} ${styles.galleryItemLarge}`}>
-                                <Image src="/assets/stage.jpg" alt="Сцената с осветление" width={800} height={600} />
+                                <Image src="/assets/enhanced_stage-drum-kit-lights.png" alt="Сцената с барабани и осветление" width={800} height={600} />
                                 <div className={styles.galleryOverlay}>
                                     <span className="material-symbols-outlined">music_note</span>
                                     <span>Сцената</span>
                                 </div>
                             </div>
                             <div className={styles.galleryItem}>
-                                <Image src="/assets/bar.jpg" alt="Барът" width={400} height={400} />
+                                <Image src="/assets/enhanced_lounge-seating-night-lights.png" alt="Уютният салон" width={400} height={400} />
                                 <div className={styles.galleryOverlay}>
                                     <span className="material-symbols-outlined">local_bar</span>
                                     <span>Барът</span>
                                 </div>
                             </div>
                             <div className={styles.galleryItem}>
-                                <Image src="/assets/drums.jpg" alt="TAMA барабани" width={400} height={400} />
+                                <Image src="/assets/enhanced_live-performance-stage-close.png" alt="Изпълнение на живо" width={400} height={400} />
                                 <div className={styles.galleryOverlay}>
-                                    <span className="material-symbols-outlined">piano</span>
-                                    <span>Оборудване</span>
+                                    <span className="material-symbols-outlined">nightlife</span>
+                                    <span>Концерт</span>
                                 </div>
                             </div>
                             <div className={styles.galleryItem}>
@@ -390,14 +390,14 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className={styles.galleryItem}>
-                                <Image src="/assets/live-performance.jpg" alt="Жив концерт" width={400} height={400} />
+                                <Image src="/assets/enhanced_crowd-seating-night-event.png" alt="Момент от събитие" width={400} height={400} />
                                 <div className={styles.galleryOverlay}>
                                     <span className="material-symbols-outlined">groups</span>
-                                    <span>Концерт</span>
+                                    <span>Нощен Живот</span>
                                 </div>
                             </div>
                             <div className={styles.galleryItem}>
-                                <Image src="/assets/interior.jpg" alt="Интериор" width={400} height={400} />
+                                <Image src="/assets/enhanced_lounge-tables-atmospheric.png" alt="Интериор" width={400} height={400} />
                                 <div className={styles.galleryOverlay}>
                                     <span className="material-symbols-outlined">chair</span>
                                     <span>Интериор</span>

@@ -424,6 +424,10 @@
         min-height: 100svh;
         padding-bottom: 1rem;
     }
+
+    .hero .container {
+        padding: 0 10px;
+    }
 }
 
 .heroContent {
