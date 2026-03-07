@@ -52,10 +52,10 @@ export default function RootLayout({
                             "@context": "https://schema.org",
                             "@type": ["LocalBusiness", "MusicVenue", "BarOrPub"],
                             "name": "Drift Bar Plovdiv",
-                            "description": "Сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли в центъра на Пловдив.",
+                            "description": "Бар за рок и джаз музика на живо с професионална акустика и коктейли в Пловдив. Капацитет от 99 места и 20 маси.",
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "ул. Сливница 2a",
+                                "streetAddress": "ул. Сливница 2а",
                                 "addressLocality": "Кършияка Северен, Пловдив",
                                 "postalCode": "4003",
                                 "addressCountry": "BG"

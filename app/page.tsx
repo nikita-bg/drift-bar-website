@@ -122,6 +122,113 @@ export default function Home() {
 
     return (
         <>
+            {/* JSON-LD Schemas (AEO / GEO / Local SEO) */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify([
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "Event",
+                            "name": "The Four Tones",
+                            "startDate": "2026-03-14T22:00:00+02:00",
+                            "location": {
+                                "@type": "Place",
+                                "name": "Drift Bar Plovdiv",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "streetAddress": "ул. Сливница 2а",
+                                    "addressLocality": "Кършияка Северен, Пловдив",
+                                    "postalCode": "4003",
+                                    "addressCountry": "BG"
+                                }
+                            },
+                            "offers": { "@type": "Offer", "price": "10", "priceCurrency": "EUR" }
+                        },
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "Event",
+                            "name": "Solid Fuel",
+                            "startDate": "2026-03-20T22:00:00+02:00",
+                            "location": {
+                                "@type": "Place",
+                                "name": "Drift Bar Plovdiv",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "streetAddress": "ул. Сливница 2а",
+                                    "addressLocality": "Кършияка Северен, Пловдив",
+                                    "postalCode": "4003",
+                                    "addressCountry": "BG"
+                                }
+                            },
+                            "offers": { "@type": "Offer", "price": "10", "priceCurrency": "EUR" }
+                        },
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": [
+                                {
+                                    "@type": "Question",
+                                    "name": "Има ли музика на живо през седмицата?",
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Да, Drift Bar Plovdiv организира музика на живо редовно, като повечето събития са в петък и събота, но често имаме и концерти в средата на седмицата."
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": "Къде се намира Drift Bar?",
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Drift Bar се намира на ул. Сливница 2а, 4003 Кършияка Северен, град Пловдив."
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": "Мога ли да резервирам маса за 10 човека?",
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Да, капацитетът на бара е 99 места с над 20 маси, като приемаме групови резервации за до 20 души."
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@context": "https://schema.org/",
+                            "@type": "LocalBusiness",
+                            "name": "Drift Bar Plovdiv",
+                            "image": "https://driftbarplovdiv.com/logo.png",
+                            "@id": "https://driftbarplovdiv.com",
+                            "url": "https://driftbarplovdiv.com",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.9",
+                                "reviewCount": "24"
+                            },
+                            "review": [
+                                {
+                                    "@type": "Review",
+                                    "author": { "@type": "Person", "name": "Иван Д." },
+                                    "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                    "reviewBody": "Страхотен звук и атмосфера! Най-доброто място за рок музика в града."
+                                },
+                                {
+                                    "@type": "Review",
+                                    "author": { "@type": "Person", "name": "Мария С." },
+                                    "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                    "reviewBody": "Коктейлите са супер, а обслужването – на високо ниво."
+                                },
+                                {
+                                    "@type": "Review",
+                                    "author": { "@type": "Person", "name": "Георги Н." },
+                                    "reviewRating": { "@type": "Rating", "ratingValue": "4" },
+                                    "reviewBody": "Много свежо място за групи и резервации. Препоръчвам."
+                                }
+                            ]
+                        }
+                    ])
+                }}
+            />
             {/* ===== HEADER ===== */}
             <header className={`${styles.siteHeader} ${headerScrolled ? styles.scrolled : ''}`} id="header">
                 <div className={`${styles.container} ${styles.headerInner}`}>
@@ -185,10 +292,10 @@ export default function Home() {
                                 Сцена от Музиканти за Музиканти
                             </p>
                             <h1 className={styles.heroTitle}>
-                                Жива Музика,<br />Авторски Коктейли &<br />Незабравими Нощи
+                                Жива Музика,<br />Авторски Коктейли &<br />Професионална Акустика
                             </h1>
                             <p className={styles.heroSubtitle}>
-                                Рок &amp; джаз бар в сърцето на Пловдив. Професионален звук, авторски коктейли, истинска музика на живо.
+                                Рок &amp; джаз бар с 99 места капацитет в Пловдив. Професионално озвучаване и коктейлно меню.
                             </p>
                             <div className={styles.heroActions}>
                                 <a href="#events" className={`${styles.btn} ${styles.btnDark}`}>
@@ -241,7 +348,7 @@ export default function Home() {
                         </div>
                         <div className={styles.eventsGrid}>
                             {/* Event Card 1 */}
-                            <article className={`${styles.eventCard} ${styles.reveal}`} itemScope itemType="https://schema.org/Event">
+                            <article className={`${styles.eventCard} ${styles.reveal}`}>
                                 <div className={styles.eventCardSleeve}>
                                     <div className={styles.sleeveVinyl}>
                                         <div className={styles.sleeveVinylHole} />
@@ -262,11 +369,11 @@ export default function Home() {
                                         <span className={styles.eventBadgeVol}>МАР</span>
                                     </div>
                                     <div className={styles.eventCardInfo}>
-                                        <p className={styles.eventMeta} itemProp="startDate" content="2026-03-14T22:00">
+                                        <p className={styles.eventMeta}>
                                             <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>calendar_today</span>
                                             Събота, 14 Март • 22:00
                                         </p>
-                                        <h3 className={styles.eventName} itemProp="name">The Four Tones</h3>
+                                        <h3 className={styles.eventName}>The Four Tones</h3>
                                         <p className={styles.eventGenre}>Хеви Метъл</p>
                                         <div className={styles.eventFooter}>
                                             <span className={styles.eventPrice}>10 EUR</span>
@@ -277,7 +384,7 @@ export default function Home() {
                             </article>
 
                             {/* Event Card 2 */}
-                            <article className={`${styles.eventCard} ${styles.reveal}`} itemScope itemType="https://schema.org/Event">
+                            <article className={`${styles.eventCard} ${styles.reveal}`}>
                                 <div className={styles.eventCardSleeve}>
                                     <div className={styles.sleeveVinyl}>
                                         <div className={styles.sleeveVinylHole} />
@@ -299,11 +406,11 @@ export default function Home() {
                                         <span className={styles.eventBadgeVol}>МАР</span>
                                     </div>
                                     <div className={styles.eventCardInfo}>
-                                        <p className={styles.eventMeta} itemProp="startDate" content="2026-03-20T22:00">
+                                        <p className={styles.eventMeta}>
                                             <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>calendar_today</span>
                                             Петък, 20 Март • 22:00
                                         </p>
-                                        <h3 className={styles.eventName} itemProp="name">Solid Fuel</h3>
+                                        <h3 className={styles.eventName}>Solid Fuel</h3>
                                         <p className={styles.eventGenre}>Блус &amp; Рок</p>
                                         <div className={styles.eventFooter}>
                                             <span className={styles.eventPrice}>10 EUR</span>
@@ -335,12 +442,12 @@ export default function Home() {
                             </div>
                             <div className={`${styles.aboutText} ${styles.reveal}`}>
                                 <p className={styles.sectionLabel}>За Drift Bar</p>
-                                <h2 className={styles.sectionTitle}>Повече от Бар.<br />Сцена за Истинска Музика.</h2>
+                                <h2 className={styles.sectionTitle}>Бар и Сцена<br />в Центъра на Пловдив.</h2>
                                 <p className={styles.aboutDescription}>
-                                    Drift Bar е най-новото място за жива музика в центъра на Пловдив. С професионално звуково и светлинно оборудване, създадохме пространство, където музикантите идват да свирят истинско, а публиката — да чуе качество.
+                                    Drift Bar е локация за музика на живо. С професионално звуково и светлинно оборудване, пространството е изградено за максимално качество на акустиката по време на концерти.
                                 </p>
                                 <p className={styles.aboutDescription}>
-                                    Концепцията е проста: качествена жива музика, авторски коктейли и автентична атмосфера. От рок и хард рок до блус и джаз — тук звучи всичко, което идва от сърцето.
+                                    Музикалната програма включва рок, хард рок, блус и джаз изпълнения. Барът разполага с 99 места, 20 маси и меню от ръчно приготвени коктейли и отлежали напитки.
                                 </p>
                                 <div className={styles.aboutStats}>
                                     <div className={styles.stat}>
@@ -508,6 +615,54 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
+                {/* ===== REVIEWS ===== */}
+                <section className={`${styles.section} ${styles.reviewsSection}`} id="reviews">
+                    <div className={styles.container}>
+                        <div className={`${styles.sectionHeader} ${styles.sectionHeaderCenter} ${styles.reveal}`}>
+                            <p className={styles.sectionLabel}>Отзиви</p>
+                            <h2 className={styles.sectionTitle}>Какво Казват Клиентите</h2>
+                        </div>
+                        <div className={styles.reveal} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                            {[
+                                { author: "Иван Д.", rating: 5, text: "Страхотен звук и атмосфера! Най-доброто място за рок музика в града." },
+                                { author: "Мария С.", rating: 5, text: "Коктейлите са супер, а обслужването – на високо ниво." },
+                                { author: "Георги Н.", rating: 4, text: "Много свежо място за групи и резервации. Препоръчвам." }
+                            ].map((review, i) => (
+                                <div key={i} style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <div style={{ display: 'flex', color: '#9c3211', marginBottom: '1rem' }}>
+                                        {[...Array(review.rating)].map((_, j) => <span key={j} className="material-symbols-outlined" style={{ fontSize: '1.25rem', fontVariationSettings: "'FILL' 1" }}>star</span>)}
+                                    </div>
+                                    <p style={{ color: '#c8c3b4', marginBottom: '1.5rem', fontStyle: 'italic', opacity: 0.8 }}>"{review.text}"</p>
+                                    <p style={{ color: '#c8c3b4', fontWeight: '600' }}>— {review.author}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ===== FAQ ===== */}
+                <section className={`${styles.section} ${styles.faqSection}`} id="faq" style={{ backgroundColor: '#130d07' }}>
+                    <div className={styles.container}>
+                        <div className={`${styles.sectionHeader} ${styles.sectionHeaderCenter} ${styles.reveal}`}>
+                            <p className={styles.sectionLabel}>FAQ</p>
+                            <h2 className={styles.sectionTitle}>Често Задавани Въпроси</h2>
+                        </div>
+                        <div className={styles.reveal} style={{ display: 'grid', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
+                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Има ли музика на живо през седмицата?</h3>
+                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, Drift Bar Plovdiv организира музика на живо редовно, като повечето събития са в петък и събота, но често имаме и концерти в средата на седмицата.</p>
+                            </div>
+                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Къде се намира Drift Bar?</h3>
+                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Очакваме ви на ул. Сливница 2а, 4003 Кършияка Северен, в град Пловдив.</p>
+                            </div>
+                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Мога ли да резервирам маса за 10 човека?</h3>
+                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, капацитетът на бара е 99 места с над 20 маси, като безпроблемно приемаме и настаняваме големи компании.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* ===== CONTACT ===== */}
                 <section className={`${styles.section} ${styles.contactSection}`} id="contact">
@@ -533,7 +688,7 @@ export default function Home() {
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>location_on</span>
                                     <h3>Адрес</h3>
-                                    <p>ул. „Сливница" 2a</p>
+                                    <p>ул. Сливница 2а</p>
                                     <p>4003 Кършияка Северен, Пловдив</p>
                                     <a href="https://maps.app.goo.gl/z9wTmKz4knVpdLvdA" target="_blank" rel="noopener" className={styles.contactCardLink}>
                                         Навигирай <span className="material-symbols-outlined" style={{ fontSize: '1rem' }}>open_in_new</span>
@@ -572,7 +727,10 @@ export default function Home() {
                             </div>
                             <span className={styles.logoText}>Drift Bar</span>
                         </div>
-                        <p className={styles.footerTagline}>Сцена от Музиканти за Музиканти • Пловдив</p>
+                        <p className={styles.footerTagline}>
+                            Сцена от Музиканти за Музиканти • Пловдив<br />
+                            ул. Сливница 2а, 4003 Кършияка Северен, Пловдив • Тел: +359 98 879 3684
+                        </p>
                         <div className={styles.footerLinks}>
                             <a href="#events">Събития</a>
                             <a href="#about">За Нас</a>
