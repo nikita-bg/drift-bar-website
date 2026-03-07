@@ -102,7 +102,8 @@
     }
 
     .logoText {
-        display: none; /* Hide text on mobile - only logo */
+        display: none;
+        /* Hide text on mobile - only logo */
     }
 }
 
@@ -202,12 +203,12 @@
 }
 
 .headerCta {
-    display: none;
+    display: none !important;
 }
 
 @media (min-width: 768px) {
     .headerCta {
-        display: flex;
+        display: inline-flex !important;
     }
 }
 
