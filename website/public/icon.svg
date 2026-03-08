@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!-- Outer record -->
+    <circle cx="256" cy="256" r="240" fill="#1a1209" stroke="#241c15" stroke-width="12"/>
+    
+    <!-- Grooves (subtle) -->
+    <circle cx="256" cy="256" r="200" fill="none" stroke="#2a2016" stroke-width="4"/>
+    <circle cx="256" cy="256" r="160" fill="none" stroke="#2a2016" stroke-width="4"/>
+    <circle cx="256" cy="256" r="120" fill="none" stroke="#2a2016" stroke-width="4"/>
+    
+    <!-- Light Highlights on Grooves to simulate vinyl reflection -->
+    <path d="M 256 56 A 200 200 0 0 1 456 256" fill="none" stroke="#3a2d20" stroke-width="2" opacity="0.5"/>
+    <path d="M 256 456 A 200 200 0 0 1 56 256" fill="none" stroke="#3a2d20" stroke-width="2" opacity="0.5"/>
+    
+    <!-- Center Label -->
+    <circle cx="256" cy="256" r="80" fill="#9c3211"/>
+    
+    <!-- Label inner design & text (abstract) -->
+    <circle cx="256" cy="256" r="70" fill="none" stroke="#1a1209" stroke-width="2" stroke-dasharray="8 6"/>
+    <circle cx="256" cy="256" r="50" fill="none" stroke="#c8c3b4" stroke-width="1" opacity="0.3"/>
+    
+    <text x="256" y="215" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="bold" fill="#1a1209" text-anchor="middle" letter-spacing="2">DRIFT</text>
+    <text x="256" y="315" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="bold" fill="#1a1209" text-anchor="middle" letter-spacing="4">BAR</text>
+    
+    <!-- Physical Center hole -->
+    <circle cx="256" cy="256" r="16" fill="#000000"/>
+    
+    <!-- Hole inner rim -->
+    <circle cx="256" cy="256" r="18" fill="none" stroke="#c8c3b4" stroke-width="2" opacity="0.3"/>
+</svg>

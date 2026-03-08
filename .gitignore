@@ -55,20 +55,12 @@ agents/
 # Raw content & large assets
 Photos_from_bar/
 generated-posters/
-content-engine/
-client-assets/
-archive/
-deliverables/
-
-# Old HTML website
-website/
-
-# Menu videos & raw files
-menu/
-
-# Documents & personal files
-*.pdf
 CLIENT_RESPONSES.md
 CLAUDE.md
+
+# Non-website folders
+content-generation/
+assets-and-archives/
+docs-and-planning/
 
 /lib/generated/prisma

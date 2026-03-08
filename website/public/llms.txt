@@ -1,0 +1,117 @@
+# Drift Bar Plovdiv - Информация
+
+## Базови данни
+- **Име:** Drift Bar Plovdiv
+- **Адрес:** ул. Сливница 2а, 4003 Кършияка Северен, Пловдив
+- **Телефон:** +359 98 879 3684
+- **Капацитет:** 99 места
+- **Маси:** 20 бр.
+- **Особености:** Жива музика, професионален звук и светлина.
+
+## Работно време
+- **Понеделник - Вторник:** Почивен ден
+- **Сряда - Четвъртък:** 20:00 - 02:00
+- **Петък - Събота:** 20:00 - 04:00
+- **Неделя:** 20:00 - 02:00
+
+## Меню и цени (в EUR)
+### Коктейли
+- Bloody Mary - 6 EUR
+- White Russian - 6 EUR
+- Cosmopolitan - 6 EUR
+- Sex on the Beach - 6 EUR
+- Long Island - 7 EUR
+- Bullfrog - 7 EUR
+- Cuba Libre - 6 EUR
+- Strawberry Daiquiri - 6 EUR
+- Gin Fizz - 6 EUR
+- Cardinal - 6 EUR
+- Green Dragon - 6 EUR
+- Hurricane - 6 EUR
+- Margarita - 7 EUR
+- Tequila Sunrise - 6 EUR
+- Dublin Milkshake - 7 EUR
+- Black Jack - 9 EUR
+- Aperol Spritz - 6 EUR
+- Безалкохолни коктейли (Мента и Розмарин, Лавандула и Касис, Orange Velvet, Bloody Mary безалк.) - 5 EUR
+
+### Вино и Шампанско
+- Бяло, Червено, Розе (Verano Azur) чаша 180мл - 3 EUR / 375мл - 9 EUR / 750мл - 16 EUR
+- Moët Chandon - 245 EUR
+- Prosecco - 35 EUR
+
+### Уиски (50 мл)
+- Johnnie Walker Red Label, J&B, Bushmills, Jameson - 5 EUR
+- Black Bush, Wild Turkey - 6 EUR
+- Monkey Shoulder, Jack Daniel's - 7 EUR
+- Johnnie Walker Black Label, Chivas Regal 12 y.o., Glenfiddich 12 y.o. - 8 EUR
+- Jack Daniel's Single Barrel, Glenfiddich 15 y.o. - 15 EUR
+- Johnnie Walker Green Label, Johnnie Walker Gold Label - 17 EUR
+- Glenfiddich 18 y.o. - 24 EUR
+- Royal Salut - 40 EUR
+- Johnnie Walker Blue Label - 75 EUR
+
+### Бърбън (50 мл)
+- Jim Beam, Four Roses - 4 EUR
+- Maker's Mark - 5.5 EUR
+
+### Водка (50 мл)
+- Savoy, Zytnia - 2 EUR
+- Smirnoff, Absolut, Finlandia - 4 EUR
+- Beluga, Grey Goose - 9 EUR
+
+### Джин (50 мл)
+- Savoy - 2 EUR
+- Gordon's, Beefeater - 4 EUR
+- Bombay Sapphire - 5.5 EUR
+- Hendrick's - 9 EUR
+- The Botanist - 10 EUR
+
+### Ром (50 мл)
+- Savoy White/Red - 3 EUR
+- Havana Club, Malibu - 4 EUR
+- Captain Morgan, Captain Morgan Gold - 5 EUR
+- Havana Club 7 y.o. - 7 EUR
+
+### Текила (30 мл)
+- Savoy - 1.5 EUR
+- Jose Cuervo Silver/Reposado - 2.5 EUR
+
+### Ракия (50 мл)
+- Поморийска гроздова - 2 EUR
+- Поморийска мускатова, Сунгурларска гроздова - 3 EUR
+- Бургас 63, Троянска сливова - 4 EUR
+- Сливенска перла - 5 EUR
+
+### Бренди (50 мл)
+- Karnobat - 2 EUR
+- Metaxa - 4 EUR
+- Courvoisier - 7 EUR
+
+### Наливна и бутилирана бира
+- Bohem наливна 400 мл - 3.5 EUR
+- Radeberger наливна 400 мл - 4 EUR
+- Estrella Damm 330 мл - 4 EUR
+- Radeberger Pilsner 330 мл - 4 EUR
+- Bernard Blond 330 мл - 4.5 EUR
+- Clausthaler Alc. 0.0% 330 мл - 4 EUR
+
+### Храна и Мезета
+- Пилешки хапки с пармезан и сос Айоли (300г) - 6 EUR
+- Пилешки крилца сос BBQ & ранч (400г) - 5 EUR
+- Пържени картофки (250г) - 3.5 EUR
+- Пържени картофки + сирене (300г) - 4 EUR
+- Наденички с медена горчица и картофки (450г) - 8 EUR
+- Принцеса с кайма (250г) - 4 EUR
+- Веган карфиолени хапки Льолев (300г) - 4 EUR
+- Плодове сезонни за двама (500г) - 10 EUR
+- Плато сухи мезета (200г) - 10 EUR
+- Плато сирене и кашкавал (200г) - 10 EUR
+- Плато микс за двама (400г) - 18 EUR
+
+### Други
+- Дижестиви, ликьори, шотове - 1.5 EUR до 7 EUR
+- Безалкохолни, натурални сокове, вода - 1 EUR до 4 EUR
+- Кафе и чай - 2.5 EUR до 3.5 EUR
+- Ядки (80г) - 5 EUR
+- Шоколад - 5 EUR
