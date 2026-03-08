@@ -53,7 +53,8 @@
       "Bash(__NEW_LINE_23102fd905a99144__ - Update address to: ул. „Сливница\" 2a, 4003 Кършияка Северен, Пловдив\n- Update phone numbers: +359 98 879 3684 \\(primary\\), +359 98 879 3686 \\(secondary\\)\n- Applied across: layout.tsx, page.tsx, SKILLS_GUIDE.md, MARKETING_BRIEF.md\n- Schema.org structured data updated\n- Next.js build passing\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\")",
       "Bash(DATABASE_URL=\"\" npm run build:*)",
       "Bash(drift \")",
-      "WebFetch(domain:www.instagram.com)"
+      "WebFetch(domain:www.instagram.com)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }
