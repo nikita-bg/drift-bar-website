@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Space_Grotesk } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -61,8 +62,6 @@ export default function RootLayout({
                 <link
                     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
                     rel="stylesheet"
-                    media="print"
-                    onLoad="this.media='all'"
                 />
                 <noscript>
                     <link
@@ -114,6 +113,7 @@ export default function RootLayout({
                         gtag('config', 'G-9MX98P83J1');
                     `}
                 </Script>
+                <Analytics />
             </body>
         </html>
     )

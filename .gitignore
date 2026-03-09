@@ -64,3 +64,4 @@ assets-and-archives/
 docs-and-planning/
 
 /lib/generated/prisma
+.env*.local
