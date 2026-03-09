@@ -55,7 +55,11 @@
       "Bash(drift \")",
       "WebFetch(domain:www.instagram.com)",
       "WebFetch(domain:pagespeed.web.dev)",
-      "Bash(\"c:/Users/Nikita/Desktop/Drift Bar:*)"
+      "Bash(\"c:/Users/Nikita/Desktop/Drift Bar:*)",
+      "Bash(notebooklm source add-research:*)",
+      "Bash(notebooklm research wait:*)",
+      "Bash(notebooklm research status:*)",
+      "Bash(notebooklm source add:*)"
     ]
   }
 }
