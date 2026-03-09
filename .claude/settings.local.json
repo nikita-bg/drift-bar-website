@@ -54,7 +54,8 @@
       "Bash(DATABASE_URL=\"\" npm run build:*)",
       "Bash(drift \")",
       "WebFetch(domain:www.instagram.com)",
-      "WebFetch(domain:pagespeed.web.dev)"
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(\"c:/Users/Nikita/Desktop/Drift Bar:*)"
     ]
   }
 }

@@ -53,6 +53,25 @@ export default function RootLayout({
     return (
         <html lang="bg" className={spaceGrotesk.variable}>
             <head>
+                {/* DNS Prefetch & Preconnect for external resources */}
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+                {/* Preload critical images */}
+                <link
+                    rel="preload"
+                    as="image"
+                    href="/logo.png"
+                    type="image/png"
+                />
+                <link
+                    rel="preload"
+                    as="image"
+                    href="/assets/enhanced_live-performance-stage-close.png"
+                    type="image/png"
+                />
+
                 {/* Material Symbols for icons - loaded async with font-display: swap */}
                 <link
                     rel="preload"
@@ -100,17 +119,20 @@ export default function RootLayout({
                 <div className="grain-overlay" aria-hidden="true" />
                 {children}
 
-                {/* Google Analytics */}
+                {/* Google Analytics - Optimized loading */}
                 <Script
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     src="https://www.googletagmanager.com/gtag/js?id=G-9MX98P83J1"
                 />
-                <Script id="google-analytics" strategy="afterInteractive">
+                <Script id="google-analytics" strategy="lazyOnload">
                     {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
-                        gtag('config', 'G-9MX98P83J1');
+                        gtag('config', 'G-9MX98P83J1', {
+                            send_page_view: false
+                        });
+                        gtag('event', 'page_view');
                     `}
                 </Script>
                 <Analytics />

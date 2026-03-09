@@ -65,3 +65,10 @@ docs-and-planning/
 
 /lib/generated/prisma
 .env*.local
+
+# ──────────────────────────────────────────────────
+# Performance: Large PNG files (after WebP optimization)
+# ──────────────────────────────────────────────────
+# Uncomment after running npm run optimize-images
+# website/public/assets/enhanced_*.png
+# website/public/logo.png

@@ -240,6 +240,7 @@ export default function Home() {
                             height={80}
                             className={styles.logoImg}
                             priority
+                            fetchPriority="high"
                             sizes="80px"
                         />
                         <span className={styles.logoText}>DRIFT BAR</span>
@@ -323,6 +324,7 @@ export default function Home() {
                                             width={300}
                                             height={300}
                                             priority
+                                            fetchPriority="high"
                                             sizes="(max-width: 768px) 200px, 300px"
                                         />
                                         <div className={styles.vinylCenterHole} />
