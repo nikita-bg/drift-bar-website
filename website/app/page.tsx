@@ -314,8 +314,8 @@ export default function Home() {
                                 <div className={styles.vinylGrooves} ref={vinylRef}>
                                     <div className={styles.vinylLabel}>
                                         <Image
-                                            src="/assets/enhanced_live-performance-stage-close.png"
-                                            alt="Изпълнение на живо на сцената на Drift Bar"
+                                            src="/logo.png"
+                                            alt="Лого на Drift Bar Plovdiv"
                                             className={styles.vinylImage}
                                             width={300}
                                             height={300}
@@ -676,7 +676,7 @@ export default function Home() {
                     <div className={styles.container}>
                         <div className={`${styles.sectionHeader} ${styles.sectionHeaderCenter} ${styles.reveal}`}>
                             <p className={styles.sectionLabel}>FAQ</p>
-                            <h2 className={styles.sectionTitle}>Често Задавани Въпроси</h2>
+                            <h2 className={styles.sectionTitle} style={{ color: '#e8e1cf' }}>Често Задавани Въпроси</h2>
                         </div>
                         <div className={styles.reveal} style={{ display: 'grid', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
                             <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
