@@ -19,6 +19,7 @@ const EVENTS = [
         tags: ['DJ', 'RETRO'],
         color: '#e67e22',
         month: 'МАР',
+        image: '/events/dj-retro.svg',
     },
     {
         id: 'e2',
@@ -32,6 +33,7 @@ const EVENTS = [
         tags: ['LIVE', 'METAL'],
         color: '#c0392b',
         month: 'МАР',
+        image: '/events/the-four-tones.svg',
     },
     {
         id: 'e3',
@@ -45,6 +47,7 @@ const EVENTS = [
         tags: ['LIVE', 'BLUES', 'ROCK'],
         color: '#2980b9',
         month: 'МАР',
+        image: '/events/solid-fuel.png',
     },
     {
         id: 'e4',
@@ -58,6 +61,7 @@ const EVENTS = [
         tags: ['LIVE', 'FUNK', 'SOUL'],
         color: '#8e44ad',
         month: 'МАР',
+        image: '/events/funkilicious.jpg',
     },
 ]
 
@@ -132,12 +136,16 @@ export default function EventsPage() {
                         <div className={styles.eventsGrid}>
                             {filtered.map(event => (
                                 <article key={event.id} className={styles.eventCard}>
-                                    {/* Vinyl artwork */}
+                                    {/* Event Image */}
                                     <div className={styles.cardArtwork} style={{ '--accent': event.color } as React.CSSProperties}>
-                                        <div className={styles.artworkVinyl}>
-                                            <div className={styles.artworkRings} />
-                                            <div className={styles.artworkCenter} />
-                                        </div>
+                                        <Image
+                                            src={event.image}
+                                            alt={event.title}
+                                            width={400}
+                                            height={300}
+                                            className={styles.eventImage}
+                                            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                                        />
                                         <div className={styles.artworkBadges}>
                                             {event.tags.map(tag => (
                                                 <span key={tag} className={styles.tag}>{tag}</span>

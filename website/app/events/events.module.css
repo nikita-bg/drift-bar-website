@@ -237,6 +237,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.eventImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .artworkVinyl {
@@ -277,6 +288,7 @@
     display: flex;
     gap: 0.35rem;
     flex-wrap: wrap;
+    z-index: 2;
 }
 
 .tag {
@@ -288,6 +300,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .artworkMonth {
@@ -299,6 +312,8 @@
     letter-spacing: 0.12em;
     color: rgba(255, 255, 255, 0.3);
     text-transform: uppercase;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Card info */
