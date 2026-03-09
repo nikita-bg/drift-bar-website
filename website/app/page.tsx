@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './landing.module.css'
+import { getUpcomingEvents, formatEventDate } from '@/lib/events-data'
 
 export default function Home() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -11,6 +12,9 @@ export default function Home() {
     const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
     const [activeSection, setActiveSection] = useState('hero')
     const vinylRef = useRef<HTMLDivElement>(null)
+
+    // Get upcoming events (limit to 3 for homepage)
+    const upcomingEvents = getUpcomingEvents(3)
 
     // Header scroll
     useEffect(() => {
@@ -127,11 +131,13 @@ export default function Home() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify([
-                        {
+                        // Generate Event schemas for all upcoming events
+                        ...upcomingEvents.map(event => ({
                             "@context": "https://schema.org",
                             "@type": "Event",
-                            "name": "The Four Tones",
-                            "startDate": "2026-03-14T22:00:00+02:00",
+                            "name": event.title,
+                            "startDate": `${event.date}T${event.time}:00+02:00`,
+                            "description": event.description,
                             "location": {
                                 "@type": "Place",
                                 "name": "Drift Bar Plovdiv",
@@ -143,26 +149,16 @@ export default function Home() {
                                     "addressCountry": "BG"
                                 }
                             },
-                            "offers": { "@type": "Offer", "price": "10", "priceCurrency": "EUR" }
-                        },
-                        {
-                            "@context": "https://schema.org",
-                            "@type": "Event",
-                            "name": "Solid Fuel",
-                            "startDate": "2026-03-20T22:00:00+02:00",
-                            "location": {
-                                "@type": "Place",
-                                "name": "Drift Bar Plovdiv",
-                                "address": {
-                                    "@type": "PostalAddress",
-                                    "streetAddress": "ул. Сливница 2а",
-                                    "addressLocality": "Кършияка Северен, Пловдив",
-                                    "postalCode": "4003",
-                                    "addressCountry": "BG"
-                                }
+                            "offers": {
+                                "@type": "Offer",
+                                "price": event.price.toString(),
+                                "priceCurrency": "EUR"
                             },
-                            "offers": { "@type": "Offer", "price": "10", "priceCurrency": "EUR" }
-                        },
+                            "performer": {
+                                "@type": "MusicGroup",
+                                "name": event.title
+                            }
+                        })),
                         {
                             "@context": "https://schema.org",
                             "@type": "FAQPage",
@@ -352,78 +348,52 @@ export default function Home() {
                             </Link>
                         </div>
                         <div className={styles.eventsGrid}>
-                            {/* Event Card 1 */}
-                            <article className={`${styles.eventCard} ${styles.reveal}`}>
-                                <div className={styles.eventCardSleeve}>
-                                    <div className={styles.sleeveVinyl}>
-                                        <div className={styles.sleeveVinylHole} />
-                                    </div>
-                                </div>
-                                <div className={styles.eventCardBody}>
-                                    <div className={styles.eventCardImage}>
-                                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block' }}>
-                                            <rect width="600" height="400" fill="#241c15" />
-                                            <circle cx="300" cy="200" r="120" fill="none" stroke="#9c3211" strokeWidth="2" opacity="0.4" />
-                                            <circle cx="300" cy="200" r="80" fill="none" stroke="#9c3211" strokeWidth="1.5" opacity="0.3" />
-                                            <circle cx="300" cy="200" r="40" fill="none" stroke="#9c3211" strokeWidth="1" opacity="0.25" />
-                                            <circle cx="300" cy="200" r="8" fill="#9c3211" opacity="0.6" />
-                                            <text x="300" y="340" textAnchor="middle" fill="#c8c3b4" fontSize="13" fontFamily="'Space Grotesk', sans-serif" fontWeight="600" letterSpacing="3" opacity="0.5">THE FOUR TONES</text>
-                                            <text x="300" y="60" textAnchor="middle" fill="#9c3211" fontSize="11" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" letterSpacing="4" opacity="0.7">DRIFT BAR • LIVE</text>
-                                        </svg>
-                                        <span className={`${styles.eventBadge} ${styles.badgeStereo}`}>LIVE</span>
-                                        <span className={styles.eventBadgeVol}>МАР</span>
-                                    </div>
-                                    <div className={styles.eventCardInfo}>
-                                        <p className={styles.eventMeta}>
-                                            <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>calendar_today</span>
-                                            Събота, 14 Март • 22:00
-                                        </p>
-                                        <h3 className={styles.eventName}>The Four Tones</h3>
-                                        <p className={styles.eventGenre}>Хеви Метъл</p>
-                                        <div className={styles.eventFooter}>
-                                            <span className={styles.eventPrice}>10 EUR</span>
-                                            <a href="#reserve" className={`${styles.btn} ${styles.btnSm}`}>Резервирай</a>
+                            {upcomingEvents.map((event) => {
+                                const dateInfo = formatEventDate(event.date)
+                                return (
+                                    <article key={event.id} className={`${styles.eventCard} ${styles.reveal}`}>
+                                        <div className={styles.eventCardSleeve}>
+                                            <div className={styles.sleeveVinyl}>
+                                                <div className={styles.sleeveVinylHole} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </article>
+                                        <div className={styles.eventCardBody}>
+                                            <div className={styles.eventCardImage}>
+                                                <Image
+                                                    src={event.image}
+                                                    alt={event.title}
+                                                    width={600}
+                                                    height={400}
+                                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                                />
+                                                <span className={`${styles.eventBadge} ${styles.badgeStereo}`}>
+                                                    {event.tags[0]}
+                                                </span>
+                                                <span className={styles.eventBadgeVol}>{event.month}</span>
+                                            </div>
+                                            <div className={styles.eventCardInfo}>
+                                                <p className={styles.eventMeta}>
+                                                    <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>calendar_today</span>
+                                                    {event.dayName}, {dateInfo.day} {dateInfo.monthShort} • {event.time}
+                                                </p>
+                                                <h3 className={styles.eventName}>{event.title}</h3>
+                                                <p className={styles.eventGenre}>{event.genre}</p>
+                                                <div className={styles.eventFooter}>
+                                                    <span className={styles.eventPrice}>{event.price} EUR</span>
+                                                    <a href="#reserve" className={`${styles.btn} ${styles.btnSm}`}>Резервирай</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                )
+                            })}
 
-                            {/* Event Card 2 */}
-                            <article className={`${styles.eventCard} ${styles.reveal}`}>
-                                <div className={styles.eventCardSleeve}>
-                                    <div className={styles.sleeveVinyl}>
-                                        <div className={styles.sleeveVinylHole} />
-                                    </div>
+                            {upcomingEvents.length === 0 && (
+                                <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '3rem', color: '#a09878' }}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem', opacity: 0.4 }}>music_off</span>
+                                    <p>Няма предстоящи събития в момента. Проверете скоро!</p>
                                 </div>
-                                <div className={styles.eventCardBody}>
-                                    <div className={styles.eventCardImage}>
-                                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block' }}>
-                                            <rect width="600" height="400" fill="#1a1209" />
-                                            <circle cx="300" cy="200" r="140" fill="none" stroke="#9c3211" strokeWidth="3" opacity="0.35" />
-                                            <circle cx="300" cy="200" r="100" fill="none" stroke="#c8c3b4" strokeWidth="1" opacity="0.15" />
-                                            <circle cx="300" cy="200" r="60" fill="none" stroke="#9c3211" strokeWidth="1.5" opacity="0.3" />
-                                            <circle cx="300" cy="200" r="20" fill="#9c3211" opacity="0.5" />
-                                            <circle cx="300" cy="200" r="8" fill="#1a1209" />
-                                            <text x="300" y="340" textAnchor="middle" fill="#c8c3b4" fontSize="13" fontFamily="'Space Grotesk', sans-serif" fontWeight="600" letterSpacing="3" opacity="0.5">SOLID FUEL</text>
-                                            <text x="300" y="60" textAnchor="middle" fill="#9c3211" fontSize="11" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" letterSpacing="4" opacity="0.7">DRIFT BAR • ROCK</text>
-                                        </svg>
-                                        <span className={`${styles.eventBadge} ${styles.badgeHifi}`}>ROCK</span>
-                                        <span className={styles.eventBadgeVol}>МАР</span>
-                                    </div>
-                                    <div className={styles.eventCardInfo}>
-                                        <p className={styles.eventMeta}>
-                                            <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>calendar_today</span>
-                                            Петък, 20 Март • 22:00
-                                        </p>
-                                        <h3 className={styles.eventName}>Solid Fuel</h3>
-                                        <p className={styles.eventGenre}>Блус &amp; Рок</p>
-                                        <div className={styles.eventFooter}>
-                                            <span className={styles.eventPrice}>10 EUR</span>
-                                            <a href="#reserve" className={`${styles.btn} ${styles.btnSm}`}>Резервирай</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                            )}
                         </div>
                         <div style={{ marginTop: '3rem', textAlign: 'center' }} className={styles.mobileOnly}>
                             <Link href="/events" className={`${styles.btn} ${styles.btnOutlineCircle}`} style={{ width: 'auto', padding: '0 2rem' }}>
