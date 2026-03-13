@@ -104,7 +104,7 @@ export default function ReservationsPage() {
                             <span className="material-symbols-outlined">arrow_back</span>
                         </Link>
                         <div className={styles.headerBrand}>
-                            <Image src="/logo.png" alt="Drift Bar" width={36} height={36} className={styles.headerLogo} />
+                            <Image src="/logo.webp" alt="Drift Bar" width={36} height={36} className={styles.headerLogo} />
                             <span className={styles.headerTitle}>DRIFT BAR</span>
                         </div>
                         <div style={{ width: '2.5rem' }} />
@@ -148,7 +148,7 @@ export default function ReservationsPage() {
                         <span className="material-symbols-outlined">arrow_back</span>
                     </Link>
                     <div className={styles.headerBrand}>
-                        <Image src="/logo.png" alt="Drift Bar" width={36} height={36} className={styles.headerLogo} />
+                        <Image src="/logo.webp" alt="Drift Bar" width={36} height={36} className={styles.headerLogo} />
                         <span className={styles.headerTitle}>DRIFT BAR</span>
                     </div>
                     <div style={{ width: '2.5rem' }} />

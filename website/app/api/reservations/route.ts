@@ -105,16 +105,18 @@ export async function POST(request: NextRequest) {
             include: { table: true },
         })
 
-        // TODO: Trigger n8n webhook for confirmation
-        // try {
-        //     if (process.env.N8N_RESERVATION_WEBHOOK_URL) {
-        //         await fetch(process.env.N8N_RESERVATION_WEBHOOK_URL, {
-        //             method: 'POST',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify(reservation),
-        //         })
-        //     }
-        // } catch (e) { console.error('n8n webhook failed:', e) }
+        // Trigger n8n webhook for Telegram notification
+        try {
+            if (process.env.N8N_WEBHOOK_URL) {
+                await fetch(process.env.N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(reservation),
+                })
+            }
+        } catch (e) {
+            console.error('n8n webhook failed (non-blocking):', e)
+        }
 
         return NextResponse.json({ success: true, reservation })
     } catch (error) {

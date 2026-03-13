@@ -20,20 +20,6 @@ export interface Event {
 
 export const EVENTS: Event[] = [
     {
-        id: 'e1',
-        title: 'D.J. Retro',
-        genre: 'DJ Set',
-        date: '2026-03-11',
-        dayName: 'Сряда',
-        time: '21:00',
-        price: 5,
-        description: 'Ретро DJ сет със свежа енергия и класически хитове. Вечерта започва в 21:00 часа.',
-        tags: ['DJ', 'RETRO'],
-        color: '#e67e22',
-        month: 'МАР',
-        image: '/events/dj-retro.svg',
-    },
-    {
         id: 'e2',
         title: 'The Four Tones',
         genre: 'Хеви Метъл',

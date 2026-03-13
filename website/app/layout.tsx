@@ -12,6 +12,8 @@ const spaceGrotesk = Space_Grotesk({
     variable: '--font-space-grotesk',
 })
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
+
 export const metadata: Metadata = {
     title: 'Drift Bar Plovdiv — Жива Музика, Рок & Джаз Бар',
     description: 'Drift Bar Plovdiv — сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли, уникална атмосфера. ул. „Сливница" 2a, Кършияка Северен, Пловдив.',
@@ -20,11 +22,11 @@ export const metadata: Metadata = {
         title: 'Drift Bar Plovdiv — Жива Музика & Рок Бар',
         description: 'Сцена от музиканти за музиканти. Жива рок и джаз музика, авторски коктейли в центъра на Пловдив.',
         type: 'website',
-        url: 'https://driftbarplovdiv.com',
+        url: baseUrl,
         locale: 'bg_BG',
         images: [
             {
-                url: 'https://driftbarplovdiv.com/assets/enhanced_live-performance-stage-close.png',
+                url: `${baseUrl}/assets/enhanced_live-performance-stage-close.webp`,
                 width: 1200,
                 height: 630,
                 alt: 'Drift Bar Plovdiv - Жива Музика',
@@ -62,14 +64,14 @@ export default function RootLayout({
                 <link
                     rel="preload"
                     as="image"
-                    href="/logo.png"
-                    type="image/png"
+                    href="/logo.webp"
+                    type="image/webp"
                 />
                 <link
                     rel="preload"
                     as="image"
-                    href="/assets/enhanced_live-performance-stage-close.png"
-                    type="image/png"
+                    href="/assets/enhanced_live-performance-stage-close.webp"
+                    type="image/webp"
                 />
 
                 {/* Material Symbols for icons - loaded async with font-display: swap */}
@@ -110,7 +112,7 @@ export default function RootLayout({
                                 { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "04:00" }
                             ],
                             "priceRange": "$$",
-                            "url": "https://driftbarplovdiv.com"
+                            "url": baseUrl
                         })
                     }}
                 />

@@ -17,7 +17,7 @@ export default function MenuHeader({ tableNumber }: MenuHeaderProps) {
                 </Link>
                 <div className={styles.headerBrand}>
                     <Image
-                        src="/logo.png"
+                        src="/logo.webp"
                         alt="Drift Bar Plovdiv"
                         width={40}
                         height={40}

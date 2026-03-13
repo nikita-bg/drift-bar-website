@@ -8,13 +8,15 @@ export const metadata: Metadata = {
 }
 
 export default function MenuLayout({ children }: { children: React.ReactNode }) {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
+
     // Generate Menu JSON-LD Schema
     const hasMenuSchema = {
         "@context": "https://schema.org",
         "@type": "Menu",
         "name": "Меню на Drift Bar Plovdiv",
-        "url": "https://driftbarplovdiv.com/menu",
-        "mainEntityOfPage": "https://driftbarplovdiv.com/menu",
+        "url": `${baseUrl}/menu`,
+        "mainEntityOfPage": `${baseUrl}/menu`,
         "hasMenuSection": Object.values(MENU).map(cat => ({
             "@type": "MenuSection",
             "name": cat.title + (cat.titleAccent ? " " + cat.titleAccent : ""),

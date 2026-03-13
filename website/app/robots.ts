@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
+
     return {
         rules: {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://driftbarplovdiv.com/sitemap.xml',
+        sitemap: `${baseUrl}/sitemap.xml`,
     }
 }

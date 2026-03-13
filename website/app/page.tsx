@@ -6,6 +6,8 @@ import Image from 'next/image'
 import styles from './landing.module.css'
 import { getUpcomingEvents, formatEventDate } from '@/lib/events-data'
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
+
 export default function Home() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [headerScrolled, setHeaderScrolled] = useState(false)
@@ -193,9 +195,9 @@ export default function Home() {
                             "@context": "https://schema.org/",
                             "@type": "LocalBusiness",
                             "name": "Drift Bar Plovdiv",
-                            "image": "https://driftbarplovdiv.com/logo.png",
-                            "@id": "https://driftbarplovdiv.com",
-                            "url": "https://driftbarplovdiv.com",
+                            "image": "${baseUrl}/logo.webp",
+                            "@id": "${baseUrl}",
+                            "url": "${baseUrl}",
                             "aggregateRating": {
                                 "@type": "AggregateRating",
                                 "ratingValue": "4.9",
@@ -230,7 +232,7 @@ export default function Home() {
                 <div className={`${styles.container} ${styles.headerInner}`}>
                     <a href="#" className={styles.logoLink} aria-label="Drift Bar Home">
                         <Image
-                            src="/logo.png"
+                            src="/logo.webp"
                             alt="Drift Bar Plovdiv"
                             width={80}
                             height={80}
@@ -314,7 +316,7 @@ export default function Home() {
                                 <div className={styles.vinylGrooves} ref={vinylRef}>
                                     <div className={styles.vinylLabel}>
                                         <Image
-                                            src="/logo.png"
+                                            src="/logo.webp"
                                             alt="Лого на Drift Bar Plovdiv"
                                             className={styles.vinylImage}
                                             width={300}
@@ -410,7 +412,7 @@ export default function Home() {
                             <div className={`${styles.aboutImages} ${styles.reveal}`}>
                                 <div className={`${styles.aboutImg} ${styles.aboutImgMain}`}>
                                     <Image
-                                        src="/assets/enhanced_crowd-seating-night-event.png"
+                                        src="/assets/enhanced_crowd-seating-night-event.webp"
                                         alt="Оживената атмосфера в Drift Bar"
                                         width={700}
                                         height={500}
@@ -420,7 +422,7 @@ export default function Home() {
                                 </div>
                                 <div className={`${styles.aboutImg} ${styles.aboutImgSecondary}`}>
                                     <Image
-                                        src="/assets/enhanced_lounge-tables-atmospheric.png"
+                                        src="/assets/enhanced_lounge-tables-atmospheric.webp"
                                         alt="Уютни маси в Drift Bar"
                                         width={400}
                                         height={300}
@@ -467,7 +469,7 @@ export default function Home() {
                         <div className={`${styles.galleryGrid} ${styles.reveal}`}>
                             <div className={`${styles.galleryItem} ${styles.galleryItemLarge}`}>
                                 <Image
-                                    src="/assets/enhanced_stage-drum-kit-lights.png"
+                                    src="/assets/enhanced_stage-drum-kit-lights.webp"
                                     alt="Сцената с барабани и осветление"
                                     width={800}
                                     height={600}
@@ -481,7 +483,7 @@ export default function Home() {
                             </div>
                             <div className={styles.galleryItem}>
                                 <Image
-                                    src="/assets/enhanced_lounge-seating-night-lights.png"
+                                    src="/assets/enhanced_lounge-seating-night-lights.webp"
                                     alt="Уютният салон"
                                     width={400}
                                     height={400}
@@ -495,7 +497,7 @@ export default function Home() {
                             </div>
                             <div className={styles.galleryItem}>
                                 <Image
-                                    src="/assets/enhanced_live-performance-stage-close.png"
+                                    src="/assets/enhanced_live-performance-stage-close.webp"
                                     alt="Изпълнение на живо"
                                     width={400}
                                     height={400}
@@ -523,7 +525,7 @@ export default function Home() {
                             </div>
                             <div className={styles.galleryItem}>
                                 <Image
-                                    src="/assets/enhanced_crowd-seating-night-event.png"
+                                    src="/assets/enhanced_crowd-seating-night-event.webp"
                                     alt="Момент от събитие"
                                     width={400}
                                     height={400}
@@ -537,7 +539,7 @@ export default function Home() {
                             </div>
                             <div className={styles.galleryItem}>
                                 <Image
-                                    src="/assets/enhanced_lounge-tables-atmospheric.png"
+                                    src="/assets/enhanced_lounge-tables-atmospheric.webp"
                                     alt="Интериор"
                                     width={400}
                                     height={400}
