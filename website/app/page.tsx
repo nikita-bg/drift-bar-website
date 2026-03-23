@@ -570,8 +570,9 @@ export default function Home() {
                                         <span className="material-symbols-outlined">schedule</span>
                                         <div>
                                             <strong>Работно Време</strong>
-                                            <p>Ср-Чт, Нд: 20:00 - 02:00</p>
+                                            <p>Ср-Чт: 20:00 - 02:00</p>
                                             <p>Пт-Сб: 20:00 - 04:00</p>
+                                            <p>Нд: 18:00 - 02:00</p>
                                             <p className={styles.textMuted}>Пн-Вт: Почивен ден</p>
                                         </div>
                                     </div>
@@ -730,8 +731,9 @@ export default function Home() {
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>schedule</span>
                                     <h3>Работно Време</h3>
-                                    <p>Ср – Чт, Нд: 20:00 – 02:00</p>
+                                    <p>Ср – Чт: 20:00 – 02:00</p>
                                     <p>Пт – Сб: 20:00 – 04:00</p>
+                                    <p>Нд: 18:00 – 02:00</p>
                                     <p className={styles.textMuted}>Пн – Вт: Почивен ден</p>
                                 </div>
                                 <div className={styles.contactCard}>

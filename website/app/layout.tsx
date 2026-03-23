@@ -108,7 +108,8 @@ export default function RootLayout({
                             "telephone": "+359988793684",
                             "email": "driftbar@abv.bg",
                             "openingHoursSpecification": [
-                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Sunday"], "opens": "20:00", "closes": "02:00" },
+                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday"], "opens": "20:00", "closes": "02:00" },
+                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "18:00", "closes": "02:00" },
                                 { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "04:00" }
                             ],
                             "priceRange": "$$",

@@ -60,7 +60,8 @@
       "Bash(notebooklm research wait:*)",
       "Bash(notebooklm research status:*)",
       "Bash(notebooklm source add:*)",
-      "Bash(npm run optimize-images:*)"
+      "Bash(npm run optimize-images:*)",
+      "Bash(powershell -Command \"Get-PnpDevice -Class Bluetooth | Select-Object Name, Status | Format-Table -AutoSize\")"
     ]
   }
 }
