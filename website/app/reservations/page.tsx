@@ -30,9 +30,18 @@ export default function ReservationsPage() {
     // Set min date to today
     const today = new Date().toISOString().split('T')[0]
 
+    // Check if selected date falls on a closed day (Mon=1, Tue=2, Wed=3)
+    const isClosedDay = date ? (() => {
+        const day = new Date(date + 'T12:00:00').getDay()
+        return day >= 1 && day <= 3
+    })() : false
+
     // Fetch available slots when date or party size changes
     useEffect(() => {
-        if (!date) return
+        if (!date || isClosedDay) {
+            setSlots([])
+            return
+        }
         setLoadingSlots(true)
         setStartTime('')
 
@@ -46,7 +55,7 @@ export default function ReservationsPage() {
                 setSlots([])
                 setLoadingSlots(false)
             })
-    }, [date, partySize])
+    }, [date, partySize, isClosedDay])
 
     const handleSubmit = async () => {
         setFormStatus('submitting')
@@ -91,7 +100,7 @@ export default function ReservationsPage() {
         return `${days[dt.getDay()]}, ${dt.getDate()} ${months[dt.getMonth()]}`
     }
 
-    const canProceedStep1 = date && startTime
+    const canProceedStep1 = date && startTime && !isClosedDay
     const canProceedStep2 = guestName.trim() && guestPhone.trim()
 
     // Success state
@@ -200,6 +209,12 @@ export default function ReservationsPage() {
                                     onChange={(e) => setDate(e.target.value)}
                                     min={today}
                                 />
+                                {isClosedDay && (
+                                    <p style={{ color: '#e74c3c', marginTop: '0.5rem', fontSize: '0.9rem' }}>
+                                        <span className="material-symbols-outlined" style={{ fontSize: '1rem', verticalAlign: 'middle', marginRight: '0.25rem' }}>warning</span>
+                                        Барът не работи в понеделник, вторник и сряда. Моля изберете друг ден.
+                                    </p>
+                                )}
                             </div>
 
                             <div className={styles.formGroup}>

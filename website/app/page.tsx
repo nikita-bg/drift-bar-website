@@ -170,7 +170,7 @@ export default function Home() {
                                     "name": "Има ли музика на живо през седмицата?",
                                     "acceptedAnswer": {
                                         "@type": "Answer",
-                                        "text": "Да, Drift Bar Plovdiv организира музика на живо редовно, като повечето събития са в петък и събота, но често имаме и концерти в средата на седмицата."
+                                        "text": "Да, Drift Bar Plovdiv организира музика на живо редовно — концерти и DJ партита от четвъртък до събота. Следете програмата ни за предстоящи събития."
                                     }
                                 },
                                 {
@@ -570,10 +570,10 @@ export default function Home() {
                                         <span className="material-symbols-outlined">schedule</span>
                                         <div>
                                             <strong>Работно Време</strong>
-                                            <p>Ср-Чт: 20:00 - 02:00</p>
+                                            <p>Чт: 20:00 - 02:00</p>
                                             <p>Пт-Сб: 20:00 - 04:00</p>
                                             <p>Нд: 18:00 - 02:00</p>
-                                            <p className={styles.textMuted}>Пн-Вт: Почивен ден</p>
+                                            <p className={styles.textMuted}>Пн-Ср: Почивен ден</p>
                                         </div>
                                     </div>
                                     <div className={styles.reserveDetail}>
@@ -684,7 +684,7 @@ export default function Home() {
                         <div className={styles.reveal} style={{ display: 'grid', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
                             <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
                                 <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Има ли музика на живо през седмицата?</h3>
-                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, Drift Bar Plovdiv организира музика на живо редовно, като повечето събития са в петък и събота, но често имаме и концерти в средата на седмицата.</p>
+                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, Drift Bar Plovdiv организира музика на живо редовно — концерти и DJ партита от четвъртък до събота. Следете програмата ни за предстоящи събития.</p>
                             </div>
                             <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
                                 <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Къде се намира Drift Bar?</h3>
@@ -731,10 +731,10 @@ export default function Home() {
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>schedule</span>
                                     <h3>Работно Време</h3>
-                                    <p>Ср – Чт: 20:00 – 02:00</p>
+                                    <p>Чт: 20:00 – 02:00</p>
                                     <p>Пт – Сб: 20:00 – 04:00</p>
                                     <p>Нд: 18:00 – 02:00</p>
-                                    <p className={styles.textMuted}>Пн – Вт: Почивен ден</p>
+                                    <p className={styles.textMuted}>Пн – Ср: Почивен ден</p>
                                 </div>
                                 <div className={styles.contactCard}>
                                     <span className="material-symbols-outlined" style={{ color: '#9c3211' }}>share</span>

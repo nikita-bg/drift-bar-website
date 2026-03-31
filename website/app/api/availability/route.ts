@@ -25,6 +25,15 @@ export async function GET(request: NextRequest) {
         )
     }
 
+    // Check if day is closed (Mon=1, Tue=2, Wed=3)
+    const dayOfWeek = new Date(date + 'T12:00:00').getDay()
+    if (dayOfWeek >= 1 && dayOfWeek <= 3) {
+        return NextResponse.json(
+            { error: 'Барът не работи в понеделник, вторник и сряда.' },
+            { status: 400 }
+        )
+    }
+
     const slots = await getAvailableSlots(date, partySize)
 
     return NextResponse.json({ date, partySize, slots })
