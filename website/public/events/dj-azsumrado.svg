@@ -1,0 +1,19 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-azsum" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00CED1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#008B8B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grad-azsum)"/>
+  <text x="400" y="230" font-family="Arial, sans-serif" font-size="65" font-weight="bold" fill="white" text-anchor="middle">DJ</text>
+  <text x="400" y="310" font-family="Arial, sans-serif" font-size="65" font-weight="bold" fill="white" text-anchor="middle">AZSUMRADO</text>
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="28" fill="white" text-anchor="middle" opacity="0.9">DJ Set</text>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.8">04.04 • Събота • 22:00</text>
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="22" fill="white" text-anchor="middle" opacity="0.6">Drift Bar Plovdiv</text>
+  <!-- decorative circles (vinyl/DJ vibe) -->
+  <circle cx="150" cy="480" r="70" fill="white" opacity="0.1"/>
+  <circle cx="150" cy="480" r="35" fill="white" opacity="0.05"/>
+  <circle cx="650" cy="130" r="55" fill="white" opacity="0.1"/>
+  <circle cx="650" cy="130" r="25" fill="white" opacity="0.05"/>
+</svg>

@@ -31,7 +31,7 @@ export const EVENTS: Event[] = [
         tags: ['LIVE', 'ROCK'],
         color: '#e74c3c',
         month: 'АПР',
-        image: '/events/tsunami-rock-band.jpg',
+        image: '/events/tsunami-rock-band.svg',
     },
     {
         id: 'e6',
@@ -45,7 +45,7 @@ export const EVENTS: Event[] = [
         tags: ['DJ', 'ELECTRONIC'],
         color: '#00CED1',
         month: 'АПР',
-        image: '/events/dj-azsumrado.jpg',
+        image: '/events/dj-azsumrado.svg',
     },
     {
         id: 'e7',
@@ -59,7 +59,7 @@ export const EVENTS: Event[] = [
         tags: ['DJ', 'PARTY'],
         color: '#e67e22',
         month: 'АПР',
-        image: '/events/dj-borrix.jpg',
+        image: '/events/dj-borrix.svg',
     },
     {
         id: 'e8',

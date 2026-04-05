@@ -587,7 +587,6 @@ export default function Home() {
                                         <span className="material-symbols-outlined">mail</span>
                                         <div>
                                             <strong>Email</strong>
-                                            <p><a href="mailto:info@driftbarplovdiv.com">info@driftbarplovdiv.com</a></p>
                                             <p><a href="mailto:driftbar@abv.bg">driftbar@abv.bg</a></p>
                                         </div>
                                     </div>

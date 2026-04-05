@@ -128,7 +128,7 @@ export default function EventsPage() {
                             <h3>Искаш да свириш на нашата сцена?</h3>
                             <p>Свържи се с нас — приемаме запитвания от банди и изпълнители.</p>
                         </div>
-                        <a href="mailto:info@driftbarplovdiv.com" className={styles.ctaBtn}>
+                        <a href="mailto:driftbar@abv.bg" className={styles.ctaBtn}>
                             Пиши ни
                         </a>
                     </div>
