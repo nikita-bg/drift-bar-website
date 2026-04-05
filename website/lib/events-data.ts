@@ -59,7 +59,7 @@ export const EVENTS: Event[] = [
         tags: ['DJ', 'PARTY'],
         color: '#e67e22',
         month: 'АПР',
-        image: '/events/dj-borrix.svg',
+        image: '/events/dj-borrix.jpg',
     },
     {
         id: 'e8',
