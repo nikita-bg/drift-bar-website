@@ -45,7 +45,7 @@ export const EVENTS: Event[] = [
         tags: ['LIVE', 'ROCK'],
         color: '#9b59b6',
         month: 'МАЙ',
-        image: '/events/coven-5.svg',
+        image: '/events/coven-5.jpg',
     },
     {
         id: 'e13',
