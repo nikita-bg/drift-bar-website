@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
+import { EVENTS, getUpcomingEvents } from '@/lib/events-data'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -47,11 +48,199 @@ export const viewport: Viewport = {
     viewportFit: 'cover',
 }
 
+// Schema.org LocalBusiness — enriched for both classic SEO (Google rich results)
+// and GEO (LLM citations via structured data). Note: alternateName, geo coords,
+// areaServed, paymentAccepted, currenciesAccepted are all signals AI engines pick up.
+const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "MusicVenue", "BarOrPub"],
+    "@id": `${baseUrl}/#localbusiness`,
+    "name": "Drift Bar Plovdiv",
+    "alternateName": ["Drift Bar", "Дрифт Бар Пловдив", "Drift Plovdiv"],
+    "description": "Бар за рок и джаз музика на живо с професионална акустика и коктейли в Пловдив. Капацитет от 99 места и 20 маси. Сцена от музиканти за музиканти.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Сливница 2а",
+        "addressLocality": "Пловдив",
+        "addressRegion": "Кършияка Северен",
+        "postalCode": "4003",
+        "addressCountry": "BG"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.1418,
+        "longitude": 24.7461
+    },
+    "telephone": "+359988793684",
+    "email": "driftbar@abv.bg",
+    "url": baseUrl,
+    "image": `${baseUrl}/assets/enhanced_live-performance-stage-close.webp`,
+    "logo": `${baseUrl}/logo.webp`,
+    "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday"], "opens": "20:00", "closes": "02:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "18:00", "closes": "02:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "04:00" }
+    ],
+    "priceRange": "€2-€18",
+    "currenciesAccepted": "EUR, BGN",
+    "paymentAccepted": "Cash, Credit Card",
+    "areaServed": {
+        "@type": "City",
+        "name": "Пловдив",
+        "@id": "https://www.wikidata.org/wiki/Q459"
+    },
+    "smokingAllowed": false,
+    "publicAccess": true,
+    "hasMap": "https://maps.google.com/?q=Drift+Bar+Plovdiv+Slivnitsa+2a",
+    "sameAs": [
+        "https://www.facebook.com/driftbarplovdiv",
+        "https://www.instagram.com/drift_bar_plovdiv/"
+    ]
+} as const
+
+// FAQ schema — feeds Google "People also ask" snippets AND is consumed by
+// LLMs (ChatGPT search, Perplexity, Claude) when users ask similar questions.
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Какво е работното време на Drift Bar Plovdiv?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Понеделник до сряда — почивни дни. Четвъртък 20:00–02:00. Петък и събота 20:00–04:00. Неделя 18:00–02:00."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Къде се намира Drift Bar?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "На ул. Сливница 2а в Кършияка Северен, Пловдив (4003). Бившият пиано-бар ЕКСЕЛ — до пешеходния мост, в близост до Новотел Пловдив."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Как да резервирам маса в Drift Bar?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Можете да резервирате онлайн чрез страницата за резервации или като се обадите на +359 98 879 3684. За концертни вечери и големи групи се препоръчва резервация предварително."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Какъв е капацитетът на Drift Bar?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Капацитет 99 места, 20 маси. Интимна обстановка, която създава близък контакт между публиката и сцената."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Каква музика се свири в Drift Bar?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Жива музика — рок, джаз, блус, соул, авторски проекти. Петък и събота често има DJ сетове. Сцена от музиканти за музиканти."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Има ли входна такса?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Зависи от събитието. Концертите обикновено са 5–10 EUR. Точната цена за всяко събитие е публикувана на страницата за събития."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Drift Bar пуши ли се?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Не — Drift Bar е заведение без пушене (некомерсиална зона за пушене вътре)."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Каква е минималната възраст?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Drift Bar обслужва клиенти над 18 години (по закон за алкохолни заведения в България). При проверка се изисква лична карта."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Има ли паркинг в близост?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Има публичен паркинг до Новотел Пловдив и улично паркиране по Сливница. Препоръчваме обществения транспорт или такси, особено за петък/събота вечер."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Кои са най-добрите барове за жива музика в Пловдив?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Drift Bar Plovdiv е сред водещите барове за жива музика в града — специализиран в рок, джаз и блус с професионално озвучаване, акустика и редовни концерти на български и международни артисти."
+            }
+        }
+    ]
+} as const
+
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    // Generate MusicEvent JSON-LD for each upcoming event. This is critical for
+    // SEO (Google Events rich cards) AND GEO (when users ask LLMs "what's
+    // happening at Drift Bar tonight", the AI cites structured event data).
+    const upcomingEvents = getUpcomingEvents()
+    const eventSchemas = upcomingEvents.map(event => ({
+        "@context": "https://schema.org",
+        "@type": "MusicEvent",
+        "name": event.title,
+        "description": event.description,
+        "startDate": `${event.date}T${event.time}:00+03:00`,
+        "endDate": `${event.date}T23:59:00+03:00`,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "MusicVenue",
+            "name": "Drift Bar Plovdiv",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "ул. Сливница 2а",
+                "addressLocality": "Пловдив",
+                "postalCode": "4003",
+                "addressCountry": "BG"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 42.1418,
+                "longitude": 24.7461
+            }
+        },
+        "image": `${baseUrl}${event.image}`,
+        "offers": {
+            "@type": "Offer",
+            "price": event.price,
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "url": `${baseUrl}/events`,
+            "validFrom": new Date().toISOString().slice(0, 10)
+        },
+        "performer": {
+            "@type": "MusicGroup",
+            "name": event.title
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Drift Bar Plovdiv",
+            "url": baseUrl
+        }
+    }))
+
     return (
         <html lang="bg" className={spaceGrotesk.variable}>
             <head>
@@ -90,33 +279,25 @@ export default function RootLayout({
                         rel="stylesheet"
                     />
                 </noscript>
+                {/* Enriched LocalBusiness/MusicVenue/BarOrPub schema — feeds Google
+                    Maps, Google Search, and AI search engines (ChatGPT, Perplexity, Claude). */}
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": ["LocalBusiness", "MusicVenue", "BarOrPub"],
-                            "name": "Drift Bar Plovdiv",
-                            "description": "Бар за рок и джаз музика на живо с професионална акустика и коктейли в Пловдив. Капацитет от 99 места и 20 маси.",
-                            "address": {
-                                "@type": "PostalAddress",
-                                "streetAddress": "ул. Сливница 2а",
-                                "addressLocality": "Кършияка Северен, Пловдив",
-                                "postalCode": "4003",
-                                "addressCountry": "BG"
-                            },
-                            "telephone": "+359988793684",
-                            "email": "driftbar@abv.bg",
-                            "openingHoursSpecification": [
-                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday"], "opens": "20:00", "closes": "02:00" },
-                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "18:00", "closes": "02:00" },
-                                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "04:00" }
-                            ],
-                            "priceRange": "$$",
-                            "url": baseUrl
-                        })
-                    }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
                 />
+                {/* FAQ schema — drives Google "People also ask" and AEO/GEO. */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+                {/* One MusicEvent schema per upcoming event — Google Events rich cards. */}
+                {eventSchemas.map((schema, i) => (
+                    <script
+                        key={`event-schema-${i}`}
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                    />
+                ))}
             </head>
             <body>
                 <div className="grain-overlay" aria-hidden="true" />

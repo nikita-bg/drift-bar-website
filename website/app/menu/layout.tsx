@@ -1,10 +1,21 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Script from 'next/script'
 import { MENU } from '@/lib/menu-data'
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
+
 export const metadata: Metadata = {
-    title: 'Меню | Drift Bar Plovdiv | Коктейли, Уиски и Напитки',
-    description: 'Разгледайте онлайн менюто на Drift Bar Plovdiv. Голямо разнообразие от алкохолни и безалкохолни коктейли, отлежало уиски, наливна бира и мезета.',
+    title: 'Меню — Коктейли, Уиски, Бира — Drift Bar Plovdiv',
+    description: 'Меню на Drift Bar Plovdiv — авторски коктейли от €5, премиум уиски, бира на чешма, мезета, бургери. Цени в EUR.',
+    keywords: 'меню drift bar, коктейли пловдив, уиски пловдив, бар цени пловдив',
+    alternates: { canonical: `${baseUrl}/menu` },
+    openGraph: {
+        title: 'Меню — Коктейли, Уиски, Бира — Drift Bar Plovdiv',
+        description: 'Меню на Drift Bar Plovdiv — авторски коктейли от €5, премиум уиски, бира на чешма, мезета, бургери. Цени в EUR.',
+        url: `${baseUrl}/menu`,
+        type: 'website',
+        locale: 'bg_BG',
+    },
 }
 
 export default function MenuLayout({ children }: { children: React.ReactNode }) {
