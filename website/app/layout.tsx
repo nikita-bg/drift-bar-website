@@ -85,6 +85,7 @@ const localBusinessSchema = {
     "priceRange": "€2-€18",
     "currenciesAccepted": "EUR, BGN",
     "paymentAccepted": "Cash, Credit Card",
+    "servesCuisine": ["Bar food", "Snacks", "Cocktails", "Bar bites", "Мезета", "Пържени картофки", "Пилешки крилца", "Платà сирене и сухи мезета"],
     "areaServed": {
         "@type": "City",
         "name": "Пловдив",
@@ -209,18 +210,22 @@ export default function RootLayout({
                         rel="stylesheet"
                     />
                 </noscript>
-                {/* Enriched LocalBusiness/MusicVenue/BarOrPub schema — feeds Google
-                    Maps, Google Search, and AI search engines (ChatGPT, Perplexity, Claude). */}
+            </head>
+            <body>
+                {/* JSON-LD schemas in <body> per Next.js docs guidance
+                    (https://nextjs.org/docs/app/guides/json-ld). Placing them
+                    inside <head> in App Router causes them to render twice
+                    (once in <head> and once in the RSC payload) which Google
+                    flags as "Дублиращо се поле" / duplicate FAQPage. Body
+                    placement renders exactly once and is fully crawlable. */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
                 />
-                {/* FAQ schema — drives Google "People also ask" and AEO/GEO. */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                 />
-                {/* One MusicEvent schema per upcoming event — Google Events rich cards. */}
                 {eventSchemas.map((schema, i) => (
                     <script
                         key={`event-schema-${i}`}
@@ -228,8 +233,6 @@ export default function RootLayout({
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                     />
                 ))}
-            </head>
-            <body>
                 <div className="grain-overlay" aria-hidden="true" />
                 {children}
 
