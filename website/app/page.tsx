@@ -12,7 +12,8 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com
 export default function Home() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [headerScrolled, setHeaderScrolled] = useState(false)
-    const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle')
+    const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle')
+    const [formError, setFormError] = useState<string>('')
     const [activeSection, setActiveSection] = useState('hero')
     const vinylRef = useRef<HTMLDivElement>(null)
 
@@ -105,8 +106,11 @@ export default function Home() {
         const form = e.target as HTMLFormElement
         const formData = new FormData(form)
 
+        // Server-side route relays to FormSubmit.co which emails driftbar@abv.bg.
+        // (Old n8n webhook removed — same payload, simpler stack, no external
+        // workflow tool to maintain.)
         try {
-            await fetch('https://simplifyopsco.app.n8n.cloud/webhook/drift-bar-new-reservation', {
+            const res = await fetch('/api/reservations/email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -115,16 +119,25 @@ export default function Home() {
                     time: formData.get('time'),
                     guests: formData.get('guests'),
                     phone: formData.get('phone'),
-                    message: formData.get('message'),
+                    message: formData.get('message') || undefined,
                 }),
             })
-        } catch {
-            // Webhook fire-and-forget - still show success to user
+            if (!res.ok) {
+                const data = (await res.json().catch(() => ({}))) as { error?: string }
+                setFormStatus('error')
+                setFormError(data.error ?? `Грешка при изпращане (HTTP ${res.status}).`)
+                return
+            }
+        } catch (err: unknown) {
+            setFormStatus('error')
+            setFormError(err instanceof Error ? err.message : 'Мрежова грешка.')
+            return
         }
 
         setFormStatus('success')
+        setFormError('')
         form.reset()
-        setTimeout(() => setFormStatus('idle'), 3000)
+        setTimeout(() => setFormStatus('idle'), 5000)
     }
 
     return (
@@ -551,6 +564,25 @@ export default function Home() {
                                             <><span className="material-symbols-outlined">event_available</span> Изпрати Резервация</>
                                         )}
                                     </button>
+                                    {formStatus === 'error' && formError && (
+                                        <p
+                                            role="alert"
+                                            style={{
+                                                marginTop: '0.75rem',
+                                                padding: '0.75rem 1rem',
+                                                borderRadius: '0.5rem',
+                                                backgroundColor: 'rgba(192, 57, 43, 0.12)',
+                                                border: '1px solid rgba(192, 57, 43, 0.35)',
+                                                color: '#e8c7c2',
+                                                fontSize: '0.9rem',
+                                                lineHeight: 1.5,
+                                            }}
+                                        >
+                                            <span className="material-symbols-outlined" style={{ fontSize: '1rem', verticalAlign: 'middle', marginRight: '0.4rem' }}>error</span>
+                                            {formError}
+                                            {' '}Можете и да се обадите на <a href="tel:+359988793684" style={{ color: '#f4d9d5', textDecoration: 'underline' }}>+359 98 879 3684</a>.
+                                        </p>
+                                    )}
                                 </form>
                             </div>
                         </div>
