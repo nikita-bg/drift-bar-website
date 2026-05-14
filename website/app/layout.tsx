@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { EVENTS, getUpcomingEvents } from '@/lib/events-data'
+import { FAQ_ITEMS } from '@/lib/faq-data'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -100,92 +101,21 @@ const localBusinessSchema = {
 
 // FAQ schema — feeds Google "People also ask" snippets AND is consumed by
 // LLMs (ChatGPT search, Perplexity, Claude) when users ask similar questions.
+// SOURCE: lib/faq-data.ts — kept in sync with the visible FAQ section rendered
+// in app/page.tsx (Google rejects FAQ schema unless the content is visibly on
+// the page).
 const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-        {
-            "@type": "Question",
-            "name": "Какво е работното време на Drift Bar Plovdiv?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Понеделник до сряда — почивни дни. Четвъртък 20:00–02:00. Петък и събота 20:00–04:00. Неделя 18:00–02:00."
-            }
+    "mainEntity": FAQ_ITEMS.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer,
         },
-        {
-            "@type": "Question",
-            "name": "Къде се намира Drift Bar?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "На ул. Сливница 2а в Кършияка Северен, Пловдив (4003). Бившият пиано-бар ЕКСЕЛ — до пешеходния мост, в близост до Новотел Пловдив."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Как да резервирам маса в Drift Bar?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Можете да резервирате онлайн чрез страницата за резервации или като се обадите на +359 98 879 3684. За концертни вечери и големи групи се препоръчва резервация предварително."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Какъв е капацитетът на Drift Bar?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Капацитет 99 места, 20 маси. Интимна обстановка, която създава близък контакт между публиката и сцената."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Каква музика се свири в Drift Bar?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Жива музика — рок, джаз, блус, соул, авторски проекти. Петък и събота често има DJ сетове. Сцена от музиканти за музиканти."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Има ли входна такса?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Зависи от събитието. Концертите обикновено са 5–10 EUR. Точната цена за всяко събитие е публикувана на страницата за събития."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Drift Bar пуши ли се?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Не — Drift Bar е заведение без пушене (некомерсиална зона за пушене вътре)."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Каква е минималната възраст?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Drift Bar обслужва клиенти над 18 години (по закон за алкохолни заведения в България). При проверка се изисква лична карта."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Има ли паркинг в близост?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Има публичен паркинг до Новотел Пловдив и улично паркиране по Сливница. Препоръчваме обществения транспорт или такси, особено за петък/събота вечер."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Кои са най-добрите барове за жива музика в Пловдив?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Drift Bar Plovdiv е сред водещите барове за жива музика в града — специализиран в рок, джаз и блус с професионално озвучаване, акустика и редовни концерти на български и международни артисти."
-            }
-        }
-    ]
-} as const
+    })),
+}
 
 export default function RootLayout({
     children,

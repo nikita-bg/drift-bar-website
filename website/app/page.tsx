@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './landing.module.css'
 import { getUpcomingEvents, formatEventDate } from '@/lib/events-data'
+import { FAQ_ITEMS } from '@/lib/faq-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://driftbarplovdiv.com'
 
@@ -128,105 +129,12 @@ export default function Home() {
 
     return (
         <>
-            {/* JSON-LD Schemas (AEO / GEO / Local SEO) */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify([
-                        // Generate Event schemas for all upcoming events
-                        ...upcomingEvents.map(event => ({
-                            "@context": "https://schema.org",
-                            "@type": "Event",
-                            "name": event.title,
-                            "startDate": `${event.date}T${event.time}:00+02:00`,
-                            "description": event.description,
-                            "location": {
-                                "@type": "Place",
-                                "name": "Drift Bar Plovdiv",
-                                "address": {
-                                    "@type": "PostalAddress",
-                                    "streetAddress": "ул. Сливница 2а",
-                                    "addressLocality": "Кършияка Северен, Пловдив",
-                                    "postalCode": "4003",
-                                    "addressCountry": "BG"
-                                }
-                            },
-                            "offers": {
-                                "@type": "Offer",
-                                "price": event.price.toString(),
-                                "priceCurrency": "EUR"
-                            },
-                            "performer": {
-                                "@type": "MusicGroup",
-                                "name": event.title
-                            }
-                        })),
-                        {
-                            "@context": "https://schema.org",
-                            "@type": "FAQPage",
-                            "mainEntity": [
-                                {
-                                    "@type": "Question",
-                                    "name": "Има ли музика на живо през седмицата?",
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": "Да, Drift Bar Plovdiv организира музика на живо редовно — концерти и DJ партита от четвъртък до събота. Следете програмата ни за предстоящи събития."
-                                    }
-                                },
-                                {
-                                    "@type": "Question",
-                                    "name": "Къде се намира Drift Bar?",
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": "Drift Bar се намира на ул. Сливница 2а, 4003 Кършияка Северен, град Пловдив."
-                                    }
-                                },
-                                {
-                                    "@type": "Question",
-                                    "name": "Мога ли да резервирам маса за 10 човека?",
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": "Да, капацитетът на бара е 99 места с над 20 маси, като приемаме групови резервации за до 20 души."
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "@context": "https://schema.org/",
-                            "@type": "LocalBusiness",
-                            "name": "Drift Bar Plovdiv",
-                            "image": "${baseUrl}/logo.webp",
-                            "@id": "${baseUrl}",
-                            "url": "${baseUrl}",
-                            "aggregateRating": {
-                                "@type": "AggregateRating",
-                                "ratingValue": "4.9",
-                                "reviewCount": "24"
-                            },
-                            "review": [
-                                {
-                                    "@type": "Review",
-                                    "author": { "@type": "Person", "name": "Иван Д." },
-                                    "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-                                    "reviewBody": "Страхотен звук и атмосфера! Най-доброто място за рок музика в града."
-                                },
-                                {
-                                    "@type": "Review",
-                                    "author": { "@type": "Person", "name": "Мария С." },
-                                    "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-                                    "reviewBody": "Коктейлите са супер, а обслужването – на високо ниво."
-                                },
-                                {
-                                    "@type": "Review",
-                                    "author": { "@type": "Person", "name": "Георги Н." },
-                                    "reviewRating": { "@type": "Rating", "ratingValue": "4" },
-                                    "reviewBody": "Много свежо място за групи и резервации. Препоръчвам."
-                                }
-                            ]
-                        }
-                    ])
-                }}
-            />
+            {/* JSON-LD schemas are now centralized in app/layout.tsx:
+                - LocalBusiness (with @id, geo, alternateName, hasMap, sameAs, etc.)
+                - FAQPage (single source of truth from lib/faq-data.ts, matches visible FAQ below)
+                - MusicEvent (per upcoming event, generated from lib/events-data.ts)
+                Removed the old inline blob — it had broken "${"$"}{baseUrl}" template literals
+                (Google flagged 8 invalid Review items because of them) and duplicated FAQ. */}
             {/* ===== HEADER ===== */}
             <header className={`${styles.siteHeader} ${headerScrolled ? styles.scrolled : ''}`} id="header">
                 <div className={`${styles.container} ${styles.headerInner}`}>
@@ -681,18 +589,12 @@ export default function Home() {
                             <h2 className={styles.sectionTitle} style={{ color: '#e8e1cf' }}>Често Задавани Въпроси</h2>
                         </div>
                         <div className={styles.reveal} style={{ display: 'grid', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
-                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Има ли музика на живо през седмицата?</h3>
-                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, Drift Bar Plovdiv организира музика на живо редовно — концерти и DJ партита от четвъртък до събота. Следете програмата ни за предстоящи събития.</p>
-                            </div>
-                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Къде се намира Drift Bar?</h3>
-                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Очакваме ви на ул. Сливница 2а, 4003 Кършияка Северен, в град Пловдив.</p>
-                            </div>
-                            <div style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                <h3 style={{ color: '#c8c3b4', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Мога ли да резервирам маса за 10 човека?</h3>
-                                <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.8 }}>Да, капацитетът на бара е 99 места с над 20 маси, като безпроблемно приемаме и настаняваме големи компании.</p>
-                            </div>
+                            {FAQ_ITEMS.map((item, i) => (
+                                <div key={i} style={{ backgroundColor: '#16110b', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <h3 style={{ color: '#e8e1cf', marginBottom: '0.75rem', fontSize: '1.15rem', lineHeight: '1.4' }}>{item.question}</h3>
+                                    <p style={{ color: '#c8c3b4', lineHeight: '1.6', opacity: 0.85, margin: 0 }}>{item.answer}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
