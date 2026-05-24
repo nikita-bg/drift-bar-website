@@ -21,17 +21,17 @@ export interface Event {
 export const EVENTS: Event[] = [
     {
         id: 'e20',
-        title: 'ATOLUKA BLUES CARTEL',
-        genre: 'Блус',
+        title: 'АКУСТИК',
+        genre: 'Акустика',
         date: '2026-05-28',
         dayName: 'Четвъртък',
         time: '21:00',
         price: 5,
-        description: 'ATOLUKA BLUES CARTEL се завръща на сцената на Drift — петима музиканти и един суров, топъл блус на живо. След вечерта, която остави следа в Drift, бандата отново носи струни, грув и истинска атмосфера до късно. Врата 20:00, начало 21:00.',
-        tags: ['LIVE', 'BLUES'],
-        color: '#2c7da0',
+        description: 'Акустична вечер в Drift — Акустик на сцената с интимни живи изпълнения само с глас и струни, в топлата атмосфера на бара. По-камерно, близко звучене за един спокоен четвъртък. Врата 20:00, начало 21:00.',
+        tags: ['LIVE', 'ACOUSTIC'],
+        color: '#c0873a',
         month: 'МАЙ',
-        image: '/events/atoluka-blues-cartel.jpg',
+        image: '/events/akustik-28-05.jpg',
     },
     {
         id: 'e21',
@@ -259,7 +259,7 @@ export const EVENTS: Event[] = [
     },
 ]
 
-export const ALL_GENRES = ['Всички', 'Рок', 'Блус', 'Блус & Соул', 'Блус Рок', 'Рок Кавъри', 'Ретро Хитове', 'DJ Set', 'Джаз & Латино', 'Джаз']
+export const ALL_GENRES = ['Всички', 'Рок', 'Акустика', 'Блус & Соул', 'Блус Рок', 'Рок Кавъри', 'Ретро Хитове', 'DJ Set', 'Джаз & Латино', 'Джаз']
 
 // Helper to get upcoming events (sorted by date)
 export function getUpcomingEvents(limit?: number): Event[] {
